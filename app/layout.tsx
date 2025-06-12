@@ -3,6 +3,7 @@ import { Playfair_Display, Montserrat, Open_Sans } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { Footer } from "@/components/layout/Footer";
+import { SideBar } from "@/components/layout/SideBar";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${montserrat.variable} ${openSans.variable} antialiased`}
       >
+        <SideBar />
         {children}
         <Footer />
         <Script
