@@ -38,7 +38,7 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${montserrat.variable} ${openSans.variable} antialiased`}
       >
-        <main>{children}</main>
+        {children}
         <Footer />
         <Script
           src="https://kit.fontawesome.com/704403949e.js"
