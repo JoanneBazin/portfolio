@@ -1,11 +1,7 @@
 "use client";
 
+import { LinkItem } from "@/lib/types";
 import { useEffect, useState } from "react";
-
-type LinkItem = {
-  id: string;
-  label: string;
-};
 
 const LINKS: LinkItem[] = [
   { id: "projects", label: "Projets" },
