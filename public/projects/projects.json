@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Intégration HTML/CSS",
+    "description": "Intégration de la page d'accueil du site web d'une agence de voyage avec HTML et CSS.",
+    "images": [
+      "/projects/images/booki_desktop.png",
+      "/projects/images/booki_tablet.png",
+      "/projects/images/booki_mobile.png"
+    ],
+    "tech": ["HTML", "CSS"],
+    "objectives": [
+      "Création d'un site statique",
+      "Optimisation du code CSS",
+      "Responsive design"
+    ],
+    "size": "small",
+    "order": 1
+  },
+  {
+    "id": 2,
+    "title": "Conception page web dynamique avec JavaScript",
+    "description": "Création d'un mode administrateur dynamique pour le portfolio d'une architecte.",
+    "images": [
+      "/projects/images/sophie_bluel_edit_gallery.png",
+      "/projects/images/sophie_bluel_edit_add_work.png",
+      "/projects/images/sophie_bluel_home_edit.png"
+    ],
+    "tech": ["HTML", "CSS", "JS"],
+    "objectives": [
+      "Intégration de contenu dynamique via API",
+      "Intégration de la connexion utilisateur",
+      "Mode admin pour gérer les travaux (création, édition, suppression)"
+    ],
+    "size": "medium",
+    "order": 2
+  },
+  {
+    "id": 3,
+    "title": "Optimisation et debug d'un site web",
+    "description": "Travail sur le SEO, l'accessibilité et la performance d'un site de photographe",
+    "images": [
+      "/projects/images/debug_lighthouse.png",
+      "/projects/images/debug_home.png",
+      "/projects/images/debug_gallery.png"
+    ],
+    "tech": ["Lighthouse", "GT Metrix", "Wave"],
+    "objectives": [
+      "Optimisation performances, notamment avec gestion des images",
+      "Amélioration du SEO et référencement local",
+      "Ajustements pour l'accessibilité"
+    ],
+    "size": "small",
+    "order": 4
+  },
+  {
+    "id": 4,
+    "title": "Création d'une application web avec React",
+    "description": "Refonte d'un site de location immobilière avec React et React Router.",
+    "images": [
+      "/projects/images/kasa_home.png",
+      "/projects/images/kasa_lodging.png"
+    ],
+    "tech": ["React", "Sass", "Vite"],
+    "objectives": [
+      "Intégration de maquettes",
+      "Implémentation de la navigation avec React Router",
+      "Design responsive avec Sass"
+    ],
+    "size": "large",
+    "order": 3
+  },
+  {
+    "id": 5,
+    "title": "Création d'une API REST avec Node.js",
+    "description": "Développement du back-end d'un site de notation de livres avec Node.js et Express.",
+    "images": [
+      "/projects/images/mon_vieux_grimoire_book.png",
+      "/projects/images/mon_vieux_grimoire_home.png",
+      "/projects/images/mon_vieux_grimoire_log.png",
+      "/projects/images/mon_vieux_grimoire_swagger.png"
+    ],
+    "tech": ["Node.js", "Express", "MongoDB", "JWT", "Swagger"],
+    "objectives": [
+      "Création d'une API REST",
+      "Gestion des utilisateurs avec JWT",
+      "Documentation de l'API avec Swagger"
+    ],
+    "size": "large",
+    "order": 5
+  }
+]
