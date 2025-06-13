@@ -14,6 +14,8 @@
       "Optimisation du code CSS",
       "Responsive design"
     ],
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com",
     "size": "small",
     "order": 1
   },
@@ -32,6 +34,8 @@
       "Intégration de la connexion utilisateur",
       "Mode admin pour gérer les travaux (création, édition, suppression)"
     ],
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com",
     "size": "medium",
     "order": 3
   },
@@ -50,6 +54,8 @@
       "Amélioration du SEO et référencement local",
       "Ajustements pour l'accessibilité"
     ],
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com",
     "size": "small",
     "order": 4
   },
@@ -67,6 +73,8 @@
       "Implémentation de la navigation avec React Router",
       "Design responsive avec Sass"
     ],
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com",
     "size": "large",
     "order": 2
   },
@@ -86,6 +94,8 @@
       "Gestion des utilisateurs avec JWT",
       "Documentation de l'API avec Swagger"
     ],
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com",
     "size": "large",
     "order": 5
   }

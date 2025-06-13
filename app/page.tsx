@@ -5,7 +5,7 @@ import { Projects } from "@/sections/Projects";
 
 export default function Home() {
   return (
-    <main>
+    <main className="lg:mr-20">
       <Hero />
       <Projects />
       <About />
