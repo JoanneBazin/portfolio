@@ -8,7 +8,7 @@ export const TopNav = () => {
   if (hideSidebar) return null;
 
   return (
-    <nav className="hidden sm:flex lg:hidden fixed top left-0 top-0 w-screen p-8 z-40">
+    <nav className="hidden sm:flex lg:hidden fixed top left-0 top-0 w-screen p-8 z-40 bg-background">
       <ul className="flex items-center justify-between w-full px-8">
         {LINKS.map((link, index) => (
           <li

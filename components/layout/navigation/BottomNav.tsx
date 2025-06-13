@@ -8,7 +8,7 @@ export const BottomNav = () => {
   if (hideSidebar) return null;
 
   return (
-    <nav className="sm:hidden flex fixed bottom left-0 bottom-0 w-screen py-8 z-40">
+    <nav className="sm:hidden flex fixed bottom left-0 bottom-0 w-screen py-8 z-40 bg-background">
       <ul className="flex items-center justify-around w-full px-4">
         {LINKS.map((link, index) => (
           <li
