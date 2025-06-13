@@ -1,7 +1,3 @@
 export const Projects = () => {
-  return (
-    <div id="projects" className="h-screen">
-      Projects
-    </div>
-  );
+  return <section id="projects" className="h-screen"></section>;
 };
