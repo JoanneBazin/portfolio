@@ -1,17 +1,8 @@
 "use client";
 
+import { ProjectCard } from "@/components/ui/ProjectCard";
+import { Project } from "@/lib/types";
 import { useEffect, useState } from "react";
-
-type Project = {
-  id: number;
-  title: string;
-  description: string;
-  images: string[];
-  tech: string[];
-  objectives: string[];
-  size: string;
-  order: number;
-};
 
 export const Projects = () => {
   const [projects, setProjects] = useState<Project[]>();
@@ -34,9 +25,14 @@ export const Projects = () => {
   }, []);
 
   return (
-    <section id="projects" className="min-h-screen bg-gray-700 m-10">
+    <section
+      id="projects"
+      className="min-h-screen m-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+    >
       {projects
-        ? projects.map((project) => <div key={project.id}>{project.title}</div>)
+        ? projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))
         : null}
     </section>
   );

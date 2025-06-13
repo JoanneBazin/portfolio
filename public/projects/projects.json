@@ -33,7 +33,7 @@
       "Mode admin pour gérer les travaux (création, édition, suppression)"
     ],
     "size": "medium",
-    "order": 2
+    "order": 3
   },
   {
     "id": 3,
@@ -68,7 +68,7 @@
       "Design responsive avec Sass"
     ],
     "size": "large",
-    "order": 3
+    "order": 2
   },
   {
     "id": 5,
