@@ -13,13 +13,15 @@ export const TopNav = () => {
         {LINKS.map((link, index) => (
           <li
             key={index}
-            className={`text-montserrat text-xl ${
+            className={`text-xl font-montserrat ${
               activeLink === link.id
                 ? "text-accent font-bold"
                 : "hover:text-accent transition-colors duration-300"
             }`}
           >
-            <a href={`#${link.id}`}>{link.label}</a>
+            <a href={`#${link.id}`} className="">
+              {link.label}
+            </a>
           </li>
         ))}
       </ul>

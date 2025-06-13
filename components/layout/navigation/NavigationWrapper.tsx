@@ -1,3 +1,4 @@
+import { BottomNav } from "./BottomNav";
 import { SideBar } from "./SideBar";
 import { TopNav } from "./TopNav";
 
@@ -6,6 +7,7 @@ export const NavigationWrapper = () => {
     <>
       <SideBar />
       <TopNav />
+      <BottomNav />
     </>
   );
 };

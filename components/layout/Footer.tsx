@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="fixed bottom-0 left-0 w-full bg-background p-6">
+    <footer className="hidden sm:block fixed bottom-0 left-0 w-full bg-background p-6">
       <div className="flex justify-end items-center gap-6">
         <a
           href="https://github.com/JoanneBazin"

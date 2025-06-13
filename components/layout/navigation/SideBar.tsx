@@ -17,7 +17,7 @@ export const SideBar = () => {
         {topLinks.map((link, index) => (
           <li
             key={index}
-            className={`text-center text-montserrat ${
+            className={`text-center font-montserrat ${
               activeLink === link.id
                 ? "text-2xl text-accent font-bold"
                 : "text-xl border-b border-gold-light py-4 hover:text-accent transition-colors duration-300"
@@ -32,7 +32,7 @@ export const SideBar = () => {
         {bottomLinks.map((link, index) => (
           <li
             key={index}
-            className="text-center text-montserrat text-xl border-t border-gold-light py-4 hover:text-accent transition-colors duration-300"
+            className="text-center font-montserrat text-xl border-t border-gold-light py-4 hover:text-accent transition-colors duration-300"
           >
             <a href={`#${link.id}`}>{link.label}</a>
           </li>

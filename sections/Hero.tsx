@@ -8,11 +8,11 @@ export const Hero = () => {
 
       <div className="absolute bottom-40 right-0 w-96 h-96 bg-gold-dark rounded-full opacity-30 blur-3xl"></div>
 
-      <h1 className="xl:text-6xl text-accent">
+      <h1 className="xl:text-6xl text-accent font-playfair">
         <span className="block mb-10">Joanne</span>
         <span className="block">Bazin</span>
       </h1>
-      <h2 className="xl:text-8xl">
+      <h2 className="xl:text-8xl font-playfair">
         <span className="block uppercase mb-14">Développeuse</span>
         <span className="block uppercase">Web</span>
       </h2>
