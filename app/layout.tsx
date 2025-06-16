@@ -4,6 +4,7 @@ import "./globals.css";
 import Script from "next/script";
 import { Footer } from "@/components/layout/Footer";
 import { NavigationWrapper } from "@/components/layout/navigation/NavigationWrapper";
+import { AuthProvider } from "@/components/providers/auth-provider";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -39,9 +40,11 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${montserrat.variable} ${openSans.variable} antialiased`}
       >
-        <NavigationWrapper />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <NavigationWrapper />
+          {children}
+          <Footer />
+        </AuthProvider>
         <Script
           src="https://kit.fontawesome.com/704403949e.js"
           crossOrigin="anonymous"
