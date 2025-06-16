@@ -36,8 +36,27 @@
     ],
     "githubUrl": "https://github.com",
     "liveUrl": "https://example.com",
-    "size": "medium",
+    "size": "small",
     "order": 3
+  },
+  {
+    "id": 4,
+    "title": "Création d'une application web avec React",
+    "description": "Refonte d'un site de location immobilière avec React et React Router.",
+    "images": [
+      "/projects/images/kasa_home.png",
+      "/projects/images/kasa_lodging.png"
+    ],
+    "tech": ["React", "Sass", "Vite"],
+    "objectives": [
+      "Intégration de maquettes",
+      "Implémentation de la navigation avec React Router",
+      "Design responsive avec Sass"
+    ],
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com",
+    "size": "medium",
+    "order": 2
   },
   {
     "id": 3,
@@ -59,25 +78,7 @@
     "size": "small",
     "order": 4
   },
-  {
-    "id": 4,
-    "title": "Création d'une application web avec React",
-    "description": "Refonte d'un site de location immobilière avec React et React Router.",
-    "images": [
-      "/projects/images/kasa_home.png",
-      "/projects/images/kasa_lodging.png"
-    ],
-    "tech": ["React", "Sass", "Vite"],
-    "objectives": [
-      "Intégration de maquettes",
-      "Implémentation de la navigation avec React Router",
-      "Design responsive avec Sass"
-    ],
-    "githubUrl": "https://github.com",
-    "liveUrl": "https://example.com",
-    "size": "large",
-    "order": 2
-  },
+
   {
     "id": 5,
     "title": "Création d'une API REST avec Node.js",
@@ -96,7 +97,7 @@
     ],
     "githubUrl": "https://github.com",
     "liveUrl": "https://example.com",
-    "size": "large",
+    "size": "small",
     "order": 5
   }
 ]

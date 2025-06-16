@@ -18,6 +18,7 @@ module.exports = {
         accent: "var(--accent)",
         "gold-light": "var(--gold-light)",
         "gold-dark": "var(--gold-dark)",
+        "dark-gray": "var(--dark-gray)",
       },
     },
   },
