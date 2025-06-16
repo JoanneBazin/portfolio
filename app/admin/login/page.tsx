@@ -26,11 +26,12 @@ const AdminLogin = () => {
       if (result?.error) {
         setError("Email ou mot de passe incorrect");
       } else {
-        router.push("/admin");
+        router.push("/admin/dashboard");
         router.refresh();
       }
     } catch (error) {
       setError("Une erreur est survenue");
+      console.log(error);
     } finally {
       setLoading(false);
     }

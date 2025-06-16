@@ -3,8 +3,9 @@ import { Playfair_Display, Montserrat, Open_Sans } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { Footer } from "@/components/layout/Footer";
-import { NavigationWrapper } from "@/components/layout/navigation/NavigationWrapper";
 import { AuthProvider } from "@/components/providers/auth-provider";
+import { auth } from "@/lib/auth";
+import { AdminHeader } from "@/components/layout/AdminHeader";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -30,20 +31,22 @@ export const metadata: Metadata = {
     "Portfolio de Joanne Bazin, développeuse web spécialisée dans la création de sites et d'applications web modernes.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+
   return (
     <html lang="fr">
       <body
         className={`${playfair.variable} ${montserrat.variable} ${openSans.variable} antialiased`}
       >
         <AuthProvider>
-          <NavigationWrapper />
+          {session && <AdminHeader />}
           {children}
-          <Footer />
+          <Footer isAdmin={!!session} />
         </AuthProvider>
         <Script
           src="https://kit.fontawesome.com/704403949e.js"
