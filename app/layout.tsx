@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { AuthProvider } from "@/components/providers/auth-provider";
 import { auth } from "@/lib/auth";
 import { AdminHeader } from "@/components/layout/AdminHeader";
+import QueryProvider from "@/components/providers/QueryProvider";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -44,9 +45,11 @@ export default async function RootLayout({
         className={`${playfair.variable} ${montserrat.variable} ${openSans.variable} antialiased`}
       >
         <AuthProvider>
-          {session && <AdminHeader />}
-          {children}
-          <Footer isAdmin={!!session} />
+          <QueryProvider>
+            {session && <AdminHeader />}
+            {children}
+            <Footer isAdmin={!!session} />
+          </QueryProvider>
         </AuthProvider>
         <Script
           src="https://kit.fontawesome.com/704403949e.js"
