@@ -68,11 +68,6 @@ export interface SkillFormData {
   category: string;
 }
 
-export interface LinkItem {
-  id: string;
-  label: string;
-}
-
 export interface CreateProjectResponse {
   project: Project;
   message?: string;
@@ -92,5 +87,10 @@ export interface ProjectFormProps {
 
 export interface SelectOptions {
   value: string;
+  label: string;
+}
+
+export interface LinkItem {
+  id: string;
   label: string;
 }

@@ -1,5 +1,5 @@
+import { AdminTabs } from "@/components/layout/AdminTabs";
 import { auth } from "@/lib/auth";
-import { EditProjects } from "@/sections/EditProjects";
 import { redirect } from "next/navigation";
 
 const DashboardPage = async () => {
@@ -11,9 +11,9 @@ const DashboardPage = async () => {
     console.log(session);
   }
   return (
-    <div>
+    <div className="pb-20">
       <h2 className="text-5xl text-accent font-montserrat m-20">Dashboard</h2>
-      <EditProjects />
+      <AdminTabs />
     </div>
   );
 };
