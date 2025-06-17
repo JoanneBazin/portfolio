@@ -78,8 +78,13 @@ export interface CreateProjectResponse {
   message?: string;
 }
 
+export interface SubmitProps {
+  formData: FormData;
+  onReset: () => void;
+}
+
 export interface ProjectFormProps {
-  onSubmit: (formData: FormData) => void;
+  onSubmit: (arg: SubmitProps) => void;
   isLoading?: boolean;
   initialData?: Partial<ProjectFormData>;
   mode?: "create" | "edit";

@@ -15,6 +15,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
     register,
     control,
     handleSubmit,
+    reset,
     formState: { errors },
     setValue,
     getValues,
@@ -72,6 +73,11 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
     setImagesPreview((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const onReset = () => {
+    reset();
+    setImagesPreview([]);
+  };
+
   // Form submit
   const onFormSubmit = (data: ProjectFormData): void => {
     const formData = new FormData();
@@ -97,7 +103,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       .filter((val) => val !== "");
     formData.append("objectives", JSON.stringify(validObjectives));
 
-    onSubmit(formData);
+    onSubmit({ formData, onReset });
   };
 
   return (

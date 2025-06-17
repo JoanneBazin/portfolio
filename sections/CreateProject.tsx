@@ -2,14 +2,16 @@
 
 import { ProjectForm } from "@/components/forms/ProjectForm";
 import { useCreateProject } from "@/hooks/api/mutations/useCreateProject";
+import { SubmitProps } from "@/lib/types";
 
-export const EditProjects = () => {
+export const CreateProjects = () => {
   const createProject = useCreateProject();
 
-  const handleSubmit = (formData: FormData): void => {
+  const handleSubmit = ({ formData, onReset }: SubmitProps): void => {
     createProject.mutate(formData, {
       onSuccess: (data) => {
         console.log("Projet créé ! : ", data);
+        onReset();
       },
       onError: (error) => {
         console.log("Erreur lors de la création : ", error);
@@ -22,7 +24,10 @@ export const EditProjects = () => {
       <h3 className="font-montserrat text-3xl font-bold mb-10 text-center">
         Créer un projet
       </h3>
-      <ProjectForm onSubmit={handleSubmit} />
+      <ProjectForm
+        onSubmit={handleSubmit}
+        isLoading={createProject.isPending}
+      />
     </div>
   );
 };
