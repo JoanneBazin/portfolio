@@ -20,6 +20,11 @@ export interface ProjectImage {
   projectId: string;
 }
 
+export interface UploadImageProps {
+  url: string;
+  alt: string;
+}
+
 export interface Skill {
   id: string;
   name: string;
@@ -36,6 +41,18 @@ export interface ProjectFormData {
   githubUrl?: string;
   liveUrl?: string;
   size: "small" | "medium" | "large";
+  order: number;
+}
+
+export interface ParsedProjectFormData {
+  title: string;
+  description: string;
+  images: UploadImageProps[];
+  skills: string[];
+  objectives: string[];
+  githubUrl?: string;
+  liveUrl?: string;
+  size: string;
   order: number;
 }
 
