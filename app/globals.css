@@ -28,3 +28,9 @@ body {
   font-family: var(--font-opensans), sans-serif;
   box-sizing: border-box;
 }
+
+input,
+select,
+textarea {
+  color: var(--background);
+}

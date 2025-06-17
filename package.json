@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "db:migrate": "dotenv -e .env.local -- prisma migrate dev",
+    "db:migratereset": "dotenv -e .env.local -- prisma migrate reset",
     "db:generate": "dotenv -e .env.local -- prisma generate",
     "db:studio": "dotenv -e .env.local -- prisma studio",
     "db:push": "dotenv -e .env.local -- prisma db push"
@@ -19,7 +20,8 @@
     "next": "15.3.3",
     "next-auth": "^5.0.0-beta.28",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.58.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

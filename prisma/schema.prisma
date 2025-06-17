@@ -35,11 +35,10 @@ model Skill {
   id  String  @id @default(cuid())
   name  String
   logo  String
-  category  String?
-  order Int
+  category  String
   userId  String
   user  User  @relation(fields: [userId], references: [id])
-  projects  Project[]
+
 
   @@map("skills")
 }
@@ -49,7 +48,7 @@ model Project {
   title String
   description String
   images ProjectImage[]
-  skills  Skill[]
+  skills  String[]
   objectives  String[]
   githubUrl String?
   liveUrl String?
@@ -66,7 +65,7 @@ model ProjectImage {
   id  String  @id @default(cuid())
   url String
   alt String
-  order Int
+  cover Boolean @default(false)
   projectId  String
   project  Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
