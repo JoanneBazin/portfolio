@@ -7,7 +7,11 @@ export async function GET() {
       select: {
         about: true,
         skills: true,
-        projects: true,
+        projects: {
+          include: {
+            images: true,
+          },
+        },
       },
     });
 
