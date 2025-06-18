@@ -4,7 +4,9 @@ import { Tag } from "./Tag";
 import { Button } from "./Button";
 
 export const ProjectCard = ({ project }: { project: Project }) => {
-  const { title, images, tech, githubUrl, size, order } = project;
+  console.log(project);
+
+  const { title, images, skills, githubUrl, size, order } = project;
 
   const getSizeClass = (size: "small" | "medium" | "large") => {
     const classes = {
@@ -24,13 +26,18 @@ export const ProjectCard = ({ project }: { project: Project }) => {
     >
       <div className="absolute w-full h-full bg-background opacity-40 z-60"></div>
       <div className="w-full h-full relative">
-        <Image src={images[0]} alt={title} fill className="object-cover" />
+        <Image
+          src={images[0].url}
+          alt={images[0].alt}
+          fill
+          className="object-cover"
+        />
       </div>
 
       <div className="p-4 absolute bottom-0 left-0 bg-background opacity-90 w-full flex flex-col gap-3">
         <h3 className="font-montserrat font-semibold mb-2 text-lg">{title}</h3>
         <div>
-          {tech?.map((item, index) => (
+          {skills?.map((item, index) => (
             <Tag key={index} item={item} />
           ))}
         </div>

@@ -1,9 +1,10 @@
 "use client";
 
+import { FetchDataResponse } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
 
 const useFetchData = () => {
-  return useQuery({
+  return useQuery<FetchDataResponse>({
     queryKey: ["user"],
     queryFn: async () => {
       const response = await fetch("/api/user");

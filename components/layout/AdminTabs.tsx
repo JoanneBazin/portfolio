@@ -2,6 +2,7 @@
 
 import { LinkItem } from "@/lib/types";
 import { CreateProjects } from "@/sections/Admin/CreateProject";
+import { EditProject } from "@/sections/Admin/EditProject";
 import { useState } from "react";
 
 const TABS: LinkItem[] = [
@@ -32,7 +33,10 @@ export const AdminTabs = () => {
         ))}
       </div>
 
-      <div className="m-6">{activeTab === "add" && <CreateProjects />}</div>
+      <div className="m-6">
+        {activeTab === "view" && <EditProject />}
+        {activeTab === "add" && <CreateProjects />}
+      </div>
     </>
   );
 };
