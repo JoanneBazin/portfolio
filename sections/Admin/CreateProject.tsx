@@ -1,7 +1,8 @@
 "use client";
 
 import { ProjectForm } from "@/components/forms/ProjectForm";
-import { useCreateProject } from "@/hooks/api/mutations/useCreateProject";
+import { useCreateProject } from "@/hooks/api/mutations/useProjectMutations";
+
 import { SubmitProps } from "@/lib/types";
 
 export const CreateProjects = () => {

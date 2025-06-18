@@ -1,6 +1,7 @@
 import { ProjectForm } from "@/components/forms/ProjectForm";
 import { ProjectCard } from "@/components/ui/ProjectCard";
-import { useUpdateProject } from "@/hooks/api/mutations/useUpdateProject";
+import { useUpdateProject } from "@/hooks/api/mutations/useProjectMutations";
+
 import { useProjects } from "@/hooks/api/useProjects";
 import { Project, SubmitProps } from "@/lib/types";
 import * as Dialog from "@radix-ui/react-dialog";
