@@ -1,8 +1,12 @@
 import { ProjectForm } from "@/components/forms/ProjectForm";
 import { ProjectCard } from "@/components/ui/ProjectCard";
-import { useUpdateProject } from "@/hooks/api/mutations/useProjectMutations";
+import {
+  useDeleteProject,
+  useUpdateProject,
+} from "@/hooks/api/mutations/useProjectMutations";
 
 import { useProjects } from "@/hooks/api/useProjects";
+import { useConfirmModal } from "@/hooks/useConfirmModal";
 import { Project, SubmitProps } from "@/lib/types";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useState } from "react";
@@ -10,8 +14,9 @@ import { useState } from "react";
 export const EditProject = () => {
   const { projects } = useProjects();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
   const updateProject = useUpdateProject();
+  const { openModal, ConfirmModalComponent } = useConfirmModal();
+  const deleteProject = useDeleteProject();
 
   const handleSubmit = ({ formData, onReset }: SubmitProps): void => {
     const id = selectedProject?.id;
@@ -30,6 +35,28 @@ export const EditProject = () => {
         },
       }
     );
+  };
+
+  const handleDeleteProject = (): void => {
+    if (!selectedProject) return;
+    deleteProject.mutate(selectedProject?.id, {
+      onSuccess: () => {
+        console.log("Projet supprimé !");
+        setSelectedProject(null);
+      },
+      onError: (error) => {
+        console.log("Erreur lors de la suppression : ", error);
+      },
+    });
+  };
+
+  const confirmDeleteProject = () => {
+    if (!selectedProject) return;
+    openModal({
+      title: "Supprimer un projet",
+      description: `Etes-vous sûre de vouloir supprimer ${selectedProject.title} ?`,
+      onConfirm: handleDeleteProject,
+    });
   };
 
   return (
@@ -53,8 +80,19 @@ export const EditProject = () => {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50" />
           <Dialog.Content className="fixed top-1/2 left-1/2 w-[90vw] max-h-[80vh] overflow-y-auto bg-background rounded-lg p-6 transform -translate-x-1/2 -translate-y-1/2">
-            <Dialog.Title className="text-2xl text-center font-bold font-montserrat mb-4">
-              Modifier le projet
+            <Dialog.Title>
+              <div className="mb-4 px-6 flex justify-between">
+                <p className="text-2xl font-bold font-montserrat ">
+                  Modifier le projet
+                </p>
+                <button
+                  onClick={confirmDeleteProject}
+                  className="bg-red-950 rounded-lg p-y-2 px-4 hover:bg-red-900"
+                >
+                  Supprimer le projet
+                </button>
+                {ConfirmModalComponent}
+              </div>
             </Dialog.Title>
 
             {selectedProject && (

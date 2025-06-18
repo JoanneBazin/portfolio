@@ -77,7 +77,10 @@ export async function PUT(
   }
 }
 
-export async function DELETE({ params }: { params: { id: string } }) {
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {
@@ -87,19 +90,32 @@ export async function DELETE({ params }: { params: { id: string } }) {
     );
   }
 
-  const projectId = params.id;
+  const { id: projectId } = await params;
 
   try {
+    const projectToDeleteFromDB = await prisma.project.findUnique({
+      where: {
+        id: projectId,
+      },
+      include: {
+        images: {
+          select: { url: true },
+        },
+      },
+    });
+
+    const urlToDelete = projectToDeleteFromDB?.images.map((img) => img.url);
+    if (urlToDelete && urlToDelete?.length > 0) {
+      await Promise.all(urlToDelete?.map(async (url) => deleteImage(url)));
+    }
+
     const deletedProject = await prisma.project.delete({
       where: {
         id: projectId,
       },
     });
 
-    return NextResponse.json(
-      { message: `${deletedProject.title} supprimé !` },
-      { status: 204 }
-    );
+    return NextResponse.json({ message: `Projet supprimé !` }, { status: 200 });
   } catch (error) {
     console.log(error);
 

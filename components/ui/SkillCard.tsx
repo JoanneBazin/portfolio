@@ -33,7 +33,7 @@ export const SkillCard = ({ skill }: { skill: Skill }) => {
       <button
         type="button"
         onClick={() => confirmDeleteSkill(skill)}
-        className="absolute top-0 right-1 bg-red-900 rounded-full w-4 h-4 flex items-center justify-center text-sm hover:bg-red-800"
+        className="absolute top-0 right-1 bg-red-950 rounded-full w-4 h-4 flex items-center justify-center text-sm hover:bg-red-900"
       >
         X
       </button>
