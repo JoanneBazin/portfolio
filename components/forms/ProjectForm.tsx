@@ -1,8 +1,13 @@
 "use client";
 
-import { ImagePreview, ProjectFormData, ProjectFormProps } from "@/lib/types";
+import {
+  ImagePreview,
+  ProjectFormData,
+  ProjectFormProps,
+  ProjectImage,
+} from "@/lib/types";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 
 export const ProjectForm: React.FC<ProjectFormProps> = ({
@@ -24,12 +29,17 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       title: initialData?.title || "",
       description: initialData?.description || "",
       images: initialData?.images || [],
-      skills: initialData?.skills || [{ value: "" }],
-      objectives: initialData?.objectives || [{ value: "" }],
+      skills: initialData?.skills?.length
+        ? initialData.skills.map((skill) => ({ value: skill }))
+        : [{ value: "" }],
+      objectives: initialData?.objectives?.length
+        ? initialData.objectives.map((objective) => ({ value: objective }))
+        : [{ value: "" }],
       githubUrl: initialData?.githubUrl || "",
       liveUrl: initialData?.liveUrl || "",
       size: initialData?.size || "small",
       order: initialData?.order || 1,
+      imagesToDelete: [],
     },
   });
 
@@ -48,6 +58,23 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
   // Images updates
   const [imagesPreview, setImagesPreview] = useState<ImagePreview[]>([]);
 
+  useEffect(() => {
+    if (mode === "edit" && initialData?.images) {
+      const existingPreviews: ImagePreview[] = initialData.images.map(
+        (image: ProjectImage) => ({
+          id: image.id,
+          url: image.url,
+          name: image.alt,
+          isExisting: true,
+          alt: image.alt,
+          cover: image.cover,
+        })
+      );
+      setImagesPreview(existingPreviews);
+      setValue("images", initialData.images);
+    }
+  }, [initialData, mode, setValue]);
+
   const handleImagesChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (!e.target.files) return;
     const files = Array.from(e.target.files);
@@ -56,6 +83,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       file,
       url: URL.createObjectURL(file),
       name: file.name,
+      isExisting: false,
     }));
 
     setImagesPreview((prev) => [...prev, ...previews]);
@@ -65,16 +93,34 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
   };
 
   const removeImage = (index: number): void => {
+    const preview = imagesPreview[index];
     const currentImages = getValues("images");
-    const newImages = currentImages.filter((_, i) => i !== index);
-    setValue("images", newImages);
 
-    URL.revokeObjectURL(imagesPreview[index].url);
+    if (preview.isExisting && preview.id) {
+      const newImages = currentImages.filter((_, i) => i !== index);
+      setValue("images", newImages);
+
+      const imagesToDelete = getValues("imagesToDelete") || [];
+      setValue("imagesToDelete", [...imagesToDelete, preview.id]);
+    } else {
+      const newImages = currentImages.filter((_, i) => i !== index);
+      setValue("images", newImages);
+
+      if (preview.file) {
+        URL.revokeObjectURL(preview.url);
+      }
+    }
+
     setImagesPreview((prev) => prev.filter((_, i) => i !== index));
   };
 
   const onReset = () => {
     reset();
+    imagesPreview.forEach((preview) => {
+      if (!preview.isExisting) {
+        URL.revokeObjectURL(preview.url);
+      }
+    });
     setImagesPreview([]);
   };
 
@@ -89,9 +135,32 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
     formData.append("size", data.size);
     formData.append("order", String(data.order));
 
+    const newImages: File[] = [];
+    const existingImages: ProjectImage[] = [];
+
     data.images.forEach((image) => {
-      formData.append("images", image);
+      if (image instanceof File) {
+        newImages.push(image);
+      } else if (typeof image === "object" && "id" in image) {
+        existingImages.push(image as ProjectImage);
+      }
     });
+
+    newImages.forEach((image) => {
+      formData.append("newImages", image);
+    });
+
+    if (existingImages.length > 0) {
+      formData.append(
+        "existingImages",
+        JSON.stringify(existingImages.map((img) => img.id))
+      );
+    }
+
+    const imagesToDelete = getValues("imagesToDelete");
+    if (imagesToDelete && imagesToDelete.length > 0) {
+      formData.append("imagesToDelete", JSON.stringify(imagesToDelete));
+    }
 
     const validSkills = data.skills
       .map((obj) => obj.value.trim())
@@ -102,6 +171,10 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       .map((obj) => obj.value.trim())
       .filter((val) => val !== "");
     formData.append("objectives", JSON.stringify(validObjectives));
+
+    if (mode === "edit" && initialData?.id) {
+      formData.append("id", initialData.id);
+    }
 
     onSubmit({ formData, onReset });
   };
@@ -180,7 +253,6 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
                 >
                   X
                 </button>
-                <p className="text-xs mt-1 truncate">{preview.name}</p>
               </div>
             ))}
           </div>
@@ -322,7 +394,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
           className="w-full bg-gold-light py-3 px-6 rounded-lg font-medium hover:bg-gold-dark disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isLoading
-            ? "Création en cours..."
+            ? "Chargement..."
             : mode === "edit"
             ? "Mettre à jour le projet"
             : "Créer le projet"}

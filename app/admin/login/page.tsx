@@ -55,7 +55,6 @@ const AdminLogin = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="text-background"
           />
         </div>
         <div>
@@ -70,7 +69,6 @@ const AdminLogin = () => {
             placeholder="Mot de passe"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="text-background"
           />
         </div>
 

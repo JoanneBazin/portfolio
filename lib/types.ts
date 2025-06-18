@@ -16,13 +16,8 @@ export interface ProjectImage {
   id: string;
   url: string;
   alt: string;
-  cover: boolean;
+  cover?: boolean;
   projectId: string;
-}
-
-export interface UploadImageProps {
-  url: string;
-  alt: string;
 }
 
 export interface Skill {
@@ -35,42 +30,44 @@ export interface Skill {
 export interface ProjectFormData {
   title: string;
   description: string;
-  images: File[];
+  images: (File | ProjectImage)[];
   skills: { value: string }[];
   objectives: { value: string }[];
   githubUrl?: string;
   liveUrl?: string;
   size: "small" | "medium" | "large";
   order: number;
+  imagesToDelete?: string[];
 }
 
-export interface ParsedProjectFormData {
-  title: string;
-  description: string;
-  images: UploadImageProps[];
-  skills: string[];
-  objectives: string[];
+export interface ProjectInitialData {
+  id?: string;
+  title?: string;
+  description?: string;
+  images?: ProjectImage[];
+  skills?: string[];
+  objectives?: string[];
   githubUrl?: string;
   liveUrl?: string;
-  size: string;
-  order: number;
-}
-export interface ParsedSkillFormData {
-  name: string;
-  category: string;
-  logo: string;
+  size?: "small" | "medium" | "large";
+  order?: number;
 }
 
 export interface ImagePreview {
-  file: File;
+  file?: File;
   url: string;
   name: string;
+  isExisting?: boolean;
+  id?: string;
+  alt?: string;
+  cover?: boolean;
 }
 
-export interface SkillFormData {
-  name: string;
-  logo: File | string;
-  category?: string;
+export interface ProjectFormProps {
+  onSubmit: (arg: SubmitProps) => void;
+  isLoading?: boolean;
+  initialData?: ProjectInitialData;
+  mode?: "create" | "edit";
 }
 
 export interface SubmitProps {
@@ -78,11 +75,40 @@ export interface SubmitProps {
   onReset: () => void;
 }
 
-export interface ProjectFormProps {
-  onSubmit: (arg: SubmitProps) => void;
-  isLoading?: boolean;
-  initialData?: Partial<ProjectFormData>;
-  mode?: "create" | "edit";
+export interface ParsedProjectFormData {
+  id?: string;
+  title: string;
+  description: string;
+  images: UploadImageProps[];
+  imagesToDelete?: string[];
+  skills: string[];
+  objectives: string[];
+  githubUrl?: string;
+  liveUrl?: string;
+  size: string;
+  order: number;
+}
+
+export interface ParseProjectProps {
+  formData: FormData;
+  mode: "create" | "edit";
+}
+
+export interface UploadImageProps {
+  url: string;
+  alt: string;
+}
+
+export interface ParsedSkillFormData {
+  name: string;
+  category: string;
+  logo: string;
+}
+
+export interface SkillFormData {
+  name: string;
+  logo: File | string;
+  category?: string;
 }
 
 export interface AboutFormProps {

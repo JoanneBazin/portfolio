@@ -1,28 +1,10 @@
 "use client";
 
 import { ProjectCard } from "@/components/ui/ProjectCard";
-import { Project } from "@/lib/types";
-import { useEffect, useState } from "react";
+import { useProjects } from "@/hooks/api/useProjects";
 
 export const Projects = () => {
-  const [projects, setProjects] = useState<Project[]>();
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch("/projects/projects.json");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setProjects(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchProjects();
-  }, []);
+  const { projects } = useProjects();
 
   return (
     <section

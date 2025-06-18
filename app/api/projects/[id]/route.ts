@@ -1,4 +1,5 @@
 import { auth } from "@/lib/auth";
+import { deleteImage } from "@/lib/deleteImage";
 import { parseProjectFormData } from "@/lib/parseProjectFormData";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
@@ -16,21 +17,51 @@ export async function PUT(
     );
   }
 
-  const projectId = params.id;
+  const { id: projectId } = await params;
 
   try {
     const formData = await request.formData();
-    const parsedData = await parseProjectFormData(formData);
+    const parsedData = await parseProjectFormData({ formData, mode: "edit" });
+
+    const { images, imagesToDelete, ...projectData } = parsedData;
+
+    if (imagesToDelete && imagesToDelete.length > 0) {
+      try {
+        const imagesToDeleteFromDB = await prisma.projectImage.findMany({
+          where: {
+            id: { in: imagesToDelete },
+          },
+          select: { url: true },
+        });
+
+        if (imagesToDeleteFromDB.length > 0) {
+          const deletedCount = await prisma.projectImage.deleteMany({
+            where: {
+              id: {
+                in: imagesToDelete,
+              },
+            },
+          });
+
+          console.log(`${deletedCount} images supprimées de la DB`);
+
+          const urlToDelete = imagesToDeleteFromDB.map((img) => img.url);
+          await Promise.all(urlToDelete.map(async (url) => deleteImage(url)));
+        }
+      } catch (error) {
+        console.log("Erreur lors de la suppression des images: ", error);
+      }
+    }
 
     const updatedProject = await prisma.project.update({
       where: {
         id: projectId,
       },
       data: {
-        ...parsedData,
+        ...projectData,
         userId,
         images: {
-          create: parsedData.images,
+          create: images,
         },
       },
       include: {

@@ -4,8 +4,6 @@ import { Tag } from "./Tag";
 import { Button } from "./Button";
 
 export const ProjectCard = ({ project }: { project: Project }) => {
-  console.log(project);
-
   const { title, images, skills, githubUrl, size, order } = project;
 
   const getSizeClass = (size: "small" | "medium" | "large") => {

@@ -23,6 +23,7 @@ export const EditProject = () => {
         onSuccess: (data) => {
           console.log("Projet mis à jour ! : ", data);
           onReset();
+          setSelectedProject(null);
         },
         onError: (error) => {
           console.log("Erreur lors de la mise à jour : ", error);
@@ -60,8 +61,8 @@ export const EditProject = () => {
               <ProjectForm
                 onSubmit={handleSubmit}
                 isLoading={updateProject.isPending}
-                // initialData={selectedProject}
-                // mode="edit"
+                initialData={selectedProject}
+                mode="edit"
               />
             )}
             <Dialog.Close className="absolute top-2 right-2">x</Dialog.Close>

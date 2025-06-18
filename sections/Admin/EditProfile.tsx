@@ -5,10 +5,9 @@ import { useUpdateAbout } from "@/hooks/api/mutations/useAboutMutation";
 import { useAbout } from "@/hooks/api/useAbout";
 import { useSkills } from "@/hooks/api/useSkills";
 import * as Dialog from "@radix-ui/react-dialog";
-import Image from "next/image";
-
 import { useState } from "react";
 import { CreateSkill } from "./CreateSkill";
+import { SkillCard } from "@/components/ui/SkillCard";
 
 export const EditProfile = () => {
   const { about } = useAbout();
@@ -63,21 +62,15 @@ export const EditProfile = () => {
                   Ajouter une compétence
                 </Dialog.Title>
                 <CreateSkill />
-                <Dialog.Close className="absolute top-2 right-2">
+                <Dialog.Close className="absolute top-4 right-6">
                   x
                 </Dialog.Close>
               </Dialog.Content>
             </Dialog.Portal>
           </Dialog.Root>
-          <div>
+          <div className="flex flex-wrap gap-4">
             {skills.map((skill) => (
-              <Image
-                key={skill.id}
-                src={skill.logo}
-                width={40}
-                height={40}
-                alt={skill.name}
-              />
+              <SkillCard key={skill.id} skill={skill} />
             ))}
           </div>
         </div>

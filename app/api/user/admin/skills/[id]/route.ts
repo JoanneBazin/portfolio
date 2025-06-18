@@ -2,7 +2,10 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function DELETE({ params }: { params: { id: string } }) {
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {
@@ -12,7 +15,7 @@ export async function DELETE({ params }: { params: { id: string } }) {
     );
   }
 
-  const skillId = params.id;
+  const { id: skillId } = await params;
 
   try {
     const deletedSkill = await prisma.skill.delete({
@@ -22,8 +25,8 @@ export async function DELETE({ params }: { params: { id: string } }) {
     });
 
     return NextResponse.json(
-      { message: `${deletedSkill.name} supprimé !` },
-      { status: 204 }
+      { message: "Compétence supprimé !" },
+      { status: 200 }
     );
   } catch (error) {
     console.log(error);

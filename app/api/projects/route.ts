@@ -15,14 +15,16 @@ export async function POST(request: Request) {
 
   try {
     const formData = await request.formData();
-    const parsedData = await parseProjectFormData(formData);
+    const parsedData = await parseProjectFormData({ formData, mode: "create" });
+
+    const { images, imagesToDelete, ...projectData } = parsedData;
 
     const newProject = await prisma.project.create({
       data: {
-        ...parsedData,
+        ...projectData,
         userId,
         images: {
-          create: parsedData.images,
+          create: images,
         },
       },
       include: {
