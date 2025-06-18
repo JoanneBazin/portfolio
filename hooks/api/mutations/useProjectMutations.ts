@@ -1,6 +1,5 @@
 "use client";
 
-import { CreateProjectResponse } from "@/lib/types";
 import {
   useMutation,
   UseMutationResult,
@@ -8,17 +7,23 @@ import {
 } from "@tanstack/react-query";
 import { Project } from "@/lib/types";
 
-type UseCreateProjectReturn = UseMutationResult<
-  CreateProjectResponse,
+type UseCreateProjectReturn = UseMutationResult<Project, Error, FormData>;
+type UseUpdateProjectReturn = UseMutationResult<
+  Project,
   Error,
-  FormData
+  { id: string; formData: FormData }
+>;
+type UseDeleteProjectReturn = UseMutationResult<
+  { message: string },
+  Error,
+  string
 >;
 
 export const useCreateProject = (): UseCreateProjectReturn => {
   const queryClient = useQueryClient();
 
-  return useMutation<CreateProjectResponse, Error, FormData>({
-    mutationFn: async (formData: FormData): Promise<CreateProjectResponse> => {
+  return useMutation<Project, Error, FormData>({
+    mutationFn: async (formData: FormData): Promise<Project> => {
       const response = await fetch("/api/projects", {
         method: "POST",
         body: formData,
@@ -34,11 +39,7 @@ export const useCreateProject = (): UseCreateProjectReturn => {
   });
 };
 
-export const useUpdateProject = (): UseMutationResult<
-  Project,
-  Error,
-  { id: string; formData: FormData }
-> => {
+export const useUpdateProject = (): UseUpdateProjectReturn => {
   const queryClient = useQueryClient();
 
   return useMutation<Project, Error, { id: string; formData: FormData }>({
@@ -58,11 +59,11 @@ export const useUpdateProject = (): UseMutationResult<
   });
 };
 
-export const useDeleteProject = (): UseMutationResult<void, Error, string> => {
+export const useDeleteProject = (): UseDeleteProjectReturn => {
   const queryClient = useQueryClient();
 
-  return useMutation<void, Error, string>({
-    mutationFn: async (id: string): Promise<void> => {
+  return useMutation<{ message: string }, Error, string>({
+    mutationFn: async (id: string): Promise<{ message: string }> => {
       const response = await fetch(`/api/projects/${id}`, {
         method: "DELETE",
       });

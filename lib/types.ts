@@ -68,11 +68,6 @@ export interface SkillFormData {
   category: string;
 }
 
-export interface CreateProjectResponse {
-  project: Project;
-  message?: string;
-}
-
 export interface SubmitProps {
   formData: FormData;
   onReset: () => void;
