@@ -59,14 +59,14 @@ export async function DELETE({ params }: { params: { id: string } }) {
   const projectId = params.id;
 
   try {
-    const updatedProject = await prisma.project.delete({
+    const deletedProject = await prisma.project.delete({
       where: {
         id: projectId,
       },
     });
 
     return NextResponse.json(
-      { message: `${updatedProject.title} supprimé !` },
+      { message: `${deletedProject.title} supprimé !` },
       { status: 204 }
     );
   } catch (error) {

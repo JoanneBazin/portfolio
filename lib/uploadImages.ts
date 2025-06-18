@@ -11,7 +11,7 @@ export const uploadImages = async (
   await promises.mkdir(uploadDir, { recursive: true });
 
   const images = await Promise.all(
-    files.map(async (file, index) => {
+    files.map(async (file) => {
       const buffer = Buffer.from(await file.arrayBuffer());
       const filename =
         file.name.split(" ").join("_").split(".")[0] + Date.now() + ".webp";
@@ -24,7 +24,7 @@ export const uploadImages = async (
 
       return {
         url: `/uploads/${filename}`,
-        alt: `Image du site du projet ${alt} ${index + 1}`,
+        alt: `${alt}`,
       };
     })
   );

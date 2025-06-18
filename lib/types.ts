@@ -55,6 +55,11 @@ export interface ParsedProjectFormData {
   size: string;
   order: number;
 }
+export interface ParsedSkillFormData {
+  name: string;
+  category: string;
+  logo: string;
+}
 
 export interface ImagePreview {
   file: File;
@@ -64,8 +69,8 @@ export interface ImagePreview {
 
 export interface SkillFormData {
   name: string;
-  logo: string;
-  category: string;
+  logo: File | string;
+  category?: string;
 }
 
 export interface SubmitProps {
@@ -90,4 +95,10 @@ export interface AboutFormProps {
 export interface LinkItem {
   id: string;
   label: string;
+}
+
+export interface FetchDataResponse {
+  skills: Skill[];
+  projects: Project[];
+  about: string;
 }

@@ -3,14 +3,20 @@
 import { AboutForm } from "@/components/forms/AboutForm";
 import { useUpdateAbout } from "@/hooks/api/mutations/useAboutMutation";
 import { useAbout } from "@/hooks/api/useAbout";
+import { useSkills } from "@/hooks/api/useSkills";
+import * as Dialog from "@radix-ui/react-dialog";
+import Image from "next/image";
+
 import { useState } from "react";
+import { CreateSkill } from "./CreateSkill";
 
 export const EditProfile = () => {
   const { about } = useAbout();
+  const { skills } = useSkills();
   const updateAbout = useUpdateAbout();
   const [aboutMessage, setaboutMessage] = useState<string | null>(null);
 
-  const handleSubmit = (about: string): void => {
+  const handleAboutSubmit = (about: string): void => {
     updateAbout.mutate(about, {
       onSuccess: () => {
         setaboutMessage("Mise à jour réussie");
@@ -21,16 +27,18 @@ export const EditProfile = () => {
       },
     });
   };
+
   return (
     <section>
       <h3 className="font-montserrat text-3xl font-bold mb-10 text-center">
         Profil
       </h3>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
         <div>
           <h4 className="font-montserrat text-xl font-medium">A propos</h4>
           <AboutForm
-            onSubmit={handleSubmit}
+            onSubmit={handleAboutSubmit}
             isLoading={updateAbout.isPending}
             initialData={about}
           />
@@ -39,6 +47,39 @@ export const EditProfile = () => {
 
         <div>
           <h4 className="font-montserrat text-xl font-medium">Compétences</h4>
+          <Dialog.Root>
+            <Dialog.Trigger asChild>
+              <button
+                aria-label="Ajouter une compétence"
+                className="py-2 px-5 rounded-full bg-gold-light text-background hover:bg-gold-dark font-bold text-2xl my-6"
+              >
+                +
+              </button>
+            </Dialog.Trigger>
+            <Dialog.Portal>
+              <Dialog.Overlay className=" fixed inset-0 bg-black/50" />
+              <Dialog.Content className="fixed top-1/2 left-1/2 w-[60vw] h-[60vh] -translate-x-1/2 -translate-y-1/2 rounded-xl bg-background p-4">
+                <Dialog.Title className="text-lg font-montserrat font-medium">
+                  Ajouter une compétence
+                </Dialog.Title>
+                <CreateSkill />
+                <Dialog.Close className="absolute top-2 right-2">
+                  x
+                </Dialog.Close>
+              </Dialog.Content>
+            </Dialog.Portal>
+          </Dialog.Root>
+          <div>
+            {skills.map((skill) => (
+              <Image
+                key={skill.id}
+                src={skill.logo}
+                width={40}
+                height={40}
+                alt={skill.name}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,9 +1,8 @@
 import { auth } from "@/lib/auth";
-import { parseSkillFormData } from "@/lib/parseSkillFormData";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function POST(request: Request) {
+export async function DELETE({ params }: { params: { id: string } }) {
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {
@@ -13,18 +12,19 @@ export async function POST(request: Request) {
     );
   }
 
-  try {
-    const formData = await request.formData();
-    const parsedData = await parseSkillFormData(formData);
+  const skillId = params.id;
 
-    const newSkill = await prisma.skill.create({
-      data: {
-        ...parsedData,
-        userId,
+  try {
+    const deletedSkill = await prisma.skill.delete({
+      where: {
+        id: skillId,
       },
     });
 
-    return NextResponse.json(newSkill, { status: 201 });
+    return NextResponse.json(
+      { message: `${deletedSkill.name} supprimé !` },
+      { status: 204 }
+    );
   } catch (error) {
     console.log(error);
 

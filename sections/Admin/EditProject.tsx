@@ -64,6 +64,7 @@ export const EditProject = () => {
                 // mode="edit"
               />
             )}
+            <Dialog.Close className="absolute top-2 right-2">x</Dialog.Close>
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
