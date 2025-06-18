@@ -32,7 +32,7 @@ export const EditProject = () => {
   };
 
   return (
-    <section className="pl-20">
+    <section>
       <h3 className="font-montserrat text-3xl font-bold mb-10 text-center">
         Projets
       </h3>

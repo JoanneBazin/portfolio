@@ -32,5 +32,6 @@ body {
 input,
 select,
 textarea {
-  color: var(--background);
+  color: var(--foreground);
+  background: var(--dark-gray);
 }

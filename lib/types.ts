@@ -85,9 +85,11 @@ export interface ProjectFormProps {
   mode?: "create" | "edit";
 }
 
-export interface SelectOptions {
-  value: string;
-  label: string;
+export interface AboutFormProps {
+  onSubmit: (data: string) => void;
+  isLoading?: boolean;
+  initialData?: string;
+  mode?: "create" | "edit";
 }
 
 export interface LinkItem {
