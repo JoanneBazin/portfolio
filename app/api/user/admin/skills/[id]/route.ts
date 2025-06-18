@@ -1,4 +1,5 @@
 import { auth } from "@/lib/auth";
+import { deleteImage } from "@/lib/deleteImage";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
@@ -18,6 +19,18 @@ export async function DELETE(
   const { id: skillId } = await params;
 
   try {
+    const skillToDeleteFromDB = await prisma.skill.findUnique({
+      where: {
+        id: skillId,
+      },
+      select: { logo: true },
+    });
+
+    const urlToDelete = skillToDeleteFromDB?.logo;
+    if (urlToDelete) {
+      await deleteImage(urlToDelete);
+    }
+
     const deletedSkill = await prisma.skill.delete({
       where: {
         id: skillId,
