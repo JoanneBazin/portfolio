@@ -20,7 +20,14 @@ export async function PUT(
     const formData = await request.formData();
     const parsedData = await parseProjectFormData({ formData, mode: "edit" });
 
-    const { images, imagesToDelete, ...projectData } = parsedData;
+    if (!parsedData.success) {
+      return NextResponse.json(
+        { error: "Erreur format des données" },
+        { status: 400 }
+      );
+    }
+
+    const { images, imagesToDelete, ...projectData } = parsedData.data;
 
     if (imagesToDelete && imagesToDelete.length > 0) {
       try {

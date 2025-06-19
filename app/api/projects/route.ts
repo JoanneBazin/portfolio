@@ -14,7 +14,14 @@ export async function POST(request: Request) {
     const formData = await request.formData();
     const parsedData = await parseProjectFormData({ formData, mode: "create" });
 
-    const { images, imagesToDelete, ...projectData } = parsedData;
+    if (!parsedData.success) {
+      return NextResponse.json(
+        { error: "Erreur format des données" },
+        { status: 400 }
+      );
+    }
+
+    const { images, imagesToDelete, ...projectData } = parsedData.data;
 
     const newProject = await prisma.project.create({
       data: {

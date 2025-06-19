@@ -1,6 +1,8 @@
 "use client";
 
+import { SkillFormDataZ, skillSchema } from "@/lib/schemas";
 import { ImagePreview, ProjectFormProps, SkillFormData } from "@/lib/types";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -16,12 +18,13 @@ export const SkillForm: React.FC<ProjectFormProps> = ({
     reset,
     formState: { errors },
     setValue,
-  } = useForm<SkillFormData>({
+  } = useForm<SkillFormDataZ>({
     defaultValues: {
       name: "",
-      category: "",
+      category: undefined,
       logo: "",
     },
+    resolver: zodResolver(skillSchema),
   });
 
   const [imagePreview, setImagePreview] = useState<ImagePreview | null>();
@@ -74,13 +77,7 @@ export const SkillForm: React.FC<ProjectFormProps> = ({
         <label className="block text-sm font-medium mb-2">Nom</label>
         <input
           type="text"
-          {...register("name", {
-            required: "Le nom est requis",
-            minLength: {
-              value: 2,
-              message: "Nombre de caractères insuffisant",
-            },
-          })}
+          {...register("name")}
           className="w-full p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
           placeholder="React, Node.js..."
         />

@@ -1,5 +1,6 @@
 "use client";
 
+import { authSchema, validateWithSchema } from "@/lib/schemas";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -10,11 +11,22 @@ const AdminLogin = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const [errorMessages, setErrorMessages] = useState<Record<string, string>>(
+    {}
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setErrorMessages({});
+
+    const validation = validateWithSchema(authSchema, { email, password });
+    if (!validation.success) {
+      setErrorMessages(validation.errors!);
+      setLoading(false);
+      return;
+    }
 
     try {
       const result = await signIn("credentials", {
@@ -59,6 +71,9 @@ const AdminLogin = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {errorMessages.email && (
+            <p className="text-center">{errorMessages.email}</p>
+          )}
         </div>
         <div>
           <label htmlFor="password" className="sr-only">
@@ -73,6 +88,9 @@ const AdminLogin = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          {errorMessages.password && (
+            <p className="text-center">{errorMessages.password}</p>
+          )}
         </div>
 
         {error && (

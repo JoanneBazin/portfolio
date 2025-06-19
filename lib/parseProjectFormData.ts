@@ -1,3 +1,4 @@
+import { projectParsedSchema, validateWithSchema } from "./schemas";
 import {
   ParsedProjectFormData,
   ParseProjectProps,
@@ -8,7 +9,9 @@ import { uploadImages } from "./uploadImages";
 export const parseProjectFormData = async ({
   formData,
   mode,
-}: ParseProjectProps): Promise<ParsedProjectFormData> => {
+}: ParseProjectProps): Promise<
+  { success: true; data: ParsedProjectFormData } | { success: false }
+> => {
   const title = formData.get("title") as string;
   const description = formData.get("description") as string;
   const githubUrl = formData.get("githubUrl") as string;
@@ -41,7 +44,7 @@ export const parseProjectFormData = async ({
       : [];
   }
 
-  return {
+  const finalData = {
     title,
     description,
     githubUrl,
@@ -52,5 +55,20 @@ export const parseProjectFormData = async ({
     skills,
     images,
     imagesToDelete,
+  };
+
+  if (finalData.githubUrl === null) finalData.githubUrl = "";
+  if (finalData.liveUrl === null) finalData.liveUrl = "";
+
+  const finalValidation = validateWithSchema(projectParsedSchema, finalData);
+  if (!finalValidation.success || !finalValidation.data) {
+    console.log(finalValidation.errors);
+
+    return { success: false };
+  }
+
+  return {
+    success: true,
+    data: finalValidation.data,
   };
 };

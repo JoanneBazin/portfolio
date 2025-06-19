@@ -1,9 +1,12 @@
+import { skillParsedSchema, validateWithSchema } from "./schemas";
 import { ParsedSkillFormData } from "./types";
 import { uploadImages } from "./uploadImages";
 
 export const parseSkillFormData = async (
   formData: FormData
-): Promise<ParsedSkillFormData> => {
+): Promise<
+  { success: true; data: ParsedSkillFormData } | { success: false }
+> => {
   const name = formData.get("name") as string;
   const category = formData.get("category") as string;
 
@@ -11,9 +14,15 @@ export const parseSkillFormData = async (
   const optimizedLogo = await uploadImages([file], name);
   const logo = optimizedLogo[0].url;
 
+  const finalData = { name, category, logo };
+
+  const finalValidation = validateWithSchema(skillParsedSchema, finalData);
+  if (!finalValidation.success || !finalValidation.data) {
+    return { success: false };
+  }
+
   return {
-    name,
-    category,
-    logo,
+    success: true,
+    data: finalValidation.data,
   };
 };

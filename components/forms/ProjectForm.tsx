@@ -1,11 +1,13 @@
 "use client";
 
+import { ProjectFormDataZ, projectSchema } from "@/lib/schemas";
 import {
   ImagePreview,
   ProjectFormData,
   ProjectFormProps,
   ProjectImage,
 } from "@/lib/types";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
@@ -24,7 +26,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
     formState: { errors },
     setValue,
     getValues,
-  } = useForm<ProjectFormData>({
+  } = useForm<ProjectFormDataZ>({
     defaultValues: {
       title: initialData?.title || "",
       description: initialData?.description || "",
@@ -41,6 +43,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       order: initialData?.order || 1,
       imagesToDelete: [],
     },
+    resolver: zodResolver(projectSchema),
   });
 
   // Dynamic arrays
@@ -190,13 +193,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
         </label>
         <input
           type="text"
-          {...register("title", {
-            required: "Le titre est requis",
-            minLength: {
-              value: 2,
-              message: "Nombre de caractères insuffisant",
-            },
-          })}
+          {...register("title")}
           className="w-full p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
           placeholder="Intégration frontend avec React"
         />
@@ -208,13 +205,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       <div>
         <label className="block text-sm font-medium mb-2">Description</label>
         <textarea
-          {...register("description", {
-            required: "Une description est requise",
-            minLength: {
-              value: 10,
-              message: "Nombre de caractères insuffisant",
-            },
-          })}
+          {...register("description")}
           rows={4}
           className="w-full p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
           placeholder="Description du projet..."
@@ -256,6 +247,9 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
               </div>
             ))}
           </div>
+        )}
+        {errors.images && (
+          <p className="text-red-900 text-sm mt-1">{errors.images.message}</p>
         )}
       </div>
 

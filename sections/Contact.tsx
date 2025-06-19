@@ -1,4 +1,5 @@
 "use client";
+import { contactSchema, validateWithSchema } from "@/lib/schemas";
 import { useState } from "react";
 
 export const Contact = () => {
@@ -10,12 +11,22 @@ export const Contact = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessages, setErrorMessages] = useState<Record<string, string>>(
+    {}
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
     setSuccess(null);
+    setErrorMessages({});
+
+    const validation = validateWithSchema(contactSchema, form);
+    if (!validation.success) {
+      setErrorMessages(validation.errors!);
+      return;
+    }
 
     try {
       const response = await fetch("/api/contact", {
@@ -55,6 +66,10 @@ export const Contact = () => {
           onChange={(e) => setForm({ ...form, name: e.target.value })}
           value={form.name}
         />
+        {errorMessages.name && (
+          <p className="text-center">{errorMessages.name}</p>
+        )}
+
         <label htmlFor="email">Email</label>
         <input
           type="text"
@@ -64,6 +79,10 @@ export const Contact = () => {
           onChange={(e) => setForm({ ...form, email: e.target.value })}
           value={form.email}
         />
+        {errorMessages.email && (
+          <p className="text-center">{errorMessages.email}</p>
+        )}
+
         <label htmlFor="message">Message</label>
         <textarea
           id="message"
@@ -73,6 +92,10 @@ export const Contact = () => {
           onChange={(e) => setForm({ ...form, message: e.target.value })}
           value={form.message}
         ></textarea>
+        {errorMessages.message && (
+          <p className="text-center">{errorMessages.message}</p>
+        )}
+
         <button
           type="submit"
           className="bg-gold-light text-background p-2 rounded"

@@ -14,9 +14,16 @@ export async function POST(request: Request) {
     const formData = await request.formData();
     const parsedData = await parseSkillFormData(formData);
 
+    if (!parsedData.success) {
+      return NextResponse.json(
+        { error: "Erreur format des données" },
+        { status: 400 }
+      );
+    }
+
     const newSkill = await prisma.skill.create({
       data: {
-        ...parsedData,
+        ...parsedData.data,
         userId,
       },
     });

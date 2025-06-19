@@ -1,5 +1,6 @@
 import { requireAdminAuth } from "@/lib/auth-helpers";
 import { prisma } from "@/lib/prisma";
+import { aboutSchema, validateWithSchema } from "@/lib/schemas";
 import { NextResponse } from "next/server";
 
 export async function PUT(request: Request) {
@@ -9,10 +10,21 @@ export async function PUT(request: Request) {
   }
   const { userId } = authResult;
 
-  try {
-    const body = await request.json();
-    const about = body.about;
+  const body = await request.json();
 
+  const validation = validateWithSchema(aboutSchema, body);
+  if (!validation.success || !validation.data) {
+    return NextResponse.json(
+      {
+        error: "Erreur données lors de l'envoi de la requête",
+      },
+      { status: 400 }
+    );
+  }
+
+  const { about } = validation.data;
+
+  try {
     const updatedUser = await prisma.user.update({
       where: {
         id: userId,

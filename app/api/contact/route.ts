@@ -1,13 +1,21 @@
 import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
+import { contactSchema, validateWithSchema } from "@/lib/schemas";
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const { name, email, message } = body;
 
-  if (!name || !email || !message) {
-    return NextResponse.json({ error: "Champs manquants" }, { status: 400 });
+  const validation = validateWithSchema(contactSchema, body);
+  if (!validation.success || !validation.data) {
+    return NextResponse.json(
+      {
+        error: "Erreur de format lors de l'envoi de la requête",
+      },
+      { status: 400 }
+    );
   }
+
+  const { name, email, message } = validation.data;
 
   try {
     const transporter = nodemailer.createTransport({

@@ -16,7 +16,7 @@ export interface ProjectImage {
   id: string;
   url: string;
   alt: string;
-  cover?: boolean;
+  cover: boolean;
   projectId: string;
 }
 
@@ -101,14 +101,14 @@ export interface UploadImageProps {
 
 export interface ParsedSkillFormData {
   name: string;
-  category: string;
+  category: "frontend" | "backend" | "database" | "tools" | "design";
   logo: string;
 }
 
 export interface SkillFormData {
   name: string;
   logo: File | string;
-  category?: string;
+  category: string;
 }
 
 export interface AboutFormProps {
