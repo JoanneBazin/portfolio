@@ -4,7 +4,7 @@ import { Tag } from "./Tag";
 
 interface ProjectCardProps {
   project: Project;
-  mode: "read" | "admin";
+  mode?: "read" | "admin";
 }
 
 export const ProjectCard = ({ project, mode = "read" }: ProjectCardProps) => {
