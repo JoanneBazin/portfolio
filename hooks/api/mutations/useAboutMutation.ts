@@ -19,8 +19,10 @@ export const useUpdateAbout = (): UseEditAboutReturn => {
         body: JSON.stringify({ about }),
       });
 
-      if (!response.ok)
-        throw new Error("Erreur dans la mise à jour de la présentation");
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Erreur HTTP ${response.status}`);
+      }
 
       return response.json();
     },

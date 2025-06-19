@@ -25,7 +25,10 @@ export const useCreateSkill = (): UseCreateSkillReturn => {
         body: formData,
       });
 
-      if (!response.ok) throw new Error("Erreur dans la création de projet");
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Erreur HTTP ${response.status}`);
+      }
 
       return response.json();
     },
@@ -44,7 +47,10 @@ export const useDeleteSkill = (): UseDeleteSkillReturn => {
         method: "DELETE",
       });
 
-      if (!response.ok) throw new Error("Erreur dans la suppression du projet");
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Erreur HTTP ${response.status}`);
+      }
 
       return response.json();
     },

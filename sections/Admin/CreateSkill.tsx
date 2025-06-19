@@ -10,14 +10,14 @@ export const CreateSkill = () => {
   const [skillMessage, setSkillMessage] = useState<string | null>(null);
 
   const handleSkillSubmit = ({ formData, onReset }: SubmitProps): void => {
+    setSkillMessage(null);
     createSkill.mutate(formData, {
       onSuccess: () => {
         setSkillMessage("Compétence ajoutée !");
         onReset();
       },
       onError: (error) => {
-        setSkillMessage("Erreur lors de la création");
-        console.log(error.message);
+        setSkillMessage(error.message);
       },
     });
   };
@@ -28,7 +28,9 @@ export const CreateSkill = () => {
         onSubmit={handleSkillSubmit}
         isLoading={createSkill.isPending}
       />
-      {skillMessage && <p className="my-4 italic">{skillMessage}</p>}
+      {skillMessage && (
+        <p className="my-4 text-lg text-center">{skillMessage}</p>
+      )}
     </div>
   );
 };

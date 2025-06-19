@@ -1,4 +1,5 @@
 import { ProjectForm } from "@/components/forms/ProjectForm";
+import { Loader } from "@/components/ui/Loader";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import {
   useDeleteProject,
@@ -12,13 +13,15 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { useState } from "react";
 
 export const EditProject = () => {
-  const { projects } = useProjects();
+  const { projects, isPending, error } = useProjects();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const updateProject = useUpdateProject();
   const { openModal, ConfirmModalComponent } = useConfirmModal();
   const deleteProject = useDeleteProject();
+  const [message, setMessage] = useState<string | null>(null);
 
   const handleSubmit = ({ formData, onReset }: SubmitProps): void => {
+    setMessage(null);
     const id = selectedProject?.id;
     if (!id) return;
 
@@ -26,26 +29,27 @@ export const EditProject = () => {
       { id, formData },
       {
         onSuccess: (data) => {
-          console.log("Projet mis à jour ! : ", data);
+          setMessage(`Projet ${data.title} modifié ☀️`);
           onReset();
           setSelectedProject(null);
         },
         onError: (error) => {
-          console.log("Erreur lors de la mise à jour : ", error);
+          setMessage(error.message);
         },
       }
     );
   };
 
   const handleDeleteProject = (): void => {
+    setMessage(null);
     if (!selectedProject) return;
     deleteProject.mutate(selectedProject?.id, {
       onSuccess: () => {
-        console.log("Projet supprimé !");
+        setMessage(`Projet supprimé !`);
         setSelectedProject(null);
       },
       onError: (error) => {
-        console.log("Erreur lors de la suppression : ", error);
+        setMessage(error.message);
       },
     });
   };
@@ -64,14 +68,24 @@ export const EditProject = () => {
       <h3 className="font-montserrat text-3xl font-bold mb-10 text-center">
         Projets
       </h3>
+      {message && <p className="text-lg text-center mb-4">{message}</p>}
 
-      <div className="min-h-screen grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {projects.map((project) => (
-          <button key={project.id} onClick={() => setSelectedProject(project)}>
-            <ProjectCard project={project} />
-          </button>
-        ))}
-      </div>
+      {isPending ? (
+        <Loader />
+      ) : error ? (
+        <p className="text-center font-sm text-red-900">{error.message}</p>
+      ) : (
+        <div className="min-h-screen grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {projects.map((project) => (
+            <button
+              key={project.id}
+              onClick={() => setSelectedProject(project)}
+            >
+              <ProjectCard project={project} />
+            </button>
+          ))}
+        </div>
+      )}
 
       <Dialog.Root
         open={!!selectedProject}

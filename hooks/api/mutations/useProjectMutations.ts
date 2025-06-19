@@ -29,7 +29,10 @@ export const useCreateProject = (): UseCreateProjectReturn => {
         body: formData,
       });
 
-      if (!response.ok) throw new Error("Erreur dans la création de projet");
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Erreur HTTP ${response.status}`);
+      }
 
       return response.json();
     },
@@ -49,7 +52,10 @@ export const useUpdateProject = (): UseUpdateProjectReturn => {
         body: formData,
       });
 
-      if (!response.ok) throw new Error("Erreur dans la création de projet");
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Erreur HTTP ${response.status}`);
+      }
 
       return response.json();
     },
@@ -68,7 +74,10 @@ export const useDeleteProject = (): UseDeleteProjectReturn => {
         method: "DELETE",
       });
 
-      if (!response.ok) throw new Error("Erreur dans la suppression du projet");
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Erreur HTTP ${response.status}`);
+      }
 
       return response.json();
     },

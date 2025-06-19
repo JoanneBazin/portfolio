@@ -8,9 +8,12 @@ const useFetchData = () => {
     queryKey: ["user"],
     queryFn: async () => {
       const response = await fetch("/api/user");
+
       if (!response.ok) {
-        throw new Error("Erreur lors de la récupération des données");
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Erreur HTTP ${response.status}`);
       }
+
       return response.json();
     },
   });
