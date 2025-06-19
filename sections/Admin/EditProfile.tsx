@@ -47,13 +47,11 @@ export const EditProfile = () => {
         <div>
           <h4 className="font-montserrat text-xl font-medium">Compétences</h4>
           <Dialog.Root>
-            <Dialog.Trigger asChild>
-              <button
-                aria-label="Ajouter une compétence"
-                className="py-2 px-5 rounded-full bg-gold-light text-background hover:bg-gold-dark font-bold text-2xl my-6"
-              >
-                +
-              </button>
+            <Dialog.Trigger
+              aria-label="Ajouter une compétence"
+              className="py-2 px-5 rounded-full bg-gold-light text-background hover:bg-gold-dark font-bold text-2xl my-6"
+            >
+              +
             </Dialog.Trigger>
             <Dialog.Portal>
               <Dialog.Overlay className=" fixed inset-0 bg-black/50" />
@@ -62,7 +60,10 @@ export const EditProfile = () => {
                   Ajouter une compétence
                 </Dialog.Title>
                 <CreateSkill />
-                <Dialog.Close className="absolute top-4 right-6">
+                <Dialog.Close
+                  className="absolute top-4 right-6"
+                  aria-label="Fermer la modale"
+                >
                   x
                 </Dialog.Close>
               </Dialog.Content>

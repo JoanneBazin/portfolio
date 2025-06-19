@@ -81,7 +81,7 @@ export const EditProject = () => {
               key={project.id}
               onClick={() => setSelectedProject(project)}
             >
-              <ProjectCard project={project} />
+              <ProjectCard project={project} mode="admin" />
             </button>
           ))}
         </div>
@@ -117,7 +117,12 @@ export const EditProject = () => {
                 mode="edit"
               />
             )}
-            <Dialog.Close className="absolute top-2 right-2">x</Dialog.Close>
+            <Dialog.Close
+              className="absolute top-2 right-2"
+              aria-label="Fermer la modale"
+            >
+              x
+            </Dialog.Close>
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>

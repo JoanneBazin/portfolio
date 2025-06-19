@@ -26,13 +26,11 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
         <Dialog.Title>{title}</Dialog.Title>
         <Dialog.Description>{description} ?</Dialog.Description>
         <div className="flex justify-end gap-4 pt-6">
-          <Dialog.Close asChild>
-            <button
-              className="px-4 py-2 text-sm rounded bg-dark-gray hover:bg-gray-800"
-              disabled={isLoading}
-            >
-              Annuler
-            </button>
+          <Dialog.Close
+            className="px-4 py-2 text-sm rounded bg-dark-gray hover:bg-gray-800"
+            disabled={isLoading}
+          >
+            Annuler
           </Dialog.Close>
 
           <button

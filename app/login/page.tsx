@@ -7,14 +7,14 @@ import { useState } from "react";
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
+    setError(null);
 
     try {
       const result = await signIn("credentials", {
@@ -30,8 +30,11 @@ const AdminLogin = () => {
         router.refresh();
       }
     } catch (error) {
-      setError("Une erreur est survenue");
-      console.log(error);
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "Une erreur est survenue. Essayez ultérieurement.";
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

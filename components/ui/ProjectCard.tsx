@@ -1,9 +1,13 @@
 import { Project } from "@/lib/types";
 import Image from "next/image";
 import { Tag } from "./Tag";
-import { Button } from "./Button";
 
-export const ProjectCard = ({ project }: { project: Project }) => {
+interface ProjectCardProps {
+  project: Project;
+  mode: "read" | "admin";
+}
+
+export const ProjectCard = ({ project, mode = "read" }: ProjectCardProps) => {
   const { title, images, skills, githubUrl, size, order } = project;
 
   const getSizeClass = (size: "small" | "medium" | "large") => {
@@ -39,17 +43,21 @@ export const ProjectCard = ({ project }: { project: Project }) => {
             <Tag key={index} item={item} />
           ))}
         </div>
-        <div className="flex justify-between items-center">
-          <Button text="Voir le projet" />
-          <a
-            href={githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent hover:text-gold-dark transition-colors duration-200"
-          >
-            <i className="fa-brands fa-github text-2xl"></i>
-          </a>
-        </div>
+        {mode === "read" && (
+          <div className="flex justify-between items-center">
+            <button className="bg-gold-light text-background px-3 py-1 my-2 text-sm rounded-md hover:bg-gold-dark transition-colors">
+              Voir le projet
+            </button>
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:text-gold-dark transition-colors duration-200"
+            >
+              <i className="fa-brands fa-github text-2xl"></i>
+            </a>
+          </div>
+        )}
       </div>
     </article>
   );
