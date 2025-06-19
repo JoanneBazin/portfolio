@@ -8,28 +8,6 @@ import {
 
 type UseEditAboutReturn = UseMutationResult<string, Error, string>;
 
-export const useCreateAbout = (): UseEditAboutReturn => {
-  const queryClient = useQueryClient();
-
-  return useMutation<string, Error, string>({
-    mutationFn: async (about: string): Promise<string> => {
-      const response = await fetch("/api/user/admin/about", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ about }),
-      });
-
-      if (!response.ok)
-        throw new Error("Erreur dans la création de la présentation");
-
-      return response.json();
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user"] });
-    },
-  });
-};
-
 export const useUpdateAbout = (): UseEditAboutReturn => {
   const queryClient = useQueryClient();
 

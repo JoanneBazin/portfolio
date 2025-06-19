@@ -1,17 +1,14 @@
-import { auth } from "@/lib/auth";
+import { requireAdminAuth } from "@/lib/auth-helpers";
 import { parseProjectFormData } from "@/lib/parseProjectFormData";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  const session = await auth();
-  const userId = session?.user?.id;
-  if (!userId) {
-    return NextResponse.json(
-      { error: "Utilisateur non authentifié" },
-      { status: 401 }
-    );
+  const authResult = await requireAdminAuth();
+  if (authResult instanceof NextResponse) {
+    return authResult;
   }
+  const { userId } = authResult;
 
   try {
     const formData = await request.formData();
@@ -34,8 +31,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json(newProject, { status: 201 });
   } catch (error) {
-    console.log(error);
-
-    return NextResponse.json({ error: error }, { status: 500 });
+    return NextResponse.json(
+      { error: "Erreur lors de la création du projet" },
+      { status: 500 }
+    );
   }
 }

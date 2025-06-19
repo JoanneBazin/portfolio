@@ -15,8 +15,11 @@ export async function GET() {
       },
     });
 
-    return NextResponse.json(userData);
+    return NextResponse.json(userData, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    return NextResponse.json(
+      { error: "Erreur lors de la récupération des données" },
+      { status: 500 }
+    );
   }
 }

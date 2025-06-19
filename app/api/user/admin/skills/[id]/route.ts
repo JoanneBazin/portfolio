@@ -1,4 +1,4 @@
-import { auth } from "@/lib/auth";
+import { requireAdminAuth } from "@/lib/auth-helpers";
 import { deleteImage } from "@/lib/deleteImage";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
@@ -7,13 +7,9 @@ export async function DELETE(
   request: Request,
   { params }: { params: { id: string } }
 ) {
-  const session = await auth();
-  const userId = session?.user?.id;
-  if (!userId) {
-    return NextResponse.json(
-      { error: "Utilisateur non authentifié" },
-      { status: 401 }
-    );
+  const authResult = await requireAdminAuth();
+  if (authResult instanceof NextResponse) {
+    return authResult;
   }
 
   const { id: skillId } = await params;
@@ -26,24 +22,25 @@ export async function DELETE(
       select: { logo: true },
     });
 
-    const urlToDelete = skillToDeleteFromDB?.logo;
-    if (urlToDelete) {
-      await deleteImage(urlToDelete);
-    }
-
     const deletedSkill = await prisma.skill.delete({
       where: {
         id: skillId,
       },
     });
 
+    const urlToDelete = skillToDeleteFromDB?.logo;
+    if (urlToDelete) {
+      await deleteImage(urlToDelete);
+    }
+
     return NextResponse.json(
       { message: "Compétence supprimé !" },
       { status: 200 }
     );
   } catch (error) {
-    console.log(error);
-
-    return NextResponse.json({ error: error }, { status: 500 });
+    return NextResponse.json(
+      { error: "Erreur lors de la suppression de la compétence" },
+      { status: 500 }
+    );
   }
 }

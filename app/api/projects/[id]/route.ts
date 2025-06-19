@@ -1,4 +1,4 @@
-import { auth } from "@/lib/auth";
+import { requireAdminAuth } from "@/lib/auth-helpers";
 import { deleteImage } from "@/lib/deleteImage";
 import { parseProjectFormData } from "@/lib/parseProjectFormData";
 import { prisma } from "@/lib/prisma";
@@ -8,14 +8,11 @@ export async function PUT(
   request: Request,
   { params }: { params: { id: string } }
 ) {
-  const session = await auth();
-  const userId = session?.user?.id;
-  if (!userId) {
-    return NextResponse.json(
-      { error: "Utilisateur non authentifié" },
-      { status: 401 }
-    );
+  const authResult = await requireAdminAuth();
+  if (authResult instanceof NextResponse) {
+    return authResult;
   }
+  const { userId } = authResult;
 
   const { id: projectId } = await params;
 
@@ -49,7 +46,7 @@ export async function PUT(
           await Promise.all(urlToDelete.map(async (url) => deleteImage(url)));
         }
       } catch (error) {
-        console.log("Erreur lors de la suppression des images: ", error);
+        console.log("Erreur lors de la suppression des images");
       }
     }
 
@@ -71,9 +68,10 @@ export async function PUT(
 
     return NextResponse.json(updatedProject, { status: 200 });
   } catch (error) {
-    console.log(error);
-
-    return NextResponse.json({ error: error }, { status: 500 });
+    return NextResponse.json(
+      { error: "Erreur dans la mise à jour du projet" },
+      { status: 500 }
+    );
   }
 }
 
@@ -81,13 +79,9 @@ export async function DELETE(
   request: Request,
   { params }: { params: { id: string } }
 ) {
-  const session = await auth();
-  const userId = session?.user?.id;
-  if (!userId) {
-    return NextResponse.json(
-      { error: "Utilisateur non authentifié" },
-      { status: 401 }
-    );
+  const authResult = await requireAdminAuth();
+  if (authResult instanceof NextResponse) {
+    return authResult;
   }
 
   const { id: projectId } = await params;
@@ -104,21 +98,22 @@ export async function DELETE(
       },
     });
 
-    const urlToDelete = projectToDeleteFromDB?.images.map((img) => img.url);
-    if (urlToDelete && urlToDelete?.length > 0) {
-      await Promise.all(urlToDelete?.map(async (url) => deleteImage(url)));
-    }
-
     const deletedProject = await prisma.project.delete({
       where: {
         id: projectId,
       },
     });
 
+    const urlToDelete = projectToDeleteFromDB?.images.map((img) => img.url);
+    if (urlToDelete && urlToDelete?.length > 0) {
+      await Promise.all(urlToDelete?.map(async (url) => deleteImage(url)));
+    }
+
     return NextResponse.json({ message: `Projet supprimé !` }, { status: 200 });
   } catch (error) {
-    console.log(error);
-
-    return NextResponse.json({ error: error }, { status: 500 });
+    return NextResponse.json(
+      { error: "Erreur lors de la suppression du projet" },
+      { status: 500 }
+    );
   }
 }

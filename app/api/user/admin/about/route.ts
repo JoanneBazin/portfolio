@@ -1,45 +1,13 @@
-import { auth } from "@/lib/auth";
+import { requireAdminAuth } from "@/lib/auth-helpers";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function POST(request: Request) {
-  const session = await auth();
-  const userId = session?.user?.id;
-  if (!userId) {
-    return NextResponse.json(
-      { error: "Utilisateur non authentifié" },
-      { status: 401 }
-    );
-  }
-
-  try {
-    const body = await request.json();
-    const about = body.about;
-
-    const newAbout = await prisma.user.update({
-      where: { id: userId },
-      data: {
-        about: about,
-      },
-    });
-
-    return NextResponse.json(newAbout.about, { status: 201 });
-  } catch (error) {
-    console.log(error);
-
-    return NextResponse.json({ error: error }, { status: 500 });
-  }
-}
-
 export async function PUT(request: Request) {
-  const session = await auth();
-  const userId = session?.user?.id;
-  if (!userId) {
-    return NextResponse.json(
-      { error: "Utilisateur non authentifié" },
-      { status: 401 }
-    );
+  const authResult = await requireAdminAuth();
+  if (authResult instanceof NextResponse) {
+    return authResult;
   }
+  const { userId } = authResult;
 
   try {
     const body = await request.json();
@@ -56,8 +24,9 @@ export async function PUT(request: Request) {
 
     return NextResponse.json(updatedUser.about, { status: 200 });
   } catch (error) {
-    console.log(error);
-
-    return NextResponse.json({ error: error }, { status: 500 });
+    return NextResponse.json(
+      { error: "Erreur lors de la publication" },
+      { status: 500 }
+    );
   }
 }

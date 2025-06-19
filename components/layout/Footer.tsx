@@ -4,7 +4,7 @@ export const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
   return (
     <footer className="hidden sm:flex justify-between items-center fixed bottom-0 left-0 w-full bg-background p-6">
       {isAdmin ? null : (
-        <Link href="admin/login" className="text-xs">
+        <Link href="/login" className="text-xs">
           Accès admin
         </Link>
       )}
