@@ -28,12 +28,18 @@ export const SkillCard = ({ skill }: { skill: Skill }) => {
     });
   };
   return (
-    <div className="relative">
-      <Image src={skill.logo} width={50} height={40} alt={skill.name} />
+    <div className="relative w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 bg-zinc-800/10 backdrop-blur-md border border-yellow-500/20 rounded-2xl shadow-[0_0_30px_rgba(255,215,0,0.1)]">
+      <Image
+        src={skill.logo}
+        fill
+        sizes="(max-width: 640px) 32px, (max-width: 1024px) 48px, 64px"
+        alt={skill.name}
+        className="object-contain p-4"
+      />
       <button
         type="button"
         onClick={() => confirmDeleteSkill(skill)}
-        className="absolute top-0 right-1 bg-red-950 rounded-full w-4 h-4 flex items-center justify-center text-sm hover:bg-red-900"
+        className="absolute top-2 right-2 bg-red-950 rounded-full w-4 h-4 flex items-center justify-center text-sm hover:bg-red-900"
       >
         X
       </button>

@@ -75,14 +75,17 @@ export const EditProject = () => {
       ) : error ? (
         <p className="text-center font-sm text-red-900">{error.message}</p>
       ) : (
-        <div className="min-h-screen grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
-            <button
-              key={project.id}
-              onClick={() => setSelectedProject(project)}
-            >
+            <div key={project.id} className="relative">
               <ProjectCard project={project} mode="admin" />
-            </button>
+              <button
+                onClick={() => setSelectedProject(project)}
+                className="absolute bottom-2 left-5 text-accent rounded-lg hover:text-foreground transition-colors"
+              >
+                Modifier le projet
+              </button>
+            </div>
           ))}
         </div>
       )}
