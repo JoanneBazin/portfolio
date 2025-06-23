@@ -1,6 +1,5 @@
 "use client";
 
-import { ProjectCard } from "@/components/ui/ProjectCard";
 import { useProjects } from "@/hooks/api/useProjects";
 
 export const Projects = () => {
@@ -36,12 +35,22 @@ export const Projects = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen m-10 sm:m-15 lg:m-20 grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-20"
+      className="min-h-screen flex flex-col justify-center ml-10 mr-40 snap-start"
     >
-      {projects &&
-        projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+      <ul className="space-y-4 text-white font-mono text-lg">
+        {projects.map((project, i) => (
+          <li
+            key={i}
+            className="flex justify-between border-b border-zinc-800 pb-2 hover:text-gold-light transition"
+          >
+            <span className="text-zinc-500">0{i + 1}</span>
+            <span className="text-right flex-1 ml-4">{project.title}</span>
+            <button className="text-gold-light ml-4 hover:underline text-sm">
+              détails
+            </button>
+          </li>
         ))}
+      </ul>
     </section>
   );
 };
