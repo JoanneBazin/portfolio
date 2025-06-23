@@ -8,18 +8,24 @@
   --accent: var(--gold-light);
   --dark-gray: #2e2c29;
   --hero-gradient: linear-gradient(135deg, #fcd34d, #a855f7, #d97706);
+  --red-light: #7f1d1d;
+  --red-dark: #450a0a;
 }
 
 [data-theme="light"] {
   --background: #fafafa;
   --foreground: #0a0a0b;
   --accent: var(--gold-dark);
+  --gray: var(--dark-gray);
+  --red: var(--red-dark);
 }
 
 [data-theme="dark"] {
   --background: #0a0a0b;
   --foreground: #fafafa;
   --accent: var(--gold-light);
+  --gray: var(--dark-gray);
+  --red: var(--red-light);
 }
 
 body {
