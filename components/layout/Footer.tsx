@@ -1,13 +1,27 @@
+"use client";
+import { useTheme } from "@/hooks/useTheme";
 import Link from "next/link";
 
 export const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <footer className="hidden sm:flex justify-between items-center fixed bottom-0 left-0 w-full bg-background p-6">
-      {isAdmin ? null : (
-        <Link href="/login" className="text-xs">
-          Accès admin
-        </Link>
-      )}
+      <div className="flex gap-6 items-center">
+        {isAdmin ? null : (
+          <Link href="/login" className="text-xs">
+            Accès admin
+          </Link>
+        )}
+
+        <button aria-label="Changer le thème" onClick={toggleTheme}>
+          {theme === "dark" ? (
+            <i className="fas fa-sun text-accent"></i>
+          ) : (
+            <i className="fa-regular fa-moon text-accent"></i>
+          )}
+        </button>
+      </div>
 
       <div className="flex justify-end items-center gap-6">
         <a
