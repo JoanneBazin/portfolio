@@ -20,6 +20,7 @@ export const ProjectNode = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onClick}
+      aria-label="Ouvrir la modale du projet"
     >
       <div className="flex items-center p-4">
         <div
