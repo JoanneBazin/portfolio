@@ -16,7 +16,7 @@ export const AboutForm: React.FC<AboutFormProps> = ({
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)} className="space-y-4 max-w-xl">
+    <form onSubmit={(e) => handleSubmit(e)} className="space-y-4 w-full">
       <label htmlFor="about" className="sr-only">
         Présentation
       </label>
@@ -24,8 +24,8 @@ export const AboutForm: React.FC<AboutFormProps> = ({
         id="about"
         value={about}
         onChange={(e) => setAbout(e.target.value)}
-        rows={6}
-        className="w-full border rounded p-2"
+        rows={13}
+        className="w-full text-base bg-background text-foreground min-h-[300px] border rounded-lg p-4"
       />
       <button type="submit" className="form-btn">
         {isLoading ? "Enregistrement..." : "Enregistrer"}

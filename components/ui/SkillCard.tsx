@@ -34,12 +34,12 @@ export const SkillCard = ({ skill }: { skill: Skill }) => {
         fill
         sizes="(max-width: 640px) 32px, (max-width: 1024px) 48px, 64px"
         alt={skill.name}
-        className="object-contain p-4"
+        className="object-contain p-2 sm:p-4"
       />
       <button
         type="button"
         onClick={() => confirmDeleteSkill(skill)}
-        className="absolute top-2 right-2 bg-red-950 rounded-full w-4 h-4 flex items-center justify-center text-sm hover:bg-red-900"
+        className="absolute top-2 right-2 bg-red rounded-full w-4 h-4 flex items-center justify-center text-sm hover:bg-gray"
       >
         X
       </button>

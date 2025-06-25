@@ -17,15 +17,15 @@ export const AdminTabs = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-b border-gold-light pb-2 mb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 mb-4">
         {TABS.map((tab, index) => (
           <button
             key={index}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-4 py-2 text-sm lg:text-lg rounded-t ${
+            className={`px-4 py-4 rounded-t border-b border-accent mx-4 sm:mx-0 ${
               activeTab === tab.id
-                ? "text-gold-light font-semibold"
-                : "text-foreground"
+                ? "text-accent font-semibold text-base lg:text-xl"
+                : "text-foreground text-sm lg:text-lg"
             }`}
           >
             {tab.label}
@@ -33,7 +33,7 @@ export const AdminTabs = () => {
         ))}
       </div>
 
-      <div className="mx-12 py-6">
+      <div className="mx-8 sm:mx-12 py-6">
         {activeTab === "view" && <EditProject />}
         {activeTab === "add" && <CreateProjects />}
         {activeTab === "about" && <EditProfile />}

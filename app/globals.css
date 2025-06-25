@@ -50,6 +50,7 @@ textarea {
   border: var(--gray);
   border-radius: 8px;
   box-shadow: 0 0 10px var(--gold);
+  font-size: 14px;
 }
 
 input:focus,
@@ -67,7 +68,7 @@ textarea:focus {
   }
 
   .form-btn {
-    @apply mt-8 border border-yellow-500/20 shadow-[0_0_20px_rgba(255,215,0,0.1)] text-base py-2 px-4 rounded-xl;
+    @apply mt-8 border border-yellow-500/20 shadow-[0_0_20px_rgba(255,215,0,0.1)] text-base py-2 px-4 rounded-xl transition-colors;
     @apply sm:text-xl;
   }
   .form-btn:disabled {
@@ -77,4 +78,21 @@ textarea:focus {
   .form-btn:hover {
     @apply bg-accent text-background;
   }
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(184, 134, 11, 0.6);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(184, 134, 11, 0.9);
 }

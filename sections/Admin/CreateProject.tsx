@@ -25,9 +25,6 @@ export const CreateProjects = () => {
 
   return (
     <section>
-      <h3 className="font-montserrat text-3xl font-bold mb-10 text-center">
-        Créer un projet
-      </h3>
       <ProjectForm
         onSubmit={handleSubmit}
         isLoading={createProject.isPending}

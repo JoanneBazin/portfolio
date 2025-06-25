@@ -6,7 +6,7 @@ import Link from "next/link";
 export const AdminHeader = () => {
   return (
     <header className="fixed top-0 left-0 z-50">
-      <nav className="flex flex-col text-2xl gap-6 p-2">
+      <nav className="flex flex-col text-lg lg:text-2xl gap-2 lg:gap-6 p-2">
         <Link href="/">
           <i className="fa-solid fa-house"></i>
         </Link>

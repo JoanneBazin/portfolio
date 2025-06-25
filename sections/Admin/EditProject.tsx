@@ -65,9 +65,6 @@ export const EditProject = () => {
 
   return (
     <section>
-      <h3 className="font-montserrat text-3xl font-bold mb-10 text-center">
-        Projets
-      </h3>
       {message && <p className="text-lg text-center mb-4">{message}</p>}
 
       {isPending ? (
@@ -78,13 +75,10 @@ export const EditProject = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div key={project.id} className="relative">
-              <ProjectCard project={project} mode="admin" />
-              <button
-                onClick={() => setSelectedProject(project)}
-                className="absolute bottom-2 left-5 text-accent rounded-lg hover:text-foreground transition-colors"
-              >
-                Modifier le projet
-              </button>
+              <ProjectCard
+                project={project}
+                onEdit={() => setSelectedProject(project)}
+              />
             </div>
           ))}
         </div>
@@ -98,13 +92,13 @@ export const EditProject = () => {
           <Dialog.Overlay className="fixed inset-0 bg-black/50" />
           <Dialog.Content className="fixed top-1/2 left-1/2 w-[90vw] max-h-[80vh] overflow-y-auto bg-background rounded-lg p-6 transform -translate-x-1/2 -translate-y-1/2">
             <Dialog.Title>
-              <div className="mb-4 px-6 flex justify-between">
-                <p className="text-2xl font-bold font-montserrat ">
+              <div className="mb-4 px-6 flex flex-wrap gap-2 justify-around items-start">
+                <p className="text-lg sm:text-2xl font-bold font-montserrat ">
                   Modifier le projet
                 </p>
                 <button
                   onClick={confirmDeleteProject}
-                  className="bg-red-950 rounded-lg p-y-2 px-4 hover:bg-red-900"
+                  className="bg-red text-xs sm:text-base rounded-lg py-2  px-4 sm:mr-8 hover:bg-gray"
                 >
                   Supprimer le projet
                 </button>
@@ -121,7 +115,7 @@ export const EditProject = () => {
               />
             )}
             <Dialog.Close
-              className="absolute top-2 right-2"
+              className="absolute top-1 right-4 text-2xl text-accent hover:text-foreground"
               aria-label="Fermer la modale"
             >
               x

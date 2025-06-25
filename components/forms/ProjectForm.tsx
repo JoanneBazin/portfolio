@@ -185,10 +185,10 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
   return (
     <form
       onSubmit={handleSubmit(onFormSubmit)}
-      className="space-y-6 max-w-4xl mx-auto p-6"
+      className="space-y-8 max-w-4xl mx-auto p-4 sm:p-6"
     >
       <div>
-        <label className="block text-base font-medium mb-2">
+        <label className="block text-sm sm:text-base font-medium mb-2">
           Titre du projet
         </label>
         <input
@@ -202,7 +202,9 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       </div>
 
       <div>
-        <label className="block text-base font-medium mb-2">Description</label>
+        <label className="block text-sm sm:text-base font-medium mb-2">
+          Description
+        </label>
         <textarea
           {...register("description")}
           rows={4}
@@ -214,7 +216,9 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       </div>
 
       <div>
-        <label className="block text-base font-medium mb-2">Images</label>
+        <label className="block text-sm sm:text-base font-medium mb-2">
+          Images
+        </label>
         <input
           type="file"
           multiple
@@ -250,15 +254,16 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
 
       <div>
         <div className="flex justify-between items-center mb-2">
-          <label className="block text-base font-medium mb-1">
+          <label className="block text-sm sm:text-base font-medium mb-3">
             Objectifs du projet
           </label>
           <button
             type="button"
+            aria-label="Ajouter un objectif"
             onClick={() => appendObjective({ value: "" })}
-            className="bg-accent text-background px-3 py-1 rounded text-sm hover:bg-gold"
+            className="bg-accent text-background px-2 rounded text-lg hover:bg-gold mb-2"
           >
-            + Ajouter un objectif
+            +
           </button>
         </div>
 
@@ -269,7 +274,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
               {...register(`objectives.${index}.value`, {
                 required: "Texte requis",
               })}
-              className="flex-1"
+              className="flex-1 mt-1"
               placeholder="Objectif du projet..."
             />
 
@@ -277,7 +282,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
               <button
                 type="button"
                 onClick={() => removeObjective(index)}
-                className="mt-2 text-accent text-sm hover:text-red"
+                className="mt-2 ml-1 text-accent text-sm hover:text-red"
               >
                 X
               </button>
@@ -288,15 +293,15 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
 
       <div>
         <div className="flex justify-between items-center mb-2">
-          <label className="block text-base font-medium mb-1">
+          <label className="block text-sm sm:text-base font-medium mb-1">
             Compétences utilisées
           </label>
           <button
             type="button"
             onClick={() => appendSkill({ value: "" })}
-            className="bg-accent text-background px-3 py-1 rounded text-sm hover:bg-gold"
+            className="bg-accent text-background px-2 rounded text-lg hover:bg-gold mb-2"
           >
-            + Ajouter une compétence
+            +
           </button>
         </div>
 
@@ -307,7 +312,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
               {...register(`skills.${index}.value`, {
                 required: "Texte requis",
               })}
-              className="flex-1"
+              className="flex-1 mt-1"
               placeholder="React, Node.js..."
             />
 
@@ -326,7 +331,9 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label className="block text-base font-medium mb-2">URL Github</label>
+          <label className="block text-sm sm:text-base font-medium mb-2">
+            URL Github
+          </label>
           <input
             type="url"
             {...register("githubUrl")}
@@ -335,7 +342,9 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
         </div>
 
         <div>
-          <label className="block text-base font-medium mb-2">URL Live</label>
+          <label className="block text-sm sm:text-base font-medium mb-2">
+            URL Live
+          </label>
           <input
             type="url"
             {...register("liveUrl")}
@@ -345,7 +354,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       </div>
 
       <div>
-        <label className="block text-base font-medium mb-2">
+        <label className="block text-sm sm:text-base font-medium mb-2">
           Taille pour affichage
         </label>
         <select {...register("size")}>
@@ -356,7 +365,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       </div>
 
       <div>
-        <label className="block text-base font-medium mb-2">
+        <label className="block text-sm sm:text-base font-medium mb-2">
           Ordre de priorité pour affichage
         </label>
         <select {...register("order")}>
