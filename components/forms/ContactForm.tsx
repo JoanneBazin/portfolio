@@ -15,6 +15,14 @@ export const ContactForm = () => {
     {}
   );
 
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+    setErrorMessages({ ...errorMessages, [name]: "" });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -69,11 +77,12 @@ export const ContactForm = () => {
         <input
           type="text"
           id="name"
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          name="name"
+          onChange={handleChange}
           value={form.name}
         />
         {errorMessages.name && (
-          <p className="text-red text-xs sm:text-base">{errorMessages.name}</p>
+          <p className="error-message">{errorMessages.name}</p>
         )}
       </div>
 
@@ -82,11 +91,12 @@ export const ContactForm = () => {
         <input
           type="text"
           id="email"
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          name="email"
+          onChange={handleChange}
           value={form.email}
         />
         {errorMessages.email && (
-          <p className="text-red text-xs sm:text-base">{errorMessages.email}</p>
+          <p className="error-message">{errorMessages.email}</p>
         )}
       </div>
 
@@ -94,21 +104,17 @@ export const ContactForm = () => {
         <label htmlFor="message">Message</label>
         <textarea
           id="message"
+          name="message"
           rows={5}
-          onChange={(e) => setForm({ ...form, message: e.target.value })}
+          onChange={handleChange}
           value={form.message}
         ></textarea>
         {errorMessages.message && (
-          <p className="text-red text-xs sm:text-base">
-            {errorMessages.message}
-          </p>
+          <p className="error-message">{errorMessages.message}</p>
         )}
       </div>
       <div>
-        <button
-          type="submit"
-          className="mt-8 border border-accent text-base sm:text-xl font-semibold py-2 px-4 rounded-xl"
-        >
+        <button type="submit" className="form-btn" disabled={isLoading}>
           {isLoading ? "Envoi en cours..." : "Envoyer"}
         </button>
       </div>

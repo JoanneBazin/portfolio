@@ -41,7 +41,7 @@ export const EditProfile = () => {
             isLoading={updateAbout.isPending}
             initialData={about}
           />
-          {aboutMessage && <p className="my-4 tex-lg">{aboutMessage}</p>}
+          {aboutMessage && <p className="my-4 text-lg">{aboutMessage}</p>}
         </div>
 
         <div>
@@ -49,7 +49,7 @@ export const EditProfile = () => {
           <Dialog.Root>
             <Dialog.Trigger
               aria-label="Ajouter une compétence"
-              className="py-2 px-5 rounded-full bg-gold-light text-background hover:bg-gold-dark font-bold text-2xl my-6"
+              className="py-2 px-5 rounded-full bg-accent text-background hover:bg-gold font-bold text-2xl my-6"
             >
               +
             </Dialog.Trigger>

@@ -188,43 +188,38 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       className="space-y-6 max-w-4xl mx-auto p-6"
     >
       <div>
-        <label className="block text-sm font-medium mb-2">
+        <label className="block text-base font-medium mb-2">
           Titre du projet
         </label>
         <input
           type="text"
           {...register("title")}
-          className="w-full p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
           placeholder="Intégration frontend avec React"
         />
         {errors.title && (
-          <p className="text-red-900 text-sm mt-1">{errors.title.message}</p>
+          <p className="error-message">{errors.title.message}</p>
         )}
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2">Description</label>
+        <label className="block text-base font-medium mb-2">Description</label>
         <textarea
           {...register("description")}
           rows={4}
-          className="w-full p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
           placeholder="Description du projet..."
         />
         {errors.description && (
-          <p className="text-red-900 text-sm mt-1">
-            {errors.description.message}
-          </p>
+          <p className="error-message">{errors.description.message}</p>
         )}
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2">Images</label>
+        <label className="block text-base font-medium mb-2">Images</label>
         <input
           type="file"
           multiple
           accept="image/*"
           onChange={handleImagesChange}
-          className="w-full p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
         />
 
         {imagesPreview.length > 0 && (
@@ -240,28 +235,28 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
                 <button
                   type="button"
                   onClick={() => removeImage(index)}
-                  className="absolute top-2 right-2 bg-red-900 rounded-full w-6 h-6 flex items-center justify-center text-sm hover:bg-red-800"
+                  className="absolute top-2 right-2 bg-red rounded-full w-6 h-6 flex items-center justify-center pb-[1.5px] text-sm hover:bg-gray"
                 >
-                  X
+                  x
                 </button>
               </div>
             ))}
           </div>
         )}
         {errors.images && (
-          <p className="text-red-900 text-sm mt-1">{errors.images.message}</p>
+          <p className="error-message">{errors.images.message}</p>
         )}
       </div>
 
       <div>
         <div className="flex justify-between items-center mb-2">
-          <label className="block text-sm font-medium mb-1">
+          <label className="block text-base font-medium mb-1">
             Objectifs du projet
           </label>
           <button
             type="button"
             onClick={() => appendObjective({ value: "" })}
-            className="bg-gold-light text-background px-3 py-1 rounded text-sm hover:bg-gold-dark"
+            className="bg-accent text-background px-3 py-1 rounded text-sm hover:bg-gold"
           >
             + Ajouter un objectif
           </button>
@@ -274,7 +269,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
               {...register(`objectives.${index}.value`, {
                 required: "Texte requis",
               })}
-              className="flex-1 p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
+              className="flex-1"
               placeholder="Objectif du projet..."
             />
 
@@ -282,7 +277,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
               <button
                 type="button"
                 onClick={() => removeObjective(index)}
-                className="mt-2 text-red-900 text-sm hover:text-red-800"
+                className="mt-2 text-accent text-sm hover:text-red"
               >
                 X
               </button>
@@ -293,13 +288,13 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
 
       <div>
         <div className="flex justify-between items-center mb-2">
-          <label className="block text-sm font-medium mb-1">
+          <label className="block text-base font-medium mb-1">
             Compétences utilisées
           </label>
           <button
             type="button"
             onClick={() => appendSkill({ value: "" })}
-            className="bg-gold-light text-background px-3 py-1 rounded text-sm hover:bg-gold-dark"
+            className="bg-accent text-background px-3 py-1 rounded text-sm hover:bg-gold"
           >
             + Ajouter une compétence
           </button>
@@ -312,7 +307,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
               {...register(`skills.${index}.value`, {
                 required: "Texte requis",
               })}
-              className="flex-1 p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
+              className="flex-1"
               placeholder="React, Node.js..."
             />
 
@@ -320,7 +315,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
               <button
                 type="button"
                 onClick={() => removeSkill(index)}
-                className="mt-2 text-red-900 text-sm hover:text-red-800"
+                className="mt-2 text-accent text-sm hover:text-red"
               >
                 X
               </button>
@@ -331,34 +326,29 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium mb-2">URL Github</label>
+          <label className="block text-base font-medium mb-2">URL Github</label>
           <input
             type="url"
             {...register("githubUrl")}
-            className="w-full p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
             placeholder="https://github.com/username/repo"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">URL Live</label>
+          <label className="block text-base font-medium mb-2">URL Live</label>
           <input
             type="url"
             {...register("liveUrl")}
-            className="w-full p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
             placeholder="https://projet.com"
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2">
+        <label className="block text-base font-medium mb-2">
           Taille pour affichage
         </label>
-        <select
-          {...register("size")}
-          className="w-full p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
-        >
+        <select {...register("size")}>
           <option value="small">S</option>
           <option value="medium">M</option>
           <option value="large">L</option>
@@ -366,13 +356,10 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2">
+        <label className="block text-base font-medium mb-2">
           Ordre de priorité pour affichage
         </label>
-        <select
-          {...register("order")}
-          className="w-full p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
-        >
+        <select {...register("order")}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -381,12 +368,8 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
         </select>
       </div>
 
-      <div className="pt-6">
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="w-full bg-gold-light py-3 px-6 rounded-lg font-medium hover:bg-gold-dark disabled:opacity-50 disabled:cursor-not-allowed"
-        >
+      <div>
+        <button type="submit" className="form-btn" disabled={isLoading}>
           {isLoading
             ? "Chargement..."
             : mode === "edit"

@@ -78,20 +78,14 @@ export const SkillForm: React.FC<ProjectFormProps> = ({
         <input
           type="text"
           {...register("name")}
-          className="w-full p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
           placeholder="React, Node.js..."
         />
-        {errors.name && (
-          <p className="text-red-900 text-sm mt-1">{errors.name.message}</p>
-        )}
+        {errors.name && <p className="error-message">{errors.name.message}</p>}
       </div>
 
       <div>
         <label className="block text-sm font-medium mb-2">Catégorie</label>
-        <select
-          {...register("category")}
-          className="w-full p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
-        >
+        <select {...register("category")}>
           <option value="">Sélectionner...</option>
           <option value="frontend">Frontend</option>
           <option value="backend">Backend</option>
@@ -99,16 +93,14 @@ export const SkillForm: React.FC<ProjectFormProps> = ({
           <option value="tools">Outils</option>
           <option value="design">Design</option>
         </select>
+        {errors.category && (
+          <p className="error-message">{errors.category.message}</p>
+        )}
       </div>
 
       <div>
         <label className="block text-sm font-medium mb-2">Logo</label>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageChange}
-          className="w-full p-3 border border-dark-gray rounded-lg focus:ring-2 focus:ring-gold-dark focus:border-transparent"
-        />
+        <input type="file" accept="image/*" onChange={handleImageChange} />
 
         {imagePreview && (
           <div className="mt-4">
@@ -123,7 +115,7 @@ export const SkillForm: React.FC<ProjectFormProps> = ({
               <button
                 type="button"
                 onClick={removeImage}
-                className="bg-red-900 rounded-full w-4 h-4 flex items-center justify-center text-sm hover:bg-red-800"
+                className="mt-2 text-accent hover:text-red"
               >
                 X
               </button>
@@ -132,12 +124,8 @@ export const SkillForm: React.FC<ProjectFormProps> = ({
         )}
       </div>
 
-      <div className="pt-6">
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="w-full bg-gold-light py-3 px-6 rounded-lg font-medium hover:bg-gold-dark disabled:opacity-50 disabled:cursor-not-allowed"
-        >
+      <div>
+        <button type="submit" disabled={isLoading} className="form-btn">
           {isLoading
             ? "Création en cours..."
             : mode === "edit"

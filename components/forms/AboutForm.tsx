@@ -27,10 +27,7 @@ export const AboutForm: React.FC<AboutFormProps> = ({
         rows={6}
         className="w-full border rounded p-2"
       />
-      <button
-        type="submit"
-        className="text-sm bg-gold-light text-background px-4 py-2 hover:bg-gold-dark"
-      >
+      <button type="submit" className="form-btn">
         {isLoading ? "Enregistrement..." : "Enregistrer"}
       </button>
     </form>
