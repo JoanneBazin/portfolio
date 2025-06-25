@@ -6,7 +6,8 @@
   --background: #0a0a0b;
   --foreground: #fafafa;
   --accent: var(--gold-light);
-  --dark-gray: #2e2c29;
+  --gray-dark: #2e2c29;
+  --gray-light: #d9d9d9;
   --hero-gradient: linear-gradient(135deg, #fcd34d, #a855f7, #d97706);
   --red-light: #7f1d1d;
   --red-dark: #450a0a;
@@ -16,16 +17,18 @@
   --background: #fafafa;
   --foreground: #0a0a0b;
   --accent: var(--gold-dark);
-  --gray: var(--dark-gray);
+  --gray: var(--gray-light);
   --red: var(--red-dark);
+  --gold: var(--gold-light);
 }
 
 [data-theme="dark"] {
   --background: #0a0a0b;
   --foreground: #fafafa;
   --accent: var(--gold-light);
-  --gray: var(--dark-gray);
+  --gray: var(--gray-dark);
   --red: var(--red-light);
+  --gold: var(--gold-dark);
 }
 
 body {
@@ -39,7 +42,22 @@ input,
 select,
 textarea {
   color: var(--foreground);
-  background: var(--dark-gray);
+  background: var(--gray);
+  width: 100%;
+  padding: 12px;
+  border: var(--gray);
+  border-radius: 8px;
+  box-shadow: 0 0 20px var(--gold);
 }
 
-/* Animations */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent);
+  border-color: transparent;
+}
+
+button:hover {
+  background-color: var(--gold);
+}

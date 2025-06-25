@@ -18,6 +18,7 @@ module.exports = {
         accent: "var(--accent)",
         gray: "var(--gray)",
         red: "var(--red)",
+        gold: "var(--gold)",
       },
     },
   },
