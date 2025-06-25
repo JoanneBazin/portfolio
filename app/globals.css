@@ -12,7 +12,7 @@
   --gray-light: #d9d9d9;
   --hero-gradient: linear-gradient(135deg, #fcd34d, #a855f7, #d97706);
   --red-light: #7f1d1d;
-  --red-dark: #450a0a;
+  --red-dark: #910404;
 }
 
 [data-theme="light"] {

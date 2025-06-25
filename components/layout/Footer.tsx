@@ -1,9 +1,15 @@
 "use client";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { useTheme } from "@/hooks/useTheme";
 import Link from "next/link";
 
 export const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
+  const breakpoint = useBreakpoint();
   const { theme, toggleTheme } = useTheme();
+
+  if (breakpoint === "mobile") {
+    return null;
+  }
 
   return (
     <footer className="hidden sm:flex justify-between items-center fixed bottom-0 left-0 w-full bg-background p-6">
@@ -14,11 +20,15 @@ export const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
           </Link>
         )}
 
-        <button aria-label="Changer le thème" onClick={toggleTheme}>
+        <button
+          aria-label="Changer le thème"
+          onClick={toggleTheme}
+          className="text-accent hover:bg-transparent hover:text-gold ml-10"
+        >
           {theme === "dark" ? (
-            <i className="fas fa-sun text-accent"></i>
+            <i className="fas fa-sun"></i>
           ) : (
-            <i className="fa-regular fa-moon text-accent"></i>
+            <i className="fa-regular fa-moon"></i>
           )}
         </button>
       </div>
