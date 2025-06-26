@@ -7,7 +7,7 @@ import { useSkills } from "@/hooks/api/useSkills";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useState } from "react";
 import { CreateSkill } from "./CreateSkill";
-import { SkillCard } from "@/components/ui/SkillCard";
+import { EditableSkillCard } from "@/components/forms/EditableSkillCard";
 
 export const EditProfile = () => {
   const { about } = useAbout();
@@ -68,7 +68,7 @@ export const EditProfile = () => {
                     {skills
                       .filter((skill) => skill.category === category)
                       .map((skill) => (
-                        <SkillCard key={skill.id} skill={skill} />
+                        <EditableSkillCard key={skill.id} skill={skill} />
                       ))}
                   </div>
                 </div>

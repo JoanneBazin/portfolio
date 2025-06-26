@@ -4,7 +4,9 @@
 
 :root {
   --gold-light: #d4af37;
+  --gold-light-50: rgba(212, 175, 55, 0.5);
   --gold-dark: #b8860b;
+  --gold-dark-50: rgba(184, 134, 11, 0.5);
   --background: #0a0a0b;
   --foreground: #fafafa;
   --accent: var(--gold-light);
@@ -19,18 +21,22 @@
   --background: #fafafa;
   --foreground: #0a0a0b;
   --accent: var(--gold-dark);
+  --accent-50: var(--gold-dark-50);
   --gray: var(--gray-light);
   --red: var(--red-dark);
   --gold: var(--gold-light);
+  --gold-50: var(--gold-light-50);
 }
 
 [data-theme="dark"] {
   --background: #0a0a0b;
   --foreground: #fafafa;
   --accent: var(--gold-light);
+  --accent-50: var(--gold-light-50);
   --gray: var(--gray-dark);
   --red: var(--red-light);
   --gold: var(--gold-dark);
+  --gold-50: var(--gold-dark-50);
 }
 
 body {
@@ -49,7 +55,7 @@ textarea {
   padding: 12px;
   border: var(--gray);
   border-radius: 8px;
-  box-shadow: 0 0 10px var(--gold);
+  box-shadow: 0 0 10px var(--gold-50);
   font-size: 14px;
 }
 
@@ -57,7 +63,7 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-50);
   border-color: transparent;
 }
 

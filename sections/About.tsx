@@ -1,50 +1,57 @@
 "use client";
 
+import { AboutCard } from "@/components/ui/AboutCard";
 import { Loader } from "@/components/ui/Loader";
+import { SkillCard } from "@/components/ui/SkillCard";
 import { useAbout } from "@/hooks/api/useAbout";
 import { useSkills } from "@/hooks/api/useSkills";
-import Image from "next/image";
 
 export const About = () => {
-  const { about, isPending, error } = useAbout();
+  const { about, isPending: isAboutPending, error: aboutError } = useAbout();
   const { skills, isPending: isSkillPending, error: skillError } = useSkills();
   return (
     <section
       id="about"
-      className="min-h-screen m-10 sm:m-15 lg:m-20 flex flex-col justify-center gap-20"
+      className="min-h-screen w-full snap-start px-12 pb-28 sm:pb-20 lg:pb-24 pt-10 sm:pt-24 lg:pt-16 flex items-center justify-center"
     >
-      <div>
-        <h3 className="font-montserrat mb-4">Profil</h3>
-        {isPending ? (
-          <Loader />
-        ) : error ? (
-          <p className="text-lg text-medium text-red-900">{error.message}</p>
-        ) : (
-          <p>{about}</p>
-        )}
-      </div>
-      <div>
-        <h3 className="font-montserrat mb-4">Compétences</h3>
-        {isSkillPending ? (
-          <Loader />
-        ) : skillError ? (
-          <p className="text-lg text-medium text-red-900">
-            {skillError.message}
-          </p>
-        ) : (
-          <div className="text-6xl flex gap-6 flex-wrap">
-            {skills.map((skill) => (
-              <div key={skill.id}>
-                <Image
-                  src={skill.logo}
-                  width={60}
-                  height={60}
-                  alt={skill.name}
-                />
-              </div>
-            ))}
-          </div>
-        )}
+      <div className="grid xl:grid-cols-2 gap-12 items-stretch">
+        <AboutCard title="Mon parcours">
+          {isAboutPending ? (
+            <div className="flex items-center justify-center">
+              <Loader />
+            </div>
+          ) : aboutError ? (
+            <div className="flex items-center justify-center">
+              <p className="text-lg text-red">{aboutError.message}</p>
+            </div>
+          ) : (
+            <div className="space-y-4 leading-relaxed text-base sm:text-lg">
+              {about.split("/n").map((line, i) => (
+                <p key={i} className="mb-6">
+                  {line}
+                </p>
+              ))}
+            </div>
+          )}
+        </AboutCard>
+
+        <AboutCard title={"Technologies"} reverse={true}>
+          {isSkillPending ? (
+            <div className="flex items-center justify-center">
+              <Loader />
+            </div>
+          ) : skillError ? (
+            <div className="flex items-center justify-center">
+              <p className="text-lg text-red">{skillError.message}</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-4 gap-4">
+              {skills.map((skill) => (
+                <SkillCard key={skill.id} skill={skill} />
+              ))}
+            </div>
+          )}
+        </AboutCard>
       </div>
     </section>
   );
