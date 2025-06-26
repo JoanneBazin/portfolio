@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Themes Variables */
 :root {
   --gold-light: #d4af37;
   --gold-light-50: rgba(212, 175, 55, 0.5);
@@ -12,7 +13,6 @@
   --accent: var(--gold-light);
   --gray-dark: #2e2c29;
   --gray-light: #d9d9d9;
-  --hero-gradient: linear-gradient(135deg, #fcd34d, #a855f7, #d97706);
   --red-light: #7f1d1d;
   --red-dark: #910404;
 }
@@ -39,6 +39,7 @@
   --gold-50: var(--gold-dark-50);
 }
 
+/* Global Styles */
 body {
   background: var(--background);
   color: var(--foreground);
@@ -84,6 +85,87 @@ textarea:focus {
   .form-btn:hover {
     @apply bg-accent text-background;
   }
+}
+
+.blob-gradient-1 {
+  background: radial-gradient(
+    circle,
+    rgba(245, 200, 100, 0.3) 0%,
+    rgba(245, 200, 100, 0.15) 50%,
+    transparent 100%
+  );
+}
+
+.blob-gradient-2 {
+  background: radial-gradient(
+    circle,
+    rgba(240, 180, 60, 0.3) 0%,
+    rgba(240, 180, 60, 0.05) 50%,
+    transparent 100%
+  );
+}
+
+.blob-gradient-3 {
+  background: radial-gradient(
+    circle,
+    rgba(184, 134, 11, 0.3) 0%,
+    rgba(184, 134, 11, 0.1) 50%,
+    transparent 100%
+  );
+}
+
+/* Animations */
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes drawVerticalLine {
+  from {
+    height: 0;
+  }
+  to {
+    height: 250px;
+  }
+}
+@keyframes drawHorizontalLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 200px;
+  }
+}
+
+.animate-slide-left {
+  animation: slideInLeft 1s ease-out 0.5s both;
+}
+.animate-slide-right {
+  animation: slideInRight 1s ease-out 0.7s both;
+}
+
+.animate-vertical-line {
+  animation: drawVerticalLine 1.2s ease-out 0.5s both;
+}
+.animate-horizontal-line {
+  animation: drawHorizontalLine 1.2s ease-out 0.5s both;
 }
 
 /* Scrollbar */
