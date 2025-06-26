@@ -53,7 +53,7 @@ export const Projects = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen w-full snap-start pt-10 pb-28 sm:pb-0 px-8 sm:pt-24 lg:pt-28"
+      className="min-h-screen w-full snap-start px-8 pt-10 sm:pt-24 lg:pt-28 pb-28 sm:pb-0  pr-0 lg:pr-44"
     >
       {error ? (
         <div className="flex items-center justify-center h-full min-h-[60vh]">

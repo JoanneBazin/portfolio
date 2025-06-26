@@ -6,7 +6,7 @@ import { NavigationWrapper } from "@/components/layout/navigation/NavigationWrap
 
 export default function Home() {
   return (
-    <main className="snap-y snap-mandatory h-screen overflow-scroll pr-0 lg:pr-44 sm:pt-24 lg:pt-0 ">
+    <main className="snap-y snap-mandatory h-screen overflow-scroll overflow-x-hidden">
       <NavigationWrapper />
       <Hero />
       <Projects />

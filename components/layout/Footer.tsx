@@ -12,7 +12,7 @@ export const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
   }
 
   return (
-    <footer className="hidden sm:flex justify-between items-center fixed bottom-0 left-0 w-full bg-background p-6">
+    <footer className="hidden sm:flex justify-between items-center fixed bottom-0 left-0 w-full bg-transparent p-6">
       <div className="flex gap-6 items-center">
         {isAdmin ? null : (
           <Link href="/login" className="text-xs">
@@ -23,7 +23,7 @@ export const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
         <button
           aria-label="Changer le thème"
           onClick={toggleTheme}
-          className="text-accent hover:bg-transparent hover:text-gold ml-10"
+          className="text-accent hover:text-gold ml-10"
         >
           {theme === "dark" ? (
             <i className="fas fa-sun"></i>
