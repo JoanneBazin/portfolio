@@ -3,6 +3,7 @@
 import { AboutCard } from "@/components/ui/AboutCard";
 import { Loader } from "@/components/ui/Loader";
 import { SkillCard } from "@/components/ui/SkillCard";
+import { VerticalLine } from "@/components/ui/VerticalLine";
 import { useAbout } from "@/hooks/api/useAbout";
 import { useSkills } from "@/hooks/api/useSkills";
 
@@ -12,8 +13,9 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen w-full snap-start px-12 pb-28 sm:pb-20 lg:pb-24 pt-10 sm:pt-24 lg:pt-16 pr-0 lg:pr-56 flex items-center justify-center"
+      className="relative min-h-screen w-full snap-start px-12 pb-28 sm:pb-20 lg:pb-24 pt-10 sm:pt-24 lg:pt-16 lg:pr-56 flex items-center justify-center"
     >
+      <VerticalLine />
       <div className="grid xl:grid-cols-2 gap-12 items-stretch">
         <AboutCard title="Mon parcours">
           {isAboutPending ? (

@@ -10,7 +10,7 @@ export const ProjectNode = ({
 }: ProjectNodeProps) => {
   return (
     <div
-      className={`relative bg-background  lg:w-full rounded-xl cursor-pointer border border-transparent transition-all duration-250 z-20 ${
+      className={`relative bg-background w-2/3 lg:w-full rounded-xl cursor-pointer border border-transparent transition-all duration-250 z-20 ${
         isHovered ? "border-accent scale-110 shadow-lg" : ""
       }`}
       style={{

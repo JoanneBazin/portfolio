@@ -21,7 +21,7 @@ export const ProjectModal = ({
             style={{ zIndex: 9998 }}
           />
           <Dialog.Content
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80vw] max-w-3xl max-h-[80vh] overflow-y-auto bg-background border border-accent rounded-lg p-6"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80vw] max-w-3xl max-h-[80vh] overflow-y-auto bg-background border border-accent-50 rounded-lg p-6"
             style={{ zIndex: 9999 }}
           >
             <div className="flex items-center justify-between mb-4">
@@ -70,7 +70,8 @@ export const ProjectModal = ({
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs sm:text-base px-3 sm:px-4 py-2 rounded-xl bg-accent text-background"
+                  className="text-xs sm:text-base px-3 sm:px-4 py-2 rounded-xl bg-accent text-background hover:bg-gold"
+                  aria-label="Aller voir le code sur Github"
                 >
                   <i className="fa-solid fa-code"></i>
                 </a>
@@ -80,7 +81,8 @@ export const ProjectModal = ({
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-accent text-background"
+                  className="px-4 py-2 rounded-lg bg-accent text-background hover:bg-gold"
+                  aria-label="Aller voir le code sur Github"
                 >
                   <i className="fa-solid fa-globe"></i>
                 </a>

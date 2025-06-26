@@ -10,6 +10,7 @@ import { CoreNode } from "@/components/ui/CoreNode";
 import { ProjectsList } from "@/components/ui/ProjectsList";
 import { ProjectModal } from "@/components/ui/ProjectModal";
 import { Loader } from "@/components/ui/Loader";
+import { VerticalLine } from "@/components/ui/VerticalLine";
 
 export const Projects = () => {
   const { projects, isPending, error } = useProjects();
@@ -53,8 +54,9 @@ export const Projects = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen w-full snap-start px-8 pt-10 sm:pt-24 lg:pt-28 pb-28 sm:pb-0  pr-0 lg:pr-44"
+      className="relative min-h-screen w-full snap-start px-8 pt-10 sm:pt-28 lg:pt-32 pb-28 sm:pb-0 lg:pr-44"
     >
+      <VerticalLine />
       {error ? (
         <div className="flex items-center justify-center h-full min-h-[60vh]">
           <p className="text-red text-lg text-center">{error.message}</p>

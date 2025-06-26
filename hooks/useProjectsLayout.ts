@@ -13,9 +13,9 @@ export const useProjectsLayout = (
         projectHeight: 60,
         circuitConfig: {
           corePosition: { x: 0.008, y: 0.02 },
-          projectPosition: { x: 0.25 },
+          projectPosition: { x: 0.5 },
           coreOffset: 25,
-          projectOffset: -17.5,
+          projectOffset: -20,
           pathBend: { horizontal: 0.5, vertical: 0.3 },
           connectionOffset: 20,
           firstProjectOffset: 8,
