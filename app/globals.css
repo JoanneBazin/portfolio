@@ -6,13 +6,12 @@
 :root {
   --gold-light: #d4af37;
   --gold-light-50: rgba(212, 175, 55, 0.5);
-  --gold-dark: #b8860b;
-  --gold-dark-50: rgba(184, 134, 11, 0.5);
+  --gold-dark: #8b6914;
+  --gold-dark-50: rgba(139, 105, 20, 0.5);
   --background: #0a0a0b;
   --foreground: #fafafa;
-  --accent: var(--gold-light);
   --gray-dark: #2e2c29;
-  --gray-light: #d9d9d9;
+  --gray-light: #e5e5e5;
   --red-light: #7f1d1d;
   --red-dark: #910404;
 }
@@ -112,6 +111,17 @@ textarea:focus {
     rgba(184, 134, 11, 0.1) 50%,
     transparent 100%
   );
+}
+
+.vertical-line::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: -4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-50);
 }
 
 /* Animations */

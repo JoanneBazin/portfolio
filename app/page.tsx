@@ -6,7 +6,7 @@ import { Projects } from "@/sections/Projects";
 
 export default function Home() {
   return (
-    <main className="snap-y snap-mandatory h-screen overflow-scroll overflow-x-hidden">
+    <main className="snap-y snap-mandatory h-screen w-screen overflow-scroll overflow-x-hidden">
       <NavigationWrapper />
       <Hero />
       <Projects />

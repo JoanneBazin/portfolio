@@ -1,3 +1,7 @@
 export const Tag = ({ item }: { item: string }) => {
-  return <span className="mr-2 px-2 py-1 bg-gray text-xs rounded">{item}</span>;
+  return (
+    <span className="px-3 sm:px-4 py-2 bg-gray text-sm sm:text-base rounded-lg">
+      {item}
+    </span>
+  );
 };

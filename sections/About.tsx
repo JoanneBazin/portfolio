@@ -13,10 +13,11 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="relative min-h-screen w-full snap-start px-12 pb-28 sm:pb-20 lg:pb-24 pt-10 sm:pt-24 lg:pt-16 lg:pr-56 flex items-center justify-center"
+      className="relative min-h-screen w-full snap-start px-8 sm:px-20 pb-32 sm:pb-20 lg:pb-24 pt-10 sm:pt-28 lg:pt-24 lg:pr-56"
     >
       <VerticalLine />
-      <div className="grid xl:grid-cols-2 gap-12 items-stretch">
+
+      <div className="w-full flex flex-col gap-16">
         <AboutCard title="Mon parcours">
           {isAboutPending ? (
             <div className="flex items-center justify-center">
@@ -47,7 +48,7 @@ export const About = () => {
               <p className="text-lg text-red">{skillError.message}</p>
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-4 gap-5">
               {skills.map((skill) => (
                 <SkillCard key={skill.id} skill={skill} />
               ))}

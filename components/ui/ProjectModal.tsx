@@ -2,8 +2,8 @@
 
 import { ProjectModalProps } from "@/app/types";
 import * as Dialog from "@radix-ui/react-dialog";
-import Image from "next/image";
 import { Tag } from "./Tag";
+import Slideshow from "./SlideShow";
 
 export const ProjectModal = ({
   project,
@@ -21,72 +21,72 @@ export const ProjectModal = ({
             style={{ zIndex: 9998 }}
           />
           <Dialog.Content
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80vw] max-w-3xl max-h-[80vh] overflow-y-auto bg-background border border-accent-50 rounded-lg p-6"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[75vw] h-[75vh] overflow-y-auto bg-background border border-accent-50 rounded-lg p-6 sm:p-12"
             style={{ zIndex: 9999 }}
+            aria-describedby="Détails complets du projet: description, objectifs, technologies utilisées et lien vers le code"
           >
-            <div className="flex items-center justify-between mb-4">
-              <Dialog.Title className="text-lg sm:text-2xl font-semibold font-montserrat">
+            <div className="relative flex flex-col h-full">
+              <Dialog.Title className="text-lg sm:text-2xl sm:font-semibold font-montserrat mb-6 lg:mb-10">
                 {project.title}
               </Dialog.Title>
               <Dialog.Close
-                className="p-2 rounded-full text-accent hover:text-foreground transition-colors text-xl"
+                className="absolute right-[-20px] top-[-30px] rounded-full text-accent hover:text-foreground transition-colors text-xl sm:text-3xl"
                 aria-label="Fermer la modale"
               >
                 x
               </Dialog.Close>
-            </div>
 
-            <div className="space-y-6 my-6">
-              <div className="relative h-52 w-full">
-                <Image
-                  src={project.images[0].url}
-                  alt={project.title}
-                  fill
-                  className="object-cover rounded-xl"
-                />
+              <div className="flex-1 flex flex-col">
+                <Slideshow images={project.images} />
+
+                <div className="space-y-3 my-6 sm:my-8">
+                  <p className="text-base sm:text-lg lg:text-xl">
+                    {project.description}
+                  </p>
+                  <ul className="space-y-1 sm:space-y-2">
+                    {project.objectives.map((el, index) => (
+                      <li
+                        key={index}
+                        className="text-sm sm:text-base lg:text-lg flex items-center"
+                      >
+                        <i className="fa-solid fa-angle-right mr-2"></i>
+                        <p>{el}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  {project.skills.map((skill, index) => (
+                    <Tag key={index} item={skill} />
+                  ))}
+                </div>
+
+                <div className="flex gap-6 mt-8 pb-4 sm:pb-0">
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs sm:text-base px-3 sm:px-4 py-2 rounded-xl bg-accent text-background hover:bg-gold"
+                      aria-label="Aller voir le code sur Github"
+                    >
+                      <i className="fa-solid fa-code"></i>
+                    </a>
+                  )}
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 rounded-lg bg-accent text-background hover:bg-gold"
+                      aria-label="Aller voir le code sur Github"
+                    >
+                      <i className="fa-solid fa-globe"></i>
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
-
-            <div className="space-y-3 mb-4">
-              <p className="text-base sm:text-lg">{project.description}</p>
-              <ul className="space-y-1 sm:space-y-2">
-                {project.objectives.map((el, index) => (
-                  <li key={index} className="text-base">
-                    {el}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="my-2 flex flex-wrap gap-1">
-              {project.skills.map((skill, index) => (
-                <Tag key={index} item={skill} />
-              ))}
-            </div>
-
-            <div className="flex gap-6 pt-4">
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs sm:text-base px-3 sm:px-4 py-2 rounded-xl bg-accent text-background hover:bg-gold"
-                  aria-label="Aller voir le code sur Github"
-                >
-                  <i className="fa-solid fa-code"></i>
-                </a>
-              )}
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-accent text-background hover:bg-gold"
-                  aria-label="Aller voir le code sur Github"
-                >
-                  <i className="fa-solid fa-globe"></i>
-                </a>
-              )}
             </div>
           </Dialog.Content>
         </Dialog.Portal>

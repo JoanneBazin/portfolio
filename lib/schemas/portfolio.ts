@@ -68,7 +68,7 @@ export const projectSchema = z.object({
   githubUrl: z.string().url("URL invalide").optional().or(z.literal("")),
   liveUrl: z.string().url("URL invalide").optional().or(z.literal("")),
   size: z.enum(["small", "medium", "large"]),
-  order: z.number().int("Doit être un entier"),
+  order: z.coerce.number().int("Doit être un entier"),
 
   imagesToDelete: z.array(z.string()).optional(),
 });

@@ -8,15 +8,20 @@ export const ProjectLandingLayout = ({
   onClick,
 }: ProjectLandingProps) => {
   return (
-    <div className="w-full flex items-center">
+    <div
+      className="w-full flex items-center"
+      style={{
+        order: project.order,
+      }}
+    >
       <div className="sm:w-1/6 lg:w-1/5 h-[2px] bg-accent-50"></div>
 
       <div
-        className={`relative bg-background sm:w-5/6 lg:w-2/3 p-6 rounded-xl cursor-pointer border border-transparent transition-all duration-250 z-20 ${
+        className={`relative bg-background sm:w-5/6 lg:w-2/3 p-3 sm:p-6 rounded-xl cursor-pointer border border-transparent transition-all duration-250 z-20 ${
           isHovered ? "border-accent scale-110 shadow-lg z-100" : ""
         }`}
         style={{
-          boxShadow: isHovered ? "0 0 20px rgba(251, 191, 36, 0.6)" : "",
+          boxShadow: isHovered ? "0 0 20px var(--accent-50)" : "",
         }}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}

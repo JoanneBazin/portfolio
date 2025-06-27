@@ -16,7 +16,7 @@ export const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative min-h-screen h-screen w-full snap-start px-20 pt-10 lg:pt-0 pb-28 sm:pb-0 lg:pr-44"
+      className="relative min-h-screen h-screen w-full snap-start px-8 sm:px-20 pt-10 lg:pt-0 pb-28 sm:pb-0 lg:pr-44"
     >
       <VerticalLine />
       {error ? (
@@ -25,7 +25,7 @@ export const Projects = () => {
         </div>
       ) : (
         <>
-          <div className="w-full h-full flex flex-col items-center justify-center gap-4">
+          <div className="w-full h-full flex flex-col justify-center gap-2 sm:gap-4">
             {isPending && <Loader />}
             <>
               {projects.map((project) => (

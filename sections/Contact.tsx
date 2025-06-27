@@ -5,14 +5,25 @@ export const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative min-h-screen w-full snap-start px-8 pb-28 sm:pb-0 pt-8 lg:pr-44 flex justify-center items-center"
+      className="relative min-h-screen h-screen snap-start px-8 sm:px-20 pb-28 sm:pb-0 lg:pr-44"
     >
       <VerticalLine isEnd />
-      <div className="w-full h-full flex flex-col gap-6 items-center">
-        <h3 className="font-montserrat text-lg sm:text-2xl lg:mb-4 text-center">
-          Une question ? Un projet ?
-        </h3>
-        <ContactForm />
+
+      <div className="w-full h-full flex pt-40">
+        <div className="sm:w-[10%] lg:w-1/5 h-[2px] bg-accent-50 mt-4"></div>
+
+        <div className="relative w-full h-full flex flex-col">
+          <div
+            className="absolute w-2 h-2 sm:w-3 sm:h-3 bg-accent-50 rounded-full left-0 top-4 transform -translate-y-1/2 z-40"
+            style={{
+              boxShadow: "0 0 8px rgba(251, 191, 36, 0.8)",
+            }}
+          />
+          <h3 className="font-montserrat text-lg sm:text-2xl lg:text-3xl lg:mb-4 px-7">
+            Une question ? Un projet ?
+          </h3>
+          <ContactForm />
+        </div>
       </div>
     </section>
   );
