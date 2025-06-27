@@ -84,6 +84,14 @@ export interface ParseProjectProps {
   mode: "create" | "edit";
 }
 
+export interface ProjectLandingProps {
+  project: Project;
+  isHovered: boolean;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+  onClick: () => void;
+}
+
 interface ProjectCardProps {
   project: Project;
   onEdit: (project: Project) => void;

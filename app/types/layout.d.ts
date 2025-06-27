@@ -49,7 +49,7 @@ export interface CoreNodeProps {
 export interface ProjectNodeProps {
   project: Project;
   isHovered: boolean;
-  projectHeight: number;
+  projectHeight?: number;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   onClick: () => void;

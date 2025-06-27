@@ -3,7 +3,7 @@ import { LineEnd } from "./LineEnd";
 
 export const VerticalLine = ({
   isEnd = false,
-  positionY = "left-7",
+  positionY = "left-20",
 }: VerticalLineProps) => {
   return (
     <>
