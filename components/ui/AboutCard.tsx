@@ -1,8 +1,4 @@
-interface AboutCardProps {
-  title: string;
-  children: React.ReactNode;
-  reverse?: boolean;
-}
+import { AboutCardProps } from "@/app/types";
 
 export const AboutCard = ({
   title,

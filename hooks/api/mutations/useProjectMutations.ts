@@ -1,23 +1,12 @@
 "use client";
 
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
-  useMutation,
-  UseMutationResult,
-  useQueryClient,
-} from "@tanstack/react-query";
-import { Project } from "@/lib/types";
-
-type UseCreateProjectReturn = UseMutationResult<Project, Error, FormData>;
-type UseUpdateProjectReturn = UseMutationResult<
   Project,
-  Error,
-  { id: string; formData: FormData }
->;
-type UseDeleteProjectReturn = UseMutationResult<
-  { message: string },
-  Error,
-  string
->;
+  UseCreateProjectReturn,
+  UseDeleteProjectReturn,
+  UseUpdateProjectReturn,
+} from "@/app/types";
 
 export const useCreateProject = (): UseCreateProjectReturn => {
   const queryClient = useQueryClient();

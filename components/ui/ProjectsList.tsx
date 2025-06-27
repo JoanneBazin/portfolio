@@ -1,4 +1,4 @@
-import { ProjectListProps } from "@/lib/types";
+import { ProjectListProps } from "@/app/types";
 import { ProjectNode } from "./ProjectNode";
 
 export const ProjectsList = ({

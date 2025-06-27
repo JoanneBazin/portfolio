@@ -1,6 +1,6 @@
 "use client";
 
-import { CircuitPathProps } from "@/lib/types";
+import { CircuitPathProps } from "@/app/types";
 import { useMemo } from "react";
 
 export const CircuitPath = ({

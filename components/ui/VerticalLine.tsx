@@ -1,9 +1,5 @@
+import { VerticalLineProps } from "@/app/types";
 import { LineEnd } from "./LineEnd";
-
-interface VerticalLineProps {
-  isEnd?: boolean;
-  positionY?: string;
-}
 
 export const VerticalLine = ({
   isEnd = false,

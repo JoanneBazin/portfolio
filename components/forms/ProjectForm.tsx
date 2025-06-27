@@ -6,7 +6,7 @@ import {
   ProjectFormData,
   ProjectFormProps,
   ProjectImage,
-} from "@/lib/types";
+} from "@/app/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { useEffect, useState } from "react";

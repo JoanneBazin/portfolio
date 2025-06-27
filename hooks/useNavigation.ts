@@ -1,6 +1,6 @@
 "use client";
 
-import { LinkItem } from "@/lib/types";
+import { LinkItem } from "@/app/types";
 import { useEffect, useState } from "react";
 
 const LINKS: LinkItem[] = [

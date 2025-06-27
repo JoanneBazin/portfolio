@@ -1,4 +1,4 @@
-import { CoreNodeProps } from "@/lib/types";
+import { CoreNodeProps } from "@/app/types";
 
 export const CoreNode = ({ breakpoint }: CoreNodeProps) => {
   const getContainerClass = () => {

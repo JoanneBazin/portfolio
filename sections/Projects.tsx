@@ -2,7 +2,7 @@
 
 import { useProjects } from "@/hooks/api/useProjects";
 import { useEffect, useRef, useState } from "react";
-import { Project } from "@/lib/types";
+import { Project } from "@/app/types";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { useProjectsLayout } from "@/hooks/useProjectsLayout";
 import { CircuitNetwork } from "@/components/ui/CircuitNetwork";

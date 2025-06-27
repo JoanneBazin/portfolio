@@ -1,6 +1,6 @@
 "use client";
 
-import { ProjectModalProps } from "@/lib/types";
+import { ProjectModalProps } from "@/app/types";
 import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
 import { Tag } from "./Tag";

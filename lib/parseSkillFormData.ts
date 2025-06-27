@@ -1,5 +1,5 @@
 import { skillParsedSchema, validateWithSchema } from "./schemas";
-import { ParsedSkillFormData } from "./types";
+import { ParsedSkillFormData } from "../app/types";
 import { uploadImages } from "./uploadImages";
 
 export const parseSkillFormData = async (

@@ -1,15 +1,7 @@
 "use client";
 
+import { ConfirmDialogProps } from "@/app/types";
 import * as Dialog from "@radix-ui/react-dialog";
-
-interface ConfirmDialogProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onConfirm: () => void;
-  title: string;
-  description: string;
-  isLoading?: boolean;
-}
 
 export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
   isOpen,

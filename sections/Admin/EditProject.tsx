@@ -8,7 +8,7 @@ import {
 
 import { useProjects } from "@/hooks/api/useProjects";
 import { useConfirmModal } from "@/hooks/useConfirmModal";
-import { Project, SubmitProps } from "@/lib/types";
+import { Project, SubmitProps } from "@/app/types";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useState } from "react";
 

@@ -1,5 +1,5 @@
 import path from "path";
-import { UploadImageProps } from "./types";
+import { UploadImageProps } from "../app/types";
 import { promises } from "fs";
 import sharp from "sharp";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { FetchDataResponse } from "@/lib/types";
+import { FetchDataResponse } from "@/app/types";
 import { useQuery } from "@tanstack/react-query";
 
 const useFetchData = () => {

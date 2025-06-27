@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Skill } from "@/lib/types";
+import { Skill } from "@/app/types";
 
 export const SkillCard = ({ skill }: { skill: Skill }) => {
   return (

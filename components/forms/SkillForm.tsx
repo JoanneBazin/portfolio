@@ -1,7 +1,7 @@
 "use client";
 
 import { SkillFormDataZ, skillSchema } from "@/lib/schemas";
-import { ImagePreview, ProjectFormProps, SkillFormData } from "@/lib/types";
+import { ImagePreview, ProjectFormProps, SkillFormData } from "@/app/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { useState } from "react";

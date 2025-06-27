@@ -1,4 +1,4 @@
-import { CircuitNetworkProps } from "@/lib/types";
+import { CircuitNetworkProps } from "@/app/types";
 import { CircuitPath } from "./CircuitPath";
 
 export const CircuitNetwork = ({

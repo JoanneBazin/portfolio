@@ -1,10 +1,5 @@
-import { Project } from "@/lib/types";
+import { ProjectCardProps } from "@/app/types";
 import Image from "next/image";
-
-interface ProjectCardProps {
-  project: Project;
-  onEdit: (project: Project) => void;
-}
 
 export const ProjectCard = ({ project, onEdit }: ProjectCardProps) => {
   const { title, images } = project;
