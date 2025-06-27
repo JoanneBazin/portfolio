@@ -1,6 +1,7 @@
 "use client";
 
 import { useNavigation } from "@/hooks/useNavigation";
+import { Code, MessageCircle, User } from "lucide-react";
 
 export const BottomNav = () => {
   const { activeLink, hideSidebar, LINKS } = useNavigation();
@@ -23,15 +24,14 @@ export const BottomNav = () => {
               href={`#${link.id}`}
               className="flex flex-col items-center gap-2"
             >
-              <i
-                className={`text-lg ${
-                  link.id === "projects"
-                    ? "fa-solid fa-laptop-code"
-                    : link.id === "about"
-                    ? "fa-regular fa-address-card"
-                    : "fa-regular fa-comments"
-                }`}
-              ></i>
+              {link.id === "projects" ? (
+                <Code size={28} />
+              ) : link.id === "about" ? (
+                <User size={28} />
+              ) : (
+                <MessageCircle size={28} />
+              )}
+
               <p className="text-sm">{link.label}</p>
             </a>
           </li>

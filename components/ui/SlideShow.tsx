@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ProjectImage } from "@/app/types";
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Slideshow = ({ images }: { images: ProjectImage[] }) => {
   const [activeSlide, setActiveSlide] = useState(images[0]);
@@ -23,11 +24,11 @@ const Slideshow = ({ images }: { images: ProjectImage[] }) => {
       {images?.length > 1 && (
         <>
           <button
-            className="h-full w-[5%]"
+            className="h-full w-[5%] flex items-center justify-center"
             onClick={handlePrevImg}
             aria-label="Photo précédente"
           >
-            <i className="fa-solid fa-angle-left text-accent lg:text-2xl"></i>
+            <ChevronLeft color="var(--accent)" size={30} />
           </button>
         </>
       )}
@@ -43,11 +44,11 @@ const Slideshow = ({ images }: { images: ProjectImage[] }) => {
       )}
       {images?.length > 1 && (
         <button
-          className="h-full min-h-32 w-[5%]"
+          className="h-full min-h-32 w-[5%] flex items-center justify-center"
           onClick={handleNextImg}
           aria-label="Photo suivante"
         >
-          <i className="fa-solid fa-angle-right text-accent lg:text-2xl"></i>
+          <ChevronRight color="var(--accent)" size={30} />
         </button>
       )}
     </div>

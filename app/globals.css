@@ -149,33 +149,37 @@ textarea:focus {
 
 @keyframes drawVerticalLine {
   from {
-    height: 0;
+    opacity: 0;
+    transform: translateY(-100px) rotate(15deg);
   }
   to {
-    height: 250px;
+    opacity: 1;
+    transform: translateY(0) rotate(15deg);
   }
 }
 @keyframes drawHorizontalLine {
   from {
-    width: 0;
+    opacity: 0;
+    transform: translateX(100px);
   }
   to {
-    width: 200px;
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
 .animate-slide-left {
-  animation: slideInLeft 1s ease-out 0.5s both;
+  animation: slideInLeft 1s ease-out forwards;
 }
 .animate-slide-right {
-  animation: slideInRight 1s ease-out 0.7s both;
+  animation: slideInRight 1s ease-out forwards;
 }
 
 .animate-vertical-line {
-  animation: drawVerticalLine 1.2s ease-out 0.5s both;
+  animation: drawVerticalLine 1.2s ease-out forwards;
 }
 .animate-horizontal-line {
-  animation: drawHorizontalLine 1.2s ease-out 0.5s both;
+  animation: drawHorizontalLine 1.2s ease-out forwards;
 }
 
 /* Scrollbar */

@@ -1,6 +1,7 @@
 "use client";
 
 import { LoginForm } from "@/components/forms/LoginForm";
+import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 
 const AdminLogin = () => {
@@ -12,7 +13,7 @@ const AdminLogin = () => {
           aria-label="Retourner à l'accueil"
           className="absolute top-4 left-6"
         >
-          <i className="fa-solid fa-chevron-left text-4xl text-accent"></i>
+          <ChevronLeft color="var(--accent)" size={60} />
         </Link>
       </div>
       <div className="flex flex-col items-center py-24">

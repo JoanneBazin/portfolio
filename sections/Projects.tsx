@@ -6,7 +6,7 @@ import { Project } from "@/app/types";
 import { ProjectModal } from "@/components/ui/ProjectModal";
 import { Loader } from "@/components/ui/Loader";
 import { VerticalLine } from "@/components/ui/VerticalLine";
-import { ProjectLandingLayout } from "@/components/ui/ProjectLandingLayout";
+import { ProjectCard } from "@/components/ui/ProjectCard";
 
 export const Projects = () => {
   const { projects, isPending, error } = useProjects();
@@ -29,7 +29,7 @@ export const Projects = () => {
             {isPending && <Loader />}
             <>
               {projects.map((project) => (
-                <ProjectLandingLayout
+                <ProjectCard
                   key={project.id}
                   project={project}
                   isHovered={hoveredProject === project.id}

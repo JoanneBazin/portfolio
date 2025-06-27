@@ -1,6 +1,6 @@
 import { ProjectForm } from "@/components/forms/ProjectForm";
 import { Loader } from "@/components/ui/Loader";
-import { ProjectCard } from "@/components/ui/ProjectCard";
+import { AdminProjectCard } from "@/components/ui/AdminProjectCard";
 import {
   useDeleteProject,
   useUpdateProject,
@@ -75,7 +75,7 @@ export const EditProject = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div key={project.id} className="relative">
-              <ProjectCard
+              <AdminProjectCard
                 project={project}
                 onEdit={() => setSelectedProject(project)}
               />
@@ -90,7 +90,7 @@ export const EditProject = () => {
       >
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50" />
-          <Dialog.Content className="fixed top-1/2 left-1/2 w-[90vw] max-h-[80vh] overflow-y-auto bg-background rounded-lg p-6 transform -translate-x-1/2 -translate-y-1/2">
+          <Dialog.Content className="fixed top-1/2 left-1/2 w-[90vw] max-h-[80vh] overflow-y-auto bg-background border border-accent-50 rounded-lg p-6 transform -translate-x-1/2 -translate-y-1/2">
             <Dialog.Title>
               <div className="mb-4 px-6 flex flex-wrap gap-2 justify-around items-start">
                 <p className="text-lg sm:text-2xl font-bold font-montserrat ">

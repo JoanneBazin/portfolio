@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Montserrat, Open_Sans } from "next/font/google";
 import "./globals.css";
-import Script from "next/script";
 import { Footer } from "@/components/layout/Footer";
 import { AuthProvider } from "@/components/providers/auth-provider";
 import { auth } from "@/lib/auth";
@@ -51,10 +50,6 @@ export default async function RootLayout({
             <Footer isAdmin={!!session} />
           </QueryProvider>
         </AuthProvider>
-        <Script
-          src="https://kit.fontawesome.com/704403949e.js"
-          crossOrigin="anonymous"
-        />
       </body>
     </html>
   );

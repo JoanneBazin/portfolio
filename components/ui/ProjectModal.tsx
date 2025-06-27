@@ -4,6 +4,7 @@ import { ProjectModalProps } from "@/app/types";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Tag } from "./Tag";
 import Slideshow from "./SlideShow";
+import { ChevronRight, Code, Globe } from "lucide-react";
 
 export const ProjectModal = ({
   project,
@@ -49,8 +50,8 @@ export const ProjectModal = ({
                         key={index}
                         className="text-sm sm:text-base lg:text-lg flex items-center"
                       >
-                        <i className="fa-solid fa-angle-right mr-2"></i>
-                        <p>{el}</p>
+                        <ChevronRight color="var(--foreground)" size={24} />
+                        <p className="ml-2">{el}</p>
                       </li>
                     ))}
                   </ul>
@@ -68,10 +69,10 @@ export const ProjectModal = ({
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs sm:text-base px-3 sm:px-4 py-2 rounded-xl bg-accent text-background hover:bg-gold"
+                      className="text-xs sm:text-base px-3 sm:px-4 py-2 rounded-xl bg-accent hover:bg-gold"
                       aria-label="Aller voir le code sur Github"
                     >
-                      <i className="fa-solid fa-code"></i>
+                      <Code color="var(--background)" size={24} />
                     </a>
                   )}
                   {project.liveUrl && (
@@ -79,10 +80,10 @@ export const ProjectModal = ({
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-lg bg-accent text-background hover:bg-gold"
+                      className="px-4 py-2 rounded-lg bg-accent hover:bg-gold"
                       aria-label="Aller voir le code sur Github"
                     >
-                      <i className="fa-solid fa-globe"></i>
+                      <Globe color="var(--background)" size={24} />
                     </a>
                   )}
                 </div>

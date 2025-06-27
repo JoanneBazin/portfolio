@@ -1,4 +1,15 @@
+"use client";
+import { useEffect, useState } from "react";
+
 export const Hero = () => {
+  const [animationReady, setAnimationReady] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAnimationReady(true);
+    }, 10);
+  }, []);
+
   return (
     <section
       id="hero"
@@ -12,19 +23,43 @@ export const Hero = () => {
 
       <div className="flex flex-col lg:flex-row gap-12 xl:gap-20 items-center">
         <div className="relative w-full">
-          <h1 className="flex lg:flex-col justify-center sm:justify-start gap-2 lg:gap-6 text-3xl lg:text-5xl font-playfair text-accent-50 relative animate-slide-right">
+          <h1
+            className={`flex lg:flex-col justify-center sm:justify-start gap-2 lg:gap-6 text-3xl lg:text-5xl font-playfair text-accent-50 relative ${
+              animationReady
+                ? "animate-slide-right"
+                : "opacity-0 transform -translate-x-[-100px]"
+            }`}
+          >
             <span className="ml-4">Joanne</span>
             <span>Bazin</span>
           </h1>
         </div>
 
         <div className="relative">
-          <div className="hidden lg:block absolute top-[-120px] left-[-10px] w-[3px] bg-accent-50 rotate-[15deg] animate-vertical-line"></div>
-          <div className="lg:hidden absolute left-[-90px] sm:left-[-110px] top-0 h-[3px] bg-accent-50 animate-horizontal-line"></div>
+          <div
+            className={`hidden lg:block w-[2px] h-40 bg-accent-50 ${
+              animationReady
+                ? "animate-vertical-line"
+                : "opacity-0 transform translate-y-[-100px] rotate-15"
+            }`}
+          ></div>
+          <div
+            className={`lg:hidden h-[2px] w-36 bg-accent-50 ${
+              animationReady
+                ? "animate-horizontal-line"
+                : "opacity-0 transform -translate-x-[100px]"
+            }`}
+          ></div>
         </div>
 
         <div className="relative">
-          <h2 className="flex flex-col items-center sm:items-end lg:items-start text-4xl sm:text-5xl lg:text-7xl sm:ml-6 font-playfair relative animate-slide-left">
+          <h2
+            className={`flex flex-col items-center sm:items-end lg:items-start text-4xl sm:text-5xl lg:text-7xl sm:ml-6 font-playfair relative ${
+              animationReady
+                ? "animate-slide-left"
+                : "opacity-0 transform -translate-x-[100px]"
+            }`}
+          >
             <span className="uppercase mb-8 lg:mb-12 lg:ml-6 sm:mr-10">
               Développeuse
             </span>

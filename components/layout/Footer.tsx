@@ -1,6 +1,7 @@
 "use client";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { useTheme } from "@/hooks/useTheme";
+import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
 
 export const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
@@ -23,13 +24,9 @@ export const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
         <button
           aria-label="Changer le thème"
           onClick={toggleTheme}
-          className="text-accent hover:text-gold ml-10"
+          className="text-accent hover:color-gold ml-10"
         >
-          {theme === "dark" ? (
-            <i className="fas fa-sun"></i>
-          ) : (
-            <i className="fa-regular fa-moon"></i>
-          )}
+          {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
         </button>
       </div>
 
@@ -38,17 +35,19 @@ export const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
           href="https://github.com/JoanneBazin"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-accent hover:text-foreground transition-colors duration-200"
+          className="text-accent hover:color-foreground transition-colors duration-200"
+          aria-label="Visiter ma page Github"
         >
-          <i className="fa-brands fa-github text-2xl"></i>
+          <i className="text-2xl">GITHUB</i>
         </a>
         <a
           href="https://fr.linkedin.com/in/joanne-bazin?trk=people-guest_people_search-card"
           target="_blank"
           rel="noopener noreferrer"
           className="text-accent hover:text-foreground transition-colors duration-200"
+          aria-label="Voir mon profil LinkedIn"
         >
-          <i className="fa-brands fa-linkedin-in text-3xl"></i>
+          <i className="text-3xl">LKIN</i>
         </a>
       </div>
     </footer>

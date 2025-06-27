@@ -1,30 +1,46 @@
-import { ProjectCardProps } from "@/app/types";
-import Image from "next/image";
+import { ProjectLandingProps } from "@/app/types";
 
-export const ProjectCard = ({ project, onEdit }: ProjectCardProps) => {
-  const { title, images } = project;
-
+export const ProjectCard = ({
+  project,
+  isHovered,
+  onMouseEnter,
+  onMouseLeave,
+  onClick,
+}: ProjectLandingProps) => {
   return (
-    <article
-      className={`bg-zinc-800/10 backdrop-blur-md border border-yellow-500/20 rounded-2xl h-60 w-full p-6 shadow-[0_0_30px_rgba(255,215,0,0.1)] transition-all hover:shadow-[0_0_40px_rgba(255,215,0,0.2)] relative`}
+    <div
+      className="w-full flex items-center"
+      style={{
+        order: project.order,
+      }}
     >
-      <Image
-        src={images[0].url}
-        alt={title}
-        fill
-        className="object-cover rounded-xl"
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 30vw"
-      />
+      <div className="sm:w-1/6 lg:w-1/5 h-[2px] bg-accent-50"></div>
 
-      <button
-        onClick={() => onEdit(project)}
-        aria-label="Modifier ou supprimer le projet"
-        className="p-4 absolute bottom-0 left-0 bg-background opacity-90 w-full h-1/2"
+      <div
+        className={`relative bg-background sm:w-5/6 lg:w-2/3 p-3 sm:p-6 rounded-xl cursor-pointer border border-transparent transition-all duration-250 z-20 ${
+          isHovered ? "border-accent scale-110 shadow-lg z-100" : ""
+        }`}
+        style={{
+          boxShadow: isHovered ? "0 0 20px var(--accent-50)" : "",
+        }}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onClick={onClick}
+        aria-label="Ouvrir la modale du projet"
       >
-        <h3 className="font-montserrat sm:font-medium text-sm sm:text-base">
-          {title}
-        </h3>
-      </button>
-    </article>
+        <div
+          className="absolute w-2 h-2 sm:w-3 sm:h-3 bg-accent-50 rounded-full left-0 top-1/2 transform -translate-y-1/2 z-40"
+          style={{
+            boxShadow: "0 0 8px rgba(251, 191, 36, 0.8)",
+          }}
+        />
+        <div className="text-base sm:text-lg font-medium mb-1 leading-tight">
+          {project.title}
+        </div>
+        <div className="text-xs sm:text-sm text-accent leading-tight">
+          {project.skills.join(", ")}
+        </div>
+      </div>
+    </div>
   );
 };

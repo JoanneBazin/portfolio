@@ -43,7 +43,7 @@ export const EditProfile = () => {
               </Dialog.Trigger>
               <Dialog.Portal>
                 <Dialog.Overlay className=" fixed inset-0 bg-black/50" />
-                <Dialog.Content className="fixed top-1/2 left-1/2 w-[80vw] -translate-x-1/2 -translate-y-1/2 rounded-xl bg-background p-4">
+                <Dialog.Content className="fixed top-1/2 left-1/2 max-w-[80vw] -translate-x-1/2 -translate-y-1/2 rounded-xl bg-background border border-accent-50 p-6">
                   <Dialog.Title className="text-lg font-montserrat font-medium">
                     Ajouter une compétence
                   </Dialog.Title>
