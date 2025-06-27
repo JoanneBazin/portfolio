@@ -65,12 +65,6 @@ export interface ProjectListProps {
   onProjectClick: (project: Project) => void;
 }
 
-export interface ProjectModalProps {
-  project: Project | null;
-  isOpen: boolean;
-  onClose: () => void;
-}
-
 interface VerticalLineProps {
   isEnd?: boolean;
   positionY?: string;

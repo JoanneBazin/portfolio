@@ -28,3 +28,25 @@ interface ConfirmDialogProps {
 }
 
 type UseEditAboutReturn = UseMutationResult<string, Error, string>;
+
+type UseCreateProjectReturn = UseMutationResult<Project, Error, FormData>;
+
+type UseUpdateProjectReturn = UseMutationResult<
+  Project,
+  Error,
+  { id: string; formData: FormData }
+>;
+
+type UseDeleteProjectReturn = UseMutationResult<
+  { message: string },
+  Error,
+  string
+>;
+
+type UseCreateSkillReturn = UseMutationResult<Skill, Error, FormData>;
+
+type UseDeleteSkillReturn = UseMutationResult<
+  { message: string },
+  Error,
+  string
+>;

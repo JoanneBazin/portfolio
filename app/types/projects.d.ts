@@ -88,3 +88,9 @@ interface ProjectCardProps {
   project: Project;
   onEdit: (project: Project) => void;
 }
+
+export interface ProjectModalProps {
+  project: Project | null;
+  isOpen: boolean;
+  onClose: () => void;
+}
