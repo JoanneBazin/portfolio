@@ -3,9 +3,13 @@ import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { useTheme } from "@/hooks/useTheme";
 import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
+import { GithubIcon } from "../ui/icons/GithubIcon";
+import { LinkedinIcon } from "../ui/icons/LinkedinIcon";
+import { useSession } from "next-auth/react";
 
-export const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
+export const Footer = () => {
   const breakpoint = useBreakpoint();
+  const { data: session } = useSession();
   const { theme, toggleTheme } = useTheme();
 
   if (breakpoint === "mobile") {
@@ -15,7 +19,7 @@ export const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
   return (
     <footer className="hidden sm:flex justify-between items-center fixed bottom-0 left-0 w-full bg-transparent p-6">
       <div className="flex gap-6 items-center">
-        {isAdmin ? null : (
+        {session ? null : (
           <Link href="/login" className="text-xs">
             Accès admin
           </Link>
@@ -35,10 +39,10 @@ export const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
           href="https://github.com/JoanneBazin"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-accent hover:color-foreground transition-colors duration-200"
+          className="text-accent hover:text-foreground transition-colors duration-200"
           aria-label="Visiter ma page Github"
         >
-          <i className="text-2xl">GITHUB</i>
+          <GithubIcon />
         </a>
         <a
           href="https://fr.linkedin.com/in/joanne-bazin?trk=people-guest_people_search-card"
@@ -47,7 +51,7 @@ export const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
           className="text-accent hover:text-foreground transition-colors duration-200"
           aria-label="Voir mon profil LinkedIn"
         >
-          <i className="text-3xl">LKIN</i>
+          <LinkedinIcon />
         </a>
       </div>
     </footer>

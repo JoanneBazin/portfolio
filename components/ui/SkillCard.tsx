@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Skill } from "@/app/types";
+import { Skill } from "@/types";
 
 export const SkillCard = ({ skill }: { skill: Skill }) => {
   return (
@@ -11,7 +11,7 @@ export const SkillCard = ({ skill }: { skill: Skill }) => {
           src={skill.logo}
           fill
           sizes="(max-width: 640px) 32px, (max-width: 1024px) 48px, 64px"
-          alt={skill.name}
+          alt={`Logo ${skill.name}`}
           className="object-contain px-2 sm:px-4"
         />
       </div>

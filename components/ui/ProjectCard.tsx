@@ -1,4 +1,4 @@
-import { ProjectLandingProps } from "@/app/types";
+import { ProjectLandingProps } from "@/types";
 
 export const ProjectCard = ({
   project,

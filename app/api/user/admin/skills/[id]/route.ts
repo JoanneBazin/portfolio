@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const authResult = await requireAdminAuth();
   if (authResult instanceof NextResponse) {
@@ -22,7 +22,7 @@ export async function DELETE(
       select: { logo: true },
     });
 
-    const deletedSkill = await prisma.skill.delete({
+    await prisma.skill.delete({
       where: {
         id: skillId,
       },
@@ -37,6 +37,7 @@ export async function DELETE(
       { message: "Compétence supprimé !" },
       { status: 200 }
     );
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return NextResponse.json(
       { error: "Erreur lors de la suppression de la compétence" },

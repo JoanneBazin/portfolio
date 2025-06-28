@@ -1,6 +1,6 @@
 "use client";
 
-import { LinkItem } from "@/app/types";
+import { LinkItem } from "@/types";
 import { CreateProjects } from "@/sections/Admin/CreateProject";
 import { EditProfile } from "@/sections/Admin/EditProfile";
 import { EditProject } from "@/sections/Admin/EditProject";

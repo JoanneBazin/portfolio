@@ -6,7 +6,7 @@ import {
   UseCreateProjectReturn,
   UseDeleteProjectReturn,
   UseUpdateProjectReturn,
-} from "@/app/types";
+} from "@/types";
 
 export const useCreateProject = (): UseCreateProjectReturn => {
   const queryClient = useQueryClient();

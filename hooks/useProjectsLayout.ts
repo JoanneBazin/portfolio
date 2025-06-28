@@ -1,6 +1,6 @@
 "use client";
 
-import { ProjectsLayoutConfig } from "@/app/types";
+import { ProjectsLayoutConfig } from "@/types";
 import { useMemo } from "react";
 
 export const useProjectsLayout = (

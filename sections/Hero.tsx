@@ -7,7 +7,7 @@ export const Hero = () => {
   useEffect(() => {
     setTimeout(() => {
       setAnimationReady(true);
-    }, 10);
+    }, 100);
   }, []);
 
   return (

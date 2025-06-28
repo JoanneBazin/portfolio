@@ -3,7 +3,6 @@ import { Playfair_Display, Montserrat, Open_Sans } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { AuthProvider } from "@/components/providers/auth-provider";
-import { auth } from "@/lib/auth";
 import { AdminHeader } from "@/components/layout/AdminHeader";
 import QueryProvider from "@/components/providers/QueryProvider";
 
@@ -36,8 +35,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
-
   return (
     <html lang="fr">
       <body
@@ -45,9 +42,9 @@ export default async function RootLayout({
       >
         <AuthProvider>
           <QueryProvider>
-            {session && <AdminHeader />}
+            <AdminHeader />
             {children}
-            <Footer isAdmin={!!session} />
+            <Footer />
           </QueryProvider>
         </AuthProvider>
       </body>

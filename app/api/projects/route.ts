@@ -21,7 +21,11 @@ export async function POST(request: Request) {
       );
     }
 
-    const { images, imagesToDelete, ...projectData } = parsedData.data;
+    const {
+      images,
+      imagesToDelete, // eslint-disable-line @typescript-eslint/no-unused-vars
+      ...projectData
+    } = parsedData.data;
 
     const newProject = await prisma.project.create({
       data: {
@@ -37,6 +41,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json(newProject, { status: 201 });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return NextResponse.json(
       { error: "Erreur lors de la création du projet" },

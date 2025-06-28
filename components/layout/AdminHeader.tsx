@@ -1,10 +1,14 @@
 "use client";
 
 import { House, LogOut, SquarePen } from "lucide-react";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
 export const AdminHeader = () => {
+  const { data: session } = useSession();
+
+  if (!session) return;
+
   return (
     <header className="fixed top-4 left-0 z-50">
       <nav className="flex flex-col gap-2 lg:gap-6 p-2">

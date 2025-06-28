@@ -1,6 +1,6 @@
 "use client";
 
-import { ConfirmDialogProps } from "@/app/types";
+import { ConfirmDialogProps } from "@/types";
 import * as Dialog from "@radix-ui/react-dialog";
 
 export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({

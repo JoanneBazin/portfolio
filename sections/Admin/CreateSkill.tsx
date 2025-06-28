@@ -1,6 +1,6 @@
 "use client";
 
-import { SubmitProps } from "@/app/types";
+import { SubmitProps } from "@/types";
 import { SkillForm } from "@/components/forms/SkillForm";
 import { useCreateSkill } from "@/hooks/api/mutations/useSkillMutation";
 import { useState } from "react";

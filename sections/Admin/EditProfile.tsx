@@ -33,7 +33,7 @@ export const EditProfile = () => {
       <div className="flex flex-col gap-16 items-center w-full">
         <div className="w-full lg:w-3/5">
           <div className="flex gap-12 items-center mb-6">
-            <h3 className="font-montserrat text-xl font-medium">Compétences</h3>
+            <h2 className="font-montserrat text-xl font-medium">Compétences</h2>
             <Dialog.Root>
               <Dialog.Trigger
                 aria-label="Ajouter une compétence"
@@ -77,7 +77,7 @@ export const EditProfile = () => {
         </div>
 
         <div className="flex flex-col w-full lg:w-3/5">
-          <h3 className="font-montserrat text-xl font-medium mb-6">A propos</h3>
+          <h2 className="font-montserrat text-xl font-medium mb-6">A propos</h2>
           <AboutForm
             onSubmit={handleAboutSubmit}
             isLoading={updateAbout.isPending}

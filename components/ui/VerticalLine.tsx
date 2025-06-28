@@ -1,4 +1,4 @@
-import { VerticalLineProps } from "@/app/types";
+import { VerticalLineProps } from "@/types";
 
 export const VerticalLine = ({
   isEnd = false,

@@ -35,6 +35,7 @@ export async function PUT(request: Request) {
     });
 
     return NextResponse.json(updatedUser.about, { status: 200 });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return NextResponse.json(
       { error: "Erreur lors de la publication" },

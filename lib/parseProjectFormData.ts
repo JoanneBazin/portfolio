@@ -3,7 +3,7 @@ import {
   ParsedProjectFormData,
   ParseProjectProps,
   UploadImageProps,
-} from "../app/types";
+} from "../types";
 import { uploadImages } from "./uploadImages";
 
 export const parseProjectFormData = async ({

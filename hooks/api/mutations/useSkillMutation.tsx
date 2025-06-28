@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Skill, UseCreateSkillReturn, UseDeleteSkillReturn } from "@/app/types";
+import { Skill, UseCreateSkillReturn, UseDeleteSkillReturn } from "@/types";
 
 export const useCreateSkill = (): UseCreateSkillReturn => {
   const queryClient = useQueryClient();

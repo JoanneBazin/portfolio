@@ -2,7 +2,7 @@
 
 import { useProjects } from "@/hooks/api/useProjects";
 import { useState } from "react";
-import { Project } from "@/app/types";
+import { Project } from "@/types";
 import { ProjectModal } from "@/components/ui/ProjectModal";
 import { Loader } from "@/components/ui/Loader";
 import { VerticalLine } from "@/components/ui/VerticalLine";
@@ -26,9 +26,10 @@ export const Projects = () => {
       ) : (
         <>
           <div className="w-full h-full flex flex-col justify-center gap-2 sm:gap-4">
-            {isPending && <Loader />}
-            <>
-              {projects.map((project) => (
+            {isPending || !projects ? (
+              <Loader />
+            ) : (
+              projects.map((project) => (
                 <ProjectCard
                   key={project.id}
                   project={project}
@@ -37,8 +38,9 @@ export const Projects = () => {
                   onMouseLeave={() => setHoveredProject(null)}
                   onClick={() => setSelectedProject(project)}
                 />
-              ))}
-            </>
+              ))
+            )}
+            <></>
           </div>
           <ProjectModal
             project={selectedProject}

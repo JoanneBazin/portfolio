@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ProjectImage } from "@/app/types";
+import { ProjectImage } from "@/types";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 

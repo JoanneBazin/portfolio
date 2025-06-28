@@ -16,6 +16,7 @@ export async function GET() {
     });
 
     return NextResponse.json(userData, { status: 200 });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return NextResponse.json(
       { error: "Erreur lors de la récupération des données" },

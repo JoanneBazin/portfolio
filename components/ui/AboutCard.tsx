@@ -1,4 +1,4 @@
-import { AboutCardProps } from "@/app/types";
+import { AboutCardProps } from "@/types";
 
 export const AboutCard = ({
   title,

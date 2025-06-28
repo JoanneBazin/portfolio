@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const authResult = await requireAdminAuth();
   if (authResult instanceof NextResponse) {
@@ -52,6 +52,7 @@ export async function PUT(
           const urlToDelete = imagesToDeleteFromDB.map((img) => img.url);
           await Promise.all(urlToDelete.map(async (url) => deleteImage(url)));
         }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         console.log("Erreur lors de la suppression des images");
       }
@@ -74,6 +75,7 @@ export async function PUT(
     });
 
     return NextResponse.json(updatedProject, { status: 200 });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return NextResponse.json(
       { error: "Erreur dans la mise à jour du projet" },
@@ -84,7 +86,7 @@ export async function PUT(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const authResult = await requireAdminAuth();
   if (authResult instanceof NextResponse) {
@@ -105,7 +107,7 @@ export async function DELETE(
       },
     });
 
-    const deletedProject = await prisma.project.delete({
+    await prisma.project.delete({
       where: {
         id: projectId,
       },
@@ -117,6 +119,7 @@ export async function DELETE(
     }
 
     return NextResponse.json({ message: `Projet supprimé !` }, { status: 200 });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return NextResponse.json(
       { error: "Erreur lors de la suppression du projet" },

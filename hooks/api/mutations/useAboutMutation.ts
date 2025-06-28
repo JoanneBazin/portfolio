@@ -1,6 +1,6 @@
 "use client";
 
-import { UseEditAboutReturn } from "@/app/types";
+import { UseEditAboutReturn } from "@/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const useUpdateAbout = (): UseEditAboutReturn => {

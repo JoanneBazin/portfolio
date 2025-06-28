@@ -1,6 +1,6 @@
 "use client";
 
-import { ProjectModalProps } from "@/app/types";
+import { ProjectModalProps } from "@/types";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Tag } from "./Tag";
 import Slideshow from "./SlideShow";
@@ -24,10 +24,14 @@ export const ProjectModal = ({
           <Dialog.Content
             className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[75vw] h-[75vh] overflow-y-auto bg-background border border-accent-50 rounded-lg p-6 sm:p-12"
             style={{ zIndex: 9999 }}
-            aria-describedby="Détails complets du projet: description, objectifs, technologies utilisées et lien vers le code"
+            aria-describedby="project-modal-desc"
+            aria-labelledby="project-modal-title"
           >
             <div className="relative flex flex-col h-full">
-              <Dialog.Title className="text-lg sm:text-2xl sm:font-semibold font-montserrat mb-6 lg:mb-10">
+              <Dialog.Title
+                className="text-lg sm:text-2xl sm:font-semibold font-montserrat mb-6 lg:mb-10"
+                id="project-modal-title"
+              >
                 {project.title}
               </Dialog.Title>
               <Dialog.Close
@@ -41,7 +45,10 @@ export const ProjectModal = ({
                 <Slideshow images={project.images} />
 
                 <div className="space-y-3 my-6 sm:my-8">
-                  <p className="text-base sm:text-lg lg:text-xl">
+                  <p
+                    className="text-base sm:text-lg lg:text-xl"
+                    id="project-modal-desc"
+                  >
                     {project.description}
                   </p>
                   <ul className="space-y-1 sm:space-y-2">

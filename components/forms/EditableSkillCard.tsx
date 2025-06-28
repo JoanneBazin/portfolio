@@ -1,6 +1,6 @@
 import { useConfirmModal } from "@/hooks/useConfirmModal";
 import { useDeleteSkill } from "@/hooks/api/mutations/useSkillMutation";
-import { Skill } from "@/app/types";
+import { Skill } from "@/types";
 import { SkillCard } from "../ui/SkillCard";
 
 export const EditableSkillCard = ({ skill }: { skill: Skill }) => {

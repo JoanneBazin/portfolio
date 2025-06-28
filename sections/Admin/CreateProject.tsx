@@ -3,7 +3,7 @@
 import { ProjectForm } from "@/components/forms/ProjectForm";
 import { useCreateProject } from "@/hooks/api/mutations/useProjectMutations";
 
-import { SubmitProps } from "@/app/types";
+import { SubmitProps } from "@/types";
 import { useState } from "react";
 
 export const CreateProjects = () => {

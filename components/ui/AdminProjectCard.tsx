@@ -1,4 +1,4 @@
-import { ProjectCardProps } from "@/app/types";
+import { ProjectCardProps } from "@/types";
 import Image from "next/image";
 
 export const AdminProjectCard = ({ project, onEdit }: ProjectCardProps) => {
@@ -10,7 +10,7 @@ export const AdminProjectCard = ({ project, onEdit }: ProjectCardProps) => {
     >
       <Image
         src={images[0].url}
-        alt={title}
+        alt={`Photo du projet ${title}`}
         fill
         className="object-cover rounded-xl"
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 30vw"
@@ -21,9 +21,9 @@ export const AdminProjectCard = ({ project, onEdit }: ProjectCardProps) => {
         aria-label="Modifier ou supprimer le projet"
         className="p-4 absolute bottom-0 left-0 bg-background opacity-90 w-full h-1/2"
       >
-        <h3 className="font-montserrat sm:font-medium text-sm sm:text-base">
+        <h2 className="font-montserrat sm:font-medium text-sm sm:text-base">
           {title}
-        </h3>
+        </h2>
       </button>
     </article>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { AboutFormProps } from "@/app/types";
+import { AboutFormProps } from "@/types";
 import { useState } from "react";
 
 export const AboutForm: React.FC<AboutFormProps> = ({

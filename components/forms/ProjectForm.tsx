@@ -6,7 +6,7 @@ import {
   ProjectFormData,
   ProjectFormProps,
   ProjectImage,
-} from "@/app/types";
+} from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -188,11 +188,15 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       className="space-y-8 max-w-4xl mx-auto p-4 sm:p-6"
     >
       <div>
-        <label className="block text-sm sm:text-base font-medium mb-2">
+        <label
+          htmlFor="title"
+          className="block text-sm sm:text-base font-medium mb-2"
+        >
           Titre du projet
         </label>
         <input
           type="text"
+          id="title"
           {...register("title")}
           placeholder="Intégration frontend avec React"
         />
@@ -202,12 +206,16 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       </div>
 
       <div>
-        <label className="block text-sm sm:text-base font-medium mb-2">
+        <label
+          htmlFor="description"
+          className="block text-sm sm:text-base font-medium mb-2"
+        >
           Description
         </label>
         <textarea
           {...register("description")}
           rows={4}
+          id="description"
           placeholder="Description du projet..."
         />
         {errors.description && (
@@ -216,11 +224,15 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       </div>
 
       <div>
-        <label className="block text-sm sm:text-base font-medium mb-2">
+        <label
+          htmlFor="images"
+          className="block text-sm sm:text-base font-medium mb-2"
+        >
           Images
         </label>
         <input
           type="file"
+          id="images"
           multiple
           accept="image/*"
           onChange={handleImagesChange}
@@ -254,7 +266,10 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
 
       <div>
         <div className="flex justify-between items-center mb-2">
-          <label className="block text-sm sm:text-base font-medium mb-3">
+          <label
+            htmlFor="objectives"
+            className="block text-sm sm:text-base font-medium mb-3"
+          >
             Objectifs du projet
           </label>
           <button
@@ -271,6 +286,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
           <div key={field.id} className="flex gap-2 mb-2">
             <input
               type="text"
+              id="objectives"
               {...register(`objectives.${index}.value`, {
                 required: "Texte requis",
               })}
@@ -293,7 +309,10 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
 
       <div>
         <div className="flex justify-between items-center mb-2">
-          <label className="block text-sm sm:text-base font-medium mb-1">
+          <label
+            htmlFor="skills"
+            className="block text-sm sm:text-base font-medium mb-1"
+          >
             Compétences utilisées
           </label>
           <button
@@ -309,6 +328,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
           <div key={field.id} className="flex gap-2 mb-2">
             <input
               type="text"
+              id="skills"
               {...register(`skills.${index}.value`, {
                 required: "Texte requis",
               })}
@@ -331,10 +351,14 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm sm:text-base font-medium mb-2">
+          <label
+            htmlFor="github-url"
+            className="block text-sm sm:text-base font-medium mb-2"
+          >
             URL Github
           </label>
           <input
+            id="github-url"
             type="url"
             {...register("githubUrl")}
             placeholder="https://github.com/username/repo"
@@ -342,10 +366,14 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
         </div>
 
         <div>
-          <label className="block text-sm sm:text-base font-medium mb-2">
+          <label
+            htmlFor="live-url"
+            className="block text-sm sm:text-base font-medium mb-2"
+          >
             URL Live
           </label>
           <input
+            id="live-url"
             type="url"
             {...register("liveUrl")}
             placeholder="https://projet.com"
@@ -354,10 +382,13 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       </div>
 
       <div>
-        <label className="block text-sm sm:text-base font-medium mb-2">
+        <label
+          htmlFor="size"
+          className="block text-sm sm:text-base font-medium mb-2"
+        >
           Taille pour affichage
         </label>
-        <select {...register("size")}>
+        <select {...register("size")} id="size">
           <option value="small">S</option>
           <option value="medium">M</option>
           <option value="large">L</option>
@@ -365,10 +396,13 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       </div>
 
       <div>
-        <label className="block text-sm sm:text-base font-medium mb-2">
+        <label
+          htmlFor="order"
+          className="block text-sm sm:text-base font-medium mb-2"
+        >
           Ordre de priorité pour affichage
         </label>
-        <select {...register("order")}>
+        <select {...register("order")} id="order">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
