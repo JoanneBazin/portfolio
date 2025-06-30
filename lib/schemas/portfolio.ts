@@ -15,13 +15,7 @@ export const projectImageSchema = z.object({
   alt: z.string(),
 });
 export const uploadImageSchema = z.object({
-  url: z
-    .string()
-    .min(1, "URL requise")
-    .regex(
-      /^\/uploads\/.*\.(jpg|jpeg|png|webp|gif)$/i,
-      "Format d'image invalide ou chemin incorrect"
-    ),
+  url: z.string().url("Format d'image invalide ou chemin incorrect"),
   alt: z.string(),
 });
 
