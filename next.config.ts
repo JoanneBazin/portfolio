@@ -7,7 +7,14 @@ const nextConfig: NextConfig = {
     deviceSizes: [320, 640, 768, 1000],
     imageSizes: [16, 32, 64, 128, 256],
     minimumCacheTTL: 86400,
-    domains: ["qhyracsvbpyhidrakxdt.supabase.co"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "qhyracsvbpyhidrakxdt.supabase.co",
+        port: "",
+        pathname: "/*",
+      },
+    ],
   },
 };
 
