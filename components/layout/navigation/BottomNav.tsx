@@ -9,7 +9,7 @@ export const BottomNav = () => {
   if (hideSidebar) return null;
 
   return (
-    <nav className="sm:hidden flex fixed bottom left-0 bottom-0 w-screen py-8 z-40 bg-background">
+    <nav className="sm:hidden flex fixed bottom left-0 bottom-0 w-screen pb-6 pt-3 z-40 bg-background">
       <ul className="flex items-center justify-around w-full px-4">
         {LINKS.map((link, index) => (
           <li
@@ -26,14 +26,14 @@ export const BottomNav = () => {
               className="flex flex-col items-center gap-2"
             >
               {link.id === "projects" ? (
-                <Code size={28} />
+                <Code size={24} />
               ) : link.id === "about" ? (
-                <User size={28} />
+                <User size={24} />
               ) : (
-                <MessageCircle size={28} />
+                <MessageCircle size={24} />
               )}
 
-              <p className="text-sm">{link.label}</p>
+              <p className="text-xs">{link.label}</p>
             </a>
           </li>
         ))}

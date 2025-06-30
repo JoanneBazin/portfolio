@@ -24,11 +24,15 @@ const Slideshow = ({ images }: { images: ProjectImage[] }) => {
       {images?.length > 1 && (
         <>
           <button
-            className="h-full w-[5%] flex items-center justify-center"
+            className="h-full w-[5%] flex items-center justify-center pr-2"
             onClick={handlePrevImg}
             aria-label="Photo précédente"
           >
-            <ChevronLeft color="var(--accent)" size={30} />
+            <ChevronLeft
+              className="flex-shrink-0"
+              color="var(--accent)"
+              size={30}
+            />
           </button>
         </>
       )}
@@ -44,11 +48,15 @@ const Slideshow = ({ images }: { images: ProjectImage[] }) => {
       )}
       {images?.length > 1 && (
         <button
-          className="h-full min-h-32 w-[5%] flex items-center justify-center"
+          className="h-full min-h-32 w-[5%] flex items-center justify-center pl-2"
           onClick={handleNextImg}
           aria-label="Photo suivante"
         >
-          <ChevronRight color="var(--accent)" size={30} />
+          <ChevronRight
+            className="flex-shrink-0"
+            color="var(--accent)"
+            size={30}
+          />
         </button>
       )}
     </div>

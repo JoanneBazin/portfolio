@@ -62,7 +62,7 @@ export const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-4 sm:space-y-8 w-full max-w-3xl p-4 sm:p-6"
+      className="space-y-4 sm:space-y-6 w-full max-w-3xl p-4 sm:p-6"
     >
       <div>
         {success && (

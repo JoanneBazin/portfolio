@@ -5,12 +5,12 @@ export const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative min-h-screen h-screen snap-start px-8 sm:px-20 pb-28 sm:pb-0 lg:pr-44"
+      className="relative min-h-screen snap-start px-8 sm:px-20 pb-32 sm:pb-12 lg:pr-44"
     >
       <VerticalLine isEnd />
       <h3 className="sr-only">Contact</h3>
 
-      <div className="w-full h-full flex pt-40">
+      <div className="w-full h-full flex pt-8 sm:pt-40">
         <div className="sm:w-[10%] lg:w-1/5 h-[2px] bg-accent-50 mt-4"></div>
 
         <div className="relative w-full h-full flex flex-col">
