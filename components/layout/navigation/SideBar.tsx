@@ -21,7 +21,7 @@ export const SideBar = () => {
             className={`text-center font-montserrat p-4 ${
               activeLink === link.id
                 ? "text-3xl text-accent font-medium"
-                : "text-xl border-b border-accent hover:text-accent transition-colors duration-300"
+                : "text-xl border-b border-accent-50 hover:text-accent transition-all duration-300"
             }`}
           >
             <a href={`#${link.id}`}>{link.label}</a>
@@ -33,7 +33,7 @@ export const SideBar = () => {
         {bottomLinks.map((link, index) => (
           <li
             key={index}
-            className="text-center font-montserrat text-xl border-t border-accent p-4 hover:text-accent transition-colors duration-300"
+            className="text-center font-montserrat text-xl border-t border-accent-50 p-4 hover:text-accent transition-all duration-300"
           >
             <a href={`#${link.id}`}>{link.label}</a>
           </li>

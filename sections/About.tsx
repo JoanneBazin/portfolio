@@ -1,6 +1,8 @@
 "use client";
 
 import { AboutCard } from "@/components/ui/AboutCard";
+import { GithubIcon } from "@/components/ui/icons/GithubIcon";
+import { LinkedinIcon } from "@/components/ui/icons/LinkedinIcon";
 import { Loader } from "@/components/ui/Loader";
 import { SkillCard } from "@/components/ui/SkillCard";
 import { VerticalLine } from "@/components/ui/VerticalLine";
@@ -20,6 +22,16 @@ export const About = () => {
 
       <div className="w-full flex flex-col gap-16">
         <AboutCard title="Mon parcours">
+          <a
+            href="https://fr.linkedin.com/in/joanne-bazin?trk=people-guest_people_search-card"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute bottom-6 right-5 sm:hidden text-accent-50 hover:text-accent transition-colors duration-200"
+            aria-label="Voir mon profil LinkedIn"
+            data-testid="footer-linkedin-link"
+          >
+            <LinkedinIcon />
+          </a>
           {isAboutPending ? (
             <div className="flex items-center justify-center">
               <Loader />
@@ -40,6 +52,16 @@ export const About = () => {
         </AboutCard>
 
         <AboutCard title={"Technologies"} reverse={true}>
+          <a
+            href="https://github.com/JoanneBazin"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute bottom-5 right-5 sm:hidden text-accent-50 hover:text-accent transition-colors duration-200"
+            aria-label="Visiter ma page Github"
+            data-testid="footer-github-link"
+          >
+            <GithubIcon />
+          </a>
           {isSkillPending ? (
             <div className="flex items-center justify-center">
               <Loader />

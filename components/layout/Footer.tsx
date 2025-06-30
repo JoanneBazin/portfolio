@@ -28,7 +28,7 @@ export const Footer = () => {
         <button
           aria-label="Changer le thème"
           onClick={toggleTheme}
-          className="text-accent hover:color-gold"
+          className="text-accent-50 hover:text-accent"
         >
           {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
         </button>
@@ -39,7 +39,7 @@ export const Footer = () => {
           href="https://github.com/JoanneBazin"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-accent hover:text-foreground transition-colors duration-200"
+          className="text-accent-50 hover:text-accent transition-colors duration-200"
           aria-label="Visiter ma page Github"
           data-testid="footer-github-link"
         >
@@ -49,7 +49,7 @@ export const Footer = () => {
           href="https://fr.linkedin.com/in/joanne-bazin?trk=people-guest_people_search-card"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-accent hover:text-foreground transition-colors duration-200"
+          className="text-accent-50 hover:text-accent transition-colors duration-200"
           aria-label="Voir mon profil LinkedIn"
           data-testid="footer-linkedin-link"
         >
