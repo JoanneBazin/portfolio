@@ -9,13 +9,13 @@ test("la landing page affiche le profil et les compétences", async ({
 
   await expect(page.locator("li[aria-current=true]")).toHaveText("À propos");
 
-  await page.waitForSelector(".about-item");
+  await page.waitForSelector("[data-testid='about-item']");
 
-  const aboutItem = await page.locator("#about .about-item").count();
+  const aboutItem = await page.locator("[data-testid='about-item']").count();
   expect(aboutItem).toBeGreaterThan(0);
 
-  await page.waitForSelector(".skills-item");
+  await page.waitForSelector("[data-testid='skill-item']");
 
-  const skillsItem = await page.locator("#about .skills-item").count();
+  const skillsItem = await page.locator("[data-testid='skill-item']").count();
   expect(skillsItem).toBeGreaterThan(0);
 });

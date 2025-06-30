@@ -22,8 +22,9 @@ export const ProjectModal = ({
             style={{ zIndex: 9998 }}
           />
           <Dialog.Content
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[75vw] h-[75vh] overflow-y-auto bg-background border border-accent-50 rounded-lg p-6 sm:p-8 lg:p-12"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[75vw] h-[75vh] overflow-y-auto bg-background border border-accent-50 rounded-lg p-6 sm:p-8 lg:p-12 overflow-x-hidden"
             style={{ zIndex: 9999 }}
+            data-testid="project-modal"
           >
             <div className="relative w-full">
               <Dialog.Close
@@ -73,6 +74,7 @@ export const ProjectModal = ({
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-testid="project-github-link"
                     className="px-3 sm:px-4 py-2 rounded-xl bg-accent hover:bg-gold"
                     aria-label="Aller voir le code sur Github"
                   >
@@ -84,6 +86,7 @@ export const ProjectModal = ({
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-testid="project-live-link"
                     className="px-4 py-2 rounded-lg bg-accent hover:bg-gold"
                     aria-label="Aller voir le code sur Github"
                   >

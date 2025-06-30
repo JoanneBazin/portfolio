@@ -7,6 +7,8 @@ test("la landing page affiche les projets", async ({ page }) => {
 
   await expect(page.locator("li[aria-current=true]")).toHaveText("Projets");
 
-  const cards = await page.locator("#projects h4").count();
+  await page.waitForSelector("[data-testid='project-item']");
+
+  const cards = await page.locator("[data-testid='project-item']").count();
   expect(cards).toBeGreaterThan(0);
 });

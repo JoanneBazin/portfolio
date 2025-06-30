@@ -10,6 +10,7 @@ export const ProjectCard = ({
   return (
     <div
       className="w-full flex items-center"
+      data-testid="project-item"
       style={{
         order: project.order,
       }}

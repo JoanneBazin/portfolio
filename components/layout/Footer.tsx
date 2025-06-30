@@ -41,6 +41,7 @@ export const Footer = () => {
           rel="noopener noreferrer"
           className="text-accent hover:text-foreground transition-colors duration-200"
           aria-label="Visiter ma page Github"
+          data-testid="footer-github-link"
         >
           <GithubIcon />
         </a>
@@ -50,6 +51,7 @@ export const Footer = () => {
           rel="noopener noreferrer"
           className="text-accent hover:text-foreground transition-colors duration-200"
           aria-label="Voir mon profil LinkedIn"
+          data-testid="footer-linkedin-link"
         >
           <LinkedinIcon />
         </a>

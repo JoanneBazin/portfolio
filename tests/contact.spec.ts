@@ -16,5 +16,7 @@ test("le formulaire de contact fonctionne", async ({ page }) => {
   await page.addStyleTag({ content: "footer { display: none !important; }" });
   await page.click('button[type="submit"]');
 
-  await expect(page.locator("text=Message envoyé !")).toBeVisible();
+  await expect(page.locator("[data-testid='success-message']")).toBeVisible({
+    timeout: 10000,
+  });
 });

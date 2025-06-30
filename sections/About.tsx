@@ -31,7 +31,7 @@ export const About = () => {
           ) : (
             <div className="space-y-4 leading-relaxed text-base sm:text-lg">
               {about.split("/n").map((line, i) => (
-                <p key={i} className="mb-6 about-item">
+                <p key={i} className="mb-6" data-testid="about-item">
                   {line}
                 </p>
               ))}

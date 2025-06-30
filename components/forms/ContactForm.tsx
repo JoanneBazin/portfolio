@@ -66,7 +66,12 @@ export const ContactForm = () => {
     >
       <div>
         {success && (
-          <p className="text-center sm:text-lg font-medium my-4 ">{success}</p>
+          <p
+            className="text-center text-xs sm:text-base font-medium my-4"
+            data-testid="success-message"
+          >
+            {success}
+          </p>
         )}
         {error && (
           <p className="text-center sm:text-lg text-red my-4">{error}</p>
