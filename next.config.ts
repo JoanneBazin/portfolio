@@ -11,11 +11,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "qhyracsvbpyhidrakxdt.supabase.co",
-        port: "",
         pathname: "/*",
       },
     ],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
