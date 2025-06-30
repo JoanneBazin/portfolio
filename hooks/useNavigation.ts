@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const LINKS: LinkItem[] = [
   { id: "projects", label: "Projets" },
-  { id: "about", label: "A propos" },
+  { id: "about", label: "À propos" },
   { id: "contact", label: "Contact" },
 ];
 

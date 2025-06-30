@@ -16,7 +16,7 @@ export const About = () => {
       className="relative min-h-screen w-full snap-start px-8 sm:px-20 pb-32 sm:pb-20 lg:pb-24 pt-10 sm:pt-28 lg:pt-24 lg:pr-56"
     >
       <VerticalLine />
-      <h3 className="sr-only">A propos</h3>
+      <h3 className="sr-only">À propos</h3>
 
       <div className="w-full flex flex-col gap-16">
         <AboutCard title="Mon parcours">
@@ -31,7 +31,7 @@ export const About = () => {
           ) : (
             <div className="space-y-4 leading-relaxed text-base sm:text-lg">
               {about.split("/n").map((line, i) => (
-                <p key={i} className="mb-6">
+                <p key={i} className="mb-6 about-item">
                   {line}
                 </p>
               ))}
