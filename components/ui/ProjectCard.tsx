@@ -34,9 +34,9 @@ export const ProjectCard = ({
             boxShadow: "0 0 8px rgba(251, 191, 36, 0.8)",
           }}
         />
-        <div className="text-base sm:text-lg font-medium mb-1 leading-tight">
+        <h4 className="text-base sm:text-lg font-medium mb-1 leading-tight">
           {project.title}
-        </div>
+        </h4>
         <div className="text-xs sm:text-sm text-accent leading-tight">
           {project.skills.join(", ")}
         </div>

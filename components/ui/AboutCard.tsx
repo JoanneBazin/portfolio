@@ -23,10 +23,10 @@ export const AboutCard = ({
           <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-accent-50 rounded-bl-lg"></div>
 
           <div className="mb-6">
-            <h3 className="text-xl sm:text-2xl font-semibold mb-2 flex items-center">
+            <h4 className="text-xl sm:text-2xl font-semibold mb-2 flex items-center">
               <span className="w-2 h-2 bg-accent rounded-full mr-4 animate-pulse"></span>
               {title}
-            </h3>
+            </h4>
             <div className="w-16 h-0.5 bg-gradient-to-r from-accent to-transparent"></div>
           </div>
 

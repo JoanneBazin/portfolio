@@ -28,7 +28,7 @@ export const Footer = () => {
         <button
           aria-label="Changer le thème"
           onClick={toggleTheme}
-          className="text-accent hover:color-gold ml-10"
+          className="text-accent hover:color-gold"
         >
           {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
         </button>

@@ -14,6 +14,7 @@ export const BottomNav = () => {
         {LINKS.map((link, index) => (
           <li
             key={index}
+            aria-current={activeLink === link.id ? "true" : undefined}
             className={`text-xl font-montserrat ${
               activeLink === link.id
                 ? "text-accent font-bold"

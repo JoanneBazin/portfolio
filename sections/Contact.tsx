@@ -8,6 +8,7 @@ export const Contact = () => {
       className="relative min-h-screen h-screen snap-start px-8 sm:px-20 pb-28 sm:pb-0 lg:pr-44"
     >
       <VerticalLine isEnd />
+      <h3 className="sr-only">Contact</h3>
 
       <div className="w-full h-full flex pt-40">
         <div className="sm:w-[10%] lg:w-1/5 h-[2px] bg-accent-50 mt-4"></div>
@@ -19,9 +20,9 @@ export const Contact = () => {
               boxShadow: "0 0 8px rgba(251, 191, 36, 0.8)",
             }}
           />
-          <h3 className="font-montserrat text-lg sm:text-2xl lg:text-3xl lg:mb-4 px-7">
+          <h4 className="font-montserrat text-lg sm:text-2xl lg:text-3xl lg:mb-4 px-7">
             Une question ? Un projet ?
-          </h3>
+          </h4>
           <ContactForm />
         </div>
       </div>

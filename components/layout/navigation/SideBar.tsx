@@ -13,10 +13,11 @@ export const SideBar = () => {
 
   return (
     <nav className="hidden lg:flex fixed right right-8 top-0 h-[calc(100vh-80px)] py-8 flex-col justify-between items-center z-40">
-      <ul className="flex flex-col">
+      <ul className="flex flex-col" role="tablist">
         {topLinks.map((link, index) => (
           <li
             key={index}
+            aria-current={activeLink === link.id ? "true" : undefined}
             className={`text-center font-montserrat p-4 ${
               activeLink === link.id
                 ? "text-3xl text-accent font-medium"

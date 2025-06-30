@@ -19,6 +19,7 @@ export const Projects = () => {
       className="relative min-h-screen h-screen w-full snap-start px-8 sm:px-20 pt-10 lg:pt-0 pb-28 sm:pb-0 lg:pr-44"
     >
       <VerticalLine />
+      <h3 className="sr-only">Projets</h3>
       {error ? (
         <div className="flex items-center justify-center h-full min-h-[60vh]">
           <p className="text-red text-lg text-center">{error.message}</p>
