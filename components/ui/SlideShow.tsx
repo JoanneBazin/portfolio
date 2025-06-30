@@ -42,7 +42,8 @@ const Slideshow = ({ images }: { images: ProjectImage[] }) => {
             src={activeSlide.url}
             alt={activeSlide.alt}
             fill
-            className="object-cover rounded-xl"
+            sizes="(max-width: 640px) 76.5vw, 67.5vw"
+            className="object-cover object-top rounded-xl"
           />
         </div>
       )}

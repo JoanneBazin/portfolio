@@ -22,7 +22,7 @@ export const ProjectModal = ({
             style={{ zIndex: 9998 }}
           />
           <Dialog.Content
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[75vw] h-[75vh] overflow-y-auto bg-background border border-accent-50 rounded-lg p-6 sm:p-8 lg:p-12 overflow-x-hidden"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[85vw] sm:w-[75vw] h-[75vh] overflow-y-auto bg-background border border-accent-50 rounded-lg p-6 sm:p-8 lg:p-12 overflow-x-hidden"
             style={{ zIndex: 9999 }}
             data-testid="project-modal"
           >

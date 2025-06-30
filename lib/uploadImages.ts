@@ -16,7 +16,7 @@ export const uploadImages = async (
         file.name.split(" ").join("_").split(".")[0] + Date.now() + ".webp";
 
       const optimizedImage = await sharp(buffer)
-        .resize({ width: 1280 })
+        .resize({ width: 1000 })
         .webp({ quality: 80 })
         .toBuffer();
 

@@ -10,8 +10,8 @@ export const AdminHeader = () => {
   if (!session) return;
 
   return (
-    <header className="fixed top-4 left-0 z-50">
-      <nav className="flex flex-col gap-2 lg:gap-6 p-2">
+    <header className="fixed top-4 left-0" style={{ zIndex: 999 }}>
+      <nav className="flex flex-col gap-3 lg:gap-6 p-2">
         <Link href="/" aria-label="Page d'accueil">
           <House size={24} />
         </Link>
