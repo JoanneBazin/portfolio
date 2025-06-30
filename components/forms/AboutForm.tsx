@@ -25,7 +25,7 @@ export const AboutForm: React.FC<AboutFormProps> = ({
         value={about}
         onChange={(e) => setAbout(e.target.value)}
         rows={13}
-        className="w-full text-base bg-background text-foreground min-h-[300px] border rounded-lg p-4"
+        className="w-full text-sm bg-background text-foreground min-h-[300px] border rounded-lg p-4"
       />
       <button type="submit" className="form-btn">
         {isLoading ? "Enregistrement..." : "Enregistrer"}

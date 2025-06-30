@@ -17,8 +17,8 @@ export const Footer = () => {
   }
 
   return (
-    <footer className="hidden sm:flex justify-between items-center fixed bottom-0 left-0 w-full bg-transparent p-6">
-      <div className="flex gap-6 items-center">
+    <footer className="hidden sm:flex justify-between items-center fixed bottom-0 left-0 w-full bg-transparent p-4">
+      <div className="flex gap-3 items-center">
         {session ? null : (
           <Link href="/login" className="text-xs">
             Accès admin

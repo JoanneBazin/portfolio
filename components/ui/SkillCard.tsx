@@ -18,7 +18,7 @@ export const SkillCard = ({ skill }: { skill: Skill }) => {
           className="object-contain px-2 sm:px-4"
         />
       </div>
-      <p className="text-xs sm:text-sm font-medium">{skill.name}</p>
+      <p className="text-xs lg:text-sm">{skill.name}</p>
     </div>
   );
 };

@@ -11,18 +11,27 @@ export const AdminHeader = () => {
 
   return (
     <header className="fixed top-4 left-0" style={{ zIndex: 999 }}>
-      <nav className="flex flex-col gap-3 lg:gap-6 p-2">
-        <Link href="/" aria-label="Page d'accueil">
-          <House size={24} />
+      <nav className="flex flex-col gap-4 lg:gap-8 p-2">
+        <Link
+          href="/"
+          aria-label="Page d'accueil"
+          className="text-accent-50 hover:text-accent"
+        >
+          <House size={20} />
         </Link>
-        <Link href="/admin/dashboard" aria-label="Dashboard">
-          <SquarePen size={24} />
+        <Link
+          href="/admin/dashboard"
+          aria-label="Dashboard"
+          className="text-accent-50 hover:text-accent"
+        >
+          <SquarePen size={20} />
         </Link>
         <button
           onClick={() => signOut({ callbackUrl: "/" })}
           aria-label="Déconnexion"
+          className="text-accent-50 hover:text-accent"
         >
-          <LogOut size={24} />
+          <LogOut size={20} />
         </button>
       </nav>
     </header>

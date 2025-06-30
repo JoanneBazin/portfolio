@@ -13,7 +13,7 @@ export const AboutCard = ({
     <div className="w-full flex">
       <div className="sm:w-[9%] lg:w-1/5 h-[2px] mt-12 bg-accent-50"></div>
 
-      <div className="relative group flex flex-col w-full sm:w-5/6 lg:w-[70%]">
+      <div className="relative group flex flex-col w-full sm:w-[88%] lg:w-[80%]">
         <div
           className={`absolute -inset-1 bg-gradient-to-r ${gradientClass} rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-300`}
         ></div>
@@ -23,7 +23,7 @@ export const AboutCard = ({
           <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-accent-50 rounded-bl-lg"></div>
 
           <div className="mb-6">
-            <h4 className="text-xl sm:text-2xl font-semibold mb-2 flex items-center">
+            <h4 className="text-base sm:text-lg font-semibold mb-2 flex items-center">
               <span className="w-2 h-2 bg-accent rounded-full mr-4 animate-pulse"></span>
               {title}
             </h4>

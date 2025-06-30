@@ -20,7 +20,7 @@ export const Contact = () => {
               boxShadow: "0 0 8px rgba(251, 191, 36, 0.8)",
             }}
           />
-          <h4 className="font-montserrat text-lg sm:text-2xl lg:text-3xl lg:mb-4 px-7">
+          <h4 className="font-montserrat lg:text-lg lg:mb-4 px-7">
             Une question ? Un projet ?
           </h4>
           <ContactForm />

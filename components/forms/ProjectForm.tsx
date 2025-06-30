@@ -188,10 +188,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       className="space-y-8 max-w-4xl mx-auto p-4 sm:p-6"
     >
       <div>
-        <label
-          htmlFor="title"
-          className="block text-sm sm:text-base font-medium mb-2"
-        >
+        <label htmlFor="title" className="block text-sm font-medium mb-2">
           Titre du projet
         </label>
         <input
@@ -206,10 +203,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       </div>
 
       <div>
-        <label
-          htmlFor="description"
-          className="block text-sm sm:text-base font-medium mb-2"
-        >
+        <label htmlFor="description" className="block text-sm font-medium mb-2">
           Description
         </label>
         <textarea
@@ -224,10 +218,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       </div>
 
       <div>
-        <label
-          htmlFor="images"
-          className="block text-sm sm:text-base font-medium mb-2"
-        >
+        <label htmlFor="images" className="block text-sm font-medium mb-2">
           Images
         </label>
         <input
@@ -268,7 +259,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
         <div className="flex justify-between items-center mb-2">
           <label
             htmlFor="objectives"
-            className="block text-sm sm:text-base font-medium mb-3"
+            className="block text-sm font-medium mb-3"
           >
             Objectifs du projet
           </label>
@@ -309,10 +300,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
 
       <div>
         <div className="flex justify-between items-center mb-2">
-          <label
-            htmlFor="skills"
-            className="block text-sm sm:text-base font-medium mb-1"
-          >
+          <label htmlFor="skills" className="block text-sm font-medium mb-1">
             Compétences utilisées
           </label>
           <button
@@ -353,7 +341,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
         <div>
           <label
             htmlFor="github-url"
-            className="block text-sm sm:text-base font-medium mb-2"
+            className="block text-sm font-medium mb-2"
           >
             URL Github
           </label>
@@ -366,10 +354,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
         </div>
 
         <div>
-          <label
-            htmlFor="live-url"
-            className="block text-sm sm:text-base font-medium mb-2"
-          >
+          <label htmlFor="live-url" className="block text-sm font-medium mb-2">
             URL Live
           </label>
           <input
@@ -382,10 +367,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       </div>
 
       <div>
-        <label
-          htmlFor="size"
-          className="block text-sm sm:text-base font-medium mb-2"
-        >
+        <label htmlFor="size" className="block text-sm font-medium mb-2">
           Taille pour affichage
         </label>
         <select {...register("size")} id="size">
@@ -396,10 +378,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       </div>
 
       <div>
-        <label
-          htmlFor="order"
-          className="block text-sm sm:text-base font-medium mb-2"
-        >
+        <label htmlFor="order" className="block text-sm font-medium mb-2">
           Ordre de priorité pour affichage
         </label>
         <select {...register("order")} id="order">

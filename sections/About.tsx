@@ -38,10 +38,10 @@ export const About = () => {
             </div>
           ) : aboutError ? (
             <div className="flex items-center justify-center">
-              <p className="text-lg text-red">{aboutError.message}</p>
+              <p className="text-red">{aboutError.message}</p>
             </div>
           ) : (
-            <div className="space-y-4 leading-relaxed text-base sm:text-lg">
+            <div className="space-y-4 leading-relaxed text-sm lg:text-base">
               {about.split("/n").map((line, i) => (
                 <p key={i} className="mb-6" data-testid="about-item">
                   {line}
@@ -68,7 +68,7 @@ export const About = () => {
             </div>
           ) : skillError ? (
             <div className="flex items-center justify-center">
-              <p className="text-lg text-red">{skillError.message}</p>
+              <p className="text-red">{skillError.message}</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-4 gap-5">

@@ -93,18 +93,21 @@ export const EditProject = () => {
           <Dialog.Content className="fixed top-1/2 left-1/2 w-[90vw] max-h-[80vh] overflow-y-auto bg-background border border-accent-50 rounded-lg p-6 transform -translate-x-1/2 -translate-y-1/2">
             <Dialog.Title>
               <div className="mb-4 px-6 flex flex-wrap gap-2 justify-around items-start">
-                <p className="text-lg sm:text-2xl font-bold font-montserrat ">
+                <p className="sm:text-lg font-bold font-montserrat ">
                   Modifier le projet
                 </p>
                 <button
                   onClick={confirmDeleteProject}
-                  className="bg-red text-xs sm:text-base rounded-lg py-2  px-4 sm:mr-8 hover:bg-gray"
+                  className="bg-red text-xs rounded-lg py-2  px-4 sm:mr-8 hover:bg-gray"
                 >
                   Supprimer le projet
                 </button>
                 {ConfirmModalComponent}
               </div>
             </Dialog.Title>
+            <Dialog.Description className="sr-only">
+              Modification du projet
+            </Dialog.Description>
 
             {selectedProject && (
               <ProjectForm

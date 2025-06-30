@@ -24,8 +24,8 @@ export const AdminTabs = () => {
             onClick={() => setActiveTab(tab.id)}
             className={`px-4 py-4 rounded-t border-b border-accent mx-4 sm:mx-0 ${
               activeTab === tab.id
-                ? "text-accent font-semibold text-base lg:text-xl"
-                : "text-foreground text-sm lg:text-lg"
+                ? "text-accent font-semibold text-base lg:text-lg"
+                : "text-foreground text-sm lg:text-base"
             }`}
           >
             {tab.label}

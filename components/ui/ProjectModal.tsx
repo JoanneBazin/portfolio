@@ -22,22 +22,22 @@ export const ProjectModal = ({
             style={{ zIndex: 9998 }}
           />
           <Dialog.Content
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[85vw] sm:w-[75vw] h-[75vh] overflow-y-auto bg-background border border-accent-50 rounded-lg p-6 sm:p-8 lg:p-12 overflow-x-hidden"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[85vw] sm:w-[75vw] h-[85vh] overflow-y-auto bg-background border border-accent-50 rounded-lg p-6 sm:p-8 overflow-x-hidden"
             style={{ zIndex: 9999 }}
             data-testid="project-modal"
           >
             <div className="relative w-full">
               <Dialog.Close
-                className="absolute right-[-25px] top-[-25px] rounded-full px-2 text-accent hover:text-foreground transition-colors text-xl sm:text-2xl"
+                className="absolute right-[-25px] top-[-25px] rounded-full px-2 text-accent hover:text-foreground transition-colors text-xl sm:text-2xl border-none"
                 aria-label="Fermer la modale"
               >
                 x
               </Dialog.Close>
             </div>
-            <Dialog.Title className="relative text-lg sm:text-2xl font-medium font-montserrat mb-4 lg:mb-8">
+            <Dialog.Title className="relative text-base sm:text-lg font-medium font-montserrat mb-4 lg:mb-8">
               {project.title}
             </Dialog.Title>
-            <Dialog.Description className="text-sm sm:text-base lg:text-lg mb-4">
+            <Dialog.Description className="text-sm sm:text-base mb-4">
               {project.description}
             </Dialog.Description>
 
@@ -49,7 +49,7 @@ export const ProjectModal = ({
                   {project.objectives.map((el, index) => (
                     <li
                       key={index}
-                      className="text-xs sm:text-base lg:text-lg flex items-center leading-tight"
+                      className="text-xs sm:text-base flex items-center leading-tight"
                     >
                       <ChevronRight
                         className="flex-shrink-0"
@@ -90,7 +90,7 @@ export const ProjectModal = ({
                     className="px-4 py-2 rounded-lg bg-accent hover:bg-gold"
                     aria-label="Aller voir le code sur Github"
                   >
-                    <Globe color="var(--background)" size={24} />
+                    <Globe color="var(--background)" size={20} />
                   </a>
                 )}
               </div>

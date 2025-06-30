@@ -9,15 +9,15 @@ export const BottomNav = () => {
   if (hideSidebar) return null;
 
   return (
-    <nav className="sm:hidden flex fixed bottom left-0 bottom-0 w-screen pb-6 pt-3 z-40 bg-background">
+    <nav className="sm:hidden flex fixed bottom left-0 bottom-0 w-screen py-3 z-40 bg-background">
       <ul className="flex items-center justify-around w-full px-4">
         {LINKS.map((link, index) => (
           <li
             key={index}
             aria-current={activeLink === link.id ? "true" : undefined}
-            className={`text-xl font-montserrat ${
+            className={`${
               activeLink === link.id
-                ? "text-accent font-bold"
+                ? "text-accent font-medium"
                 : "hover:text-accent transition-colors duration-300"
             }`}
           >

@@ -74,10 +74,12 @@ export const ContactForm = () => {
           </p>
         )}
         {error && (
-          <p className="text-center sm:text-lg text-red my-4">{error}</p>
+          <p className="text-center text-xs sm:text-base text-red my-4">
+            {error}
+          </p>
         )}
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 text-xs">
         <label htmlFor="name">Nom</label>
         <input
           type="text"
@@ -91,7 +93,7 @@ export const ContactForm = () => {
         )}
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 text-xs">
         <label htmlFor="email">Email</label>
         <input
           type="text"
@@ -105,7 +107,7 @@ export const ContactForm = () => {
         )}
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 text-xs">
         <label htmlFor="message">Message</label>
         <textarea
           id="message"

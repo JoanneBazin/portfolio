@@ -36,7 +36,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" data-theme="dark">
       <body
         className={`${playfair.variable} ${montserrat.variable} ${openSans.variable} antialiased`}
       >

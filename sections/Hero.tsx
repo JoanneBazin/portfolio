@@ -24,7 +24,7 @@ export const Hero = () => {
       <div className="flex flex-col lg:flex-row gap-12 xl:gap-20 items-center">
         <div className="relative w-full">
           <h1
-            className={`flex lg:flex-col justify-center sm:justify-start gap-2 lg:gap-6 text-3xl lg:text-5xl font-playfair text-accent-50 relative ${
+            className={`flex lg:flex-col justify-center sm:justify-start gap-2 lg:gap-6 text-xl lg:text-4xl font-playfair text-accent-50 relative ${
               animationReady
                 ? "animate-slide-right"
                 : "opacity-0 transform -translate-x-[-100px]"
@@ -54,7 +54,7 @@ export const Hero = () => {
 
         <div className="relative">
           <h2
-            className={`flex flex-col items-center sm:items-end lg:items-start text-4xl sm:text-5xl lg:text-7xl sm:ml-6 font-playfair relative ${
+            className={`flex flex-col items-center sm:items-end lg:items-start text-2xl sm:text-4xl lg:text-5xl sm:ml-6 font-playfair relative ${
               animationReady
                 ? "animate-slide-left"
                 : "opacity-0 transform -translate-x-[100px]"

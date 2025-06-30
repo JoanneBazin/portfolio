@@ -13,15 +13,15 @@ export const SideBar = () => {
 
   return (
     <nav className="hidden lg:flex fixed right right-8 top-0 h-[calc(100vh-80px)] py-8 flex-col justify-between items-center z-40">
-      <ul className="flex flex-col" role="tablist">
+      <ul className="flex flex-col">
         {topLinks.map((link, index) => (
           <li
             key={index}
             aria-current={activeLink === link.id ? "true" : undefined}
             className={`text-center font-montserrat p-4 ${
               activeLink === link.id
-                ? "text-3xl text-accent font-medium"
-                : "text-xl border-b border-accent-50 hover:text-accent transition-all duration-300"
+                ? "text-xl text-accent font-medium"
+                : "text-lg border-b border-accent-50 hover:text-accent transition-all duration-300"
             }`}
           >
             <a href={`#${link.id}`}>{link.label}</a>
@@ -33,7 +33,7 @@ export const SideBar = () => {
         {bottomLinks.map((link, index) => (
           <li
             key={index}
-            className="text-center font-montserrat text-xl border-t border-accent-50 p-4 hover:text-accent transition-all duration-300"
+            className="text-center font-montserrat text-lg border-t border-accent-50 p-4 hover:text-accent transition-all duration-300"
           >
             <a href={`#${link.id}`}>{link.label}</a>
           </li>
