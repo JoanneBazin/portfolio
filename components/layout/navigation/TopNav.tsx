@@ -3,7 +3,7 @@
 import { useNavigation } from "@/hooks/useNavigation";
 
 export const TopNav = () => {
-  const { activeLink, hideSidebar, LINKS, setActiveLink } = useNavigation();
+  const { activeLink, hideSidebar, LINKS } = useNavigation();
 
   if (hideSidebar) return null;
 
@@ -14,13 +14,16 @@ export const TopNav = () => {
           <li
             key={index}
             aria-current={activeLink === link.id ? "true" : undefined}
-            className={`text-lg font-montserrat transition-colors duration-300 ${
-              activeLink === link.id
-                ? "text-accent font-bold"
-                : "text-foreground hover:text-accent"
-            }`}
+            className="text-lg font-montserrat transition-colors duration-300"
           >
-            <a href={`#${link.id}`} onClick={() => setActiveLink(link.id)}>
+            <a
+              href={`#${link.id}`}
+              className={`${
+                activeLink === link.id
+                  ? "text-accent font-semibold"
+                  : "text-foreground"
+              }`}
+            >
               {link.label}
             </a>
           </li>

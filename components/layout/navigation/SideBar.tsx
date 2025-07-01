@@ -3,7 +3,7 @@
 import { useNavigation } from "@/hooks/useNavigation";
 
 export const SideBar = () => {
-  const { activeLink, hideSidebar, LINKS, setActiveLink } = useNavigation();
+  const { activeLink, hideSidebar, LINKS } = useNavigation();
 
   const activeIndex = LINKS.findIndex((link) => link.id === activeLink);
   const topLinks = LINKS.filter((_, index) => index <= activeIndex);
@@ -20,11 +20,18 @@ export const SideBar = () => {
             aria-current={activeLink === link.id ? "true" : undefined}
             className={`text-center font-montserrat p-4 transition-colors duration-300 ${
               activeLink === link.id
-                ? "text-xl text-accent font-medium"
-                : "text-lg text-foreground border-b border-accent-50 hover:text-accent"
+                ? "text-xl font-medium"
+                : "text-lg border-b border-accent-50"
             }`}
           >
-            <a href={`#${link.id}`} onClick={() => setActiveLink(link.id)}>
+            <a
+              href={`#${link.id}`}
+              className={`${
+                activeLink === link.id
+                  ? "text-accent"
+                  : "text-foreground hover:text-accent-50"
+              }`}
+            >
               {link.label}
             </a>
           </li>
@@ -35,9 +42,12 @@ export const SideBar = () => {
         {bottomLinks.map((link, index) => (
           <li
             key={index}
-            className="text-center text-foreground font-montserrat text-lg border-t border-accent-50 p-4 hover:text-accent transition-colors duration-300"
+            className="text-center font-montserrat text-lg border-t border-accent-50 p-4 transition-colors duration-300"
           >
-            <a href={`#${link.id}`} onClick={() => setActiveLink(link.id)}>
+            <a
+              href={`#${link.id}`}
+              className="text-foreground hover:text-accent-50"
+            >
               {link.label}
             </a>
           </li>

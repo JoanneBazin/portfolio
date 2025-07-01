@@ -258,7 +258,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       <div>
         <div className="flex justify-between items-center mb-2">
           <label
-            htmlFor="objectives"
+            htmlFor="objectives-0"
             className="block text-sm font-medium mb-3"
           >
             Objectifs du projet
@@ -275,6 +275,11 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
 
         {objectiveFields.map((field, index) => (
           <div key={field.id} className="flex gap-2 mb-2">
+            {index > 0 && (
+              <label htmlFor={`objectives-${index}`} className="sr-only">
+                Objectif {index + 1}
+              </label>
+            )}
             <input
               type="text"
               id={`objectives-${index}`}
@@ -300,7 +305,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
 
       <div>
         <div className="flex justify-between items-center mb-2">
-          <label htmlFor="skills" className="block text-sm font-medium mb-1">
+          <label htmlFor="skills-0" className="block text-sm font-medium mb-1">
             Compétences utilisées
           </label>
           <button
@@ -314,6 +319,11 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
 
         {skillFields.map((field, index) => (
           <div key={field.id} className="flex gap-2 mb-2">
+            {index > 0 && (
+              <label htmlFor={`skills-${index}`} className="sr-only">
+                Compétence {index + 1}
+              </label>
+            )}
             <input
               type="text"
               id={`skills-${index}`}
