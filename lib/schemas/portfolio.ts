@@ -2,13 +2,7 @@ import { z } from "zod";
 
 export const projectImageSchema = z.object({
   id: z.string(),
-  url: z
-    .string()
-    .min(1, "URL requise")
-    .regex(
-      /^\/uploads\/.*\.(jpg|jpeg|png|webp|gif)$/i,
-      "Format d'image invalide ou chemin incorrect"
-    ),
+  url: z.string().url("Format d'image invalide ou chemin incorrect"),
   cover: z.boolean(),
   projectId: z.string(),
 

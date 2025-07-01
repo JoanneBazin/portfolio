@@ -22,6 +22,7 @@ export const EditProject = () => {
 
   const handleSubmit = ({ formData, onReset }: SubmitProps): void => {
     setMessage(null);
+
     const id = selectedProject?.id;
     if (!id) return;
 
