@@ -4,7 +4,7 @@ import { useNavigation } from "@/hooks/useNavigation";
 import { Code, MessageCircle, User } from "lucide-react";
 
 export const BottomNav = () => {
-  const { activeLink, hideSidebar, LINKS } = useNavigation();
+  const { activeLink, hideSidebar, LINKS, setActiveLink } = useNavigation();
 
   if (hideSidebar) return null;
 
@@ -15,15 +15,16 @@ export const BottomNav = () => {
           <li
             key={index}
             aria-current={activeLink === link.id ? "true" : undefined}
-            className={`${
+            className={`transition-colors duration-300 ${
               activeLink === link.id
                 ? "text-accent font-medium"
-                : "hover:text-accent transition-colors duration-300"
+                : "text-foreground hover:text-accent"
             }`}
           >
             <a
               href={`#${link.id}`}
               className="flex flex-col items-center gap-2"
+              onClick={() => setActiveLink(link.id)}
             >
               {link.id === "projects" ? (
                 <Code size={24} />

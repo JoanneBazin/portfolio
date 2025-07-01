@@ -277,7 +277,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
           <div key={field.id} className="flex gap-2 mb-2">
             <input
               type="text"
-              id="objectives"
+              id={`objectives-${index}`}
               {...register(`objectives.${index}.value`, {
                 required: "Texte requis",
               })}
@@ -316,7 +316,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
           <div key={field.id} className="flex gap-2 mb-2">
             <input
               type="text"
-              id="skills"
+              id={`skills-${index}`}
               {...register(`skills.${index}.value`, {
                 required: "Texte requis",
               })}

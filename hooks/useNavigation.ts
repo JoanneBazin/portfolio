@@ -39,13 +39,13 @@ export const useNavigation = () => {
           });
 
           const id = mostVisible.target.id;
-          if (LINKS.some((link) => link.id === id)) {
+          if (LINKS.some((link) => link.id === id) && id !== activeLink) {
             setActiveLink(id);
           }
         }
       },
 
-      { threshold: [0.3, 0.5, 0.7], rootMargin: "-20% 0px -20% 0px" }
+      { threshold: [0.1], rootMargin: "-35% 0px -40% 0px" }
     );
 
     const heroElement = document.getElementById("hero");
@@ -60,7 +60,7 @@ export const useNavigation = () => {
       heroObserver.disconnect();
       sectionObserver.disconnect();
     };
-  }, [hideSidebar]);
+  }, [hideSidebar, activeLink]);
 
-  return { activeLink, hideSidebar, LINKS };
+  return { activeLink, hideSidebar, LINKS, setActiveLink };
 };
