@@ -20,11 +20,11 @@ const Slideshow = ({ images }: { images: ProjectImage[] }) => {
   };
 
   return (
-    <div className="flex h-2/3 w-full">
+    <div className="flex h-52 w-full">
       {images?.length > 1 && (
         <>
           <button
-            className="h-full w-[5%] flex items-center justify-center pr-2"
+            className="h-full w-[10%] flex items-center justify-center pr-2"
             onClick={handlePrevImg}
             aria-label="Photo précédente"
           >
@@ -37,7 +37,7 @@ const Slideshow = ({ images }: { images: ProjectImage[] }) => {
         </>
       )}
       {images?.length > 0 && (
-        <div className="relative h-full w-[90%]">
+        <div className="relative h-full w-[98%]">
           <Image
             src={activeSlide.url}
             alt={activeSlide.alt}
@@ -49,7 +49,7 @@ const Slideshow = ({ images }: { images: ProjectImage[] }) => {
       )}
       {images?.length > 1 && (
         <button
-          className="h-full min-h-32 w-[5%] flex items-center justify-center pl-2"
+          className="h-full min-h-32 w-[10%] flex items-center justify-center pl-2"
           onClick={handleNextImg}
           aria-label="Photo suivante"
         >

@@ -22,13 +22,13 @@ export const ProjectModal = ({
             style={{ zIndex: 9998 }}
           />
           <Dialog.Content
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[85vw] sm:w-[75vw] h-[85vh] overflow-y-auto bg-background border border-accent-50 rounded-lg p-6 sm:p-8 overflow-x-hidden"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[85vw] sm:w-[75vw] lg:w-[60vw] max-h-[85vh] overflow-y-auto bg-background border border-accent-50 rounded-lg p-6 sm:p-8 overflow-x-hidden flex flex-col items-center"
             style={{ zIndex: 9999 }}
             data-testid="project-modal"
           >
             <div className="relative w-full">
               <Dialog.Close
-                className="absolute right-[-25px] top-[-25px] rounded-full px-2 text-accent hover:text-foreground transition-colors text-xl sm:text-2xl border-none"
+                className="absolute right-[-20px] top-[-20px] rounded-full px-2 text-accent hover:text-foreground transition-colors text-xl sm:text-2xl border-none"
                 aria-label="Fermer la modale"
               >
                 x
@@ -37,7 +37,7 @@ export const ProjectModal = ({
             <Dialog.Title className="relative text-base sm:text-lg font-medium font-montserrat mb-4 lg:mb-8">
               {project.title}
             </Dialog.Title>
-            <Dialog.Description className="text-sm sm:text-base mb-4">
+            <Dialog.Description className="text-sm sm:text-base mb-6">
               {project.description}
             </Dialog.Description>
 
