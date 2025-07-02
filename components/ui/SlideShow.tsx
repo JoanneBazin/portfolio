@@ -20,7 +20,7 @@ const Slideshow = ({ images }: { images: ProjectImage[] }) => {
   };
 
   return (
-    <div className="flex h-52 w-full">
+    <div className="flex h-44 sm:h-56 w-full">
       {images?.length > 1 && (
         <>
           <button
@@ -37,13 +37,13 @@ const Slideshow = ({ images }: { images: ProjectImage[] }) => {
         </>
       )}
       {images?.length > 0 && (
-        <div className="relative h-full w-[98%]">
+        <div className="relative h-full w-[80%]">
           <Image
             src={activeSlide.url}
             alt={activeSlide.alt}
             fill
             sizes="(max-width: 640px) 76.5vw, 67.5vw"
-            className="object-cover object-top rounded-xl"
+            className="object-contain rounded-xl"
           />
         </div>
       )}

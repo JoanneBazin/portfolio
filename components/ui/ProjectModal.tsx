@@ -37,14 +37,14 @@ export const ProjectModal = ({
             <Dialog.Title className="relative text-base sm:text-lg font-medium font-montserrat mb-4 lg:mb-8">
               {project.title}
             </Dialog.Title>
-            <Dialog.Description className="text-sm sm:text-base mb-6">
+            <Dialog.Description className="text-sm sm:text-base mb-4 sm:mb-6">
               {project.description}
             </Dialog.Description>
 
             <div className="flex flex-col h-full">
               <Slideshow images={project.images} />
 
-              <div className="space-y-3 my-6 sm:my-8">
+              <div className="space-y-3 mt-2 mb-6 sm:my-8">
                 <ul className="space-y-1 sm:space-y-2">
                   {project.objectives.map((el, index) => (
                     <li
