@@ -15,13 +15,13 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="relative min-h-screen w-full snap-start px-8 sm:px-20 pb-32 sm:pb-20 lg:pb-24 pt-10 sm:pt-28 lg:pt-24 lg:pr-56"
+      className="relative min-h-screen w-full snap-start px-5 sm:px-20 pb-32 sm:pb-20 lg:pb-24 pt-10 sm:pt-28 lg:pt-24 lg:pr-56"
     >
       <VerticalLine />
       <h3 className="sr-only">À propos</h3>
 
-      <div className="w-full flex flex-col gap-16">
-        <AboutCard title="Mon parcours">
+      <div className="w-full lg:w-[90%] flex flex-col gap-16">
+        <AboutCard title="Développeuse web passionnée par la création d'interfaces modernes et accessibles">
           <a
             href="https://fr.linkedin.com/in/joanne-bazin?trk=people-guest_people_search-card"
             target="_blank"
@@ -51,7 +51,7 @@ export const About = () => {
           )}
         </AboutCard>
 
-        <AboutCard title={"Technologies"} reverse={true}>
+        <AboutCard title={"Technologies"}>
           <a
             href="https://github.com/JoanneBazin"
             target="_blank"
